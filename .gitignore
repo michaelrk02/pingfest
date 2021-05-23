@@ -7,5 +7,5 @@ application/logs/*
 application/storage/*
 !application/storage/index.html
 
-config.php
+/config.php
 
