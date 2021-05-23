@@ -25,7 +25,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="pages/examples/profile.html" class="nav-link">
+            <a href="<?php echo site_url('admin/dashboard') ?>" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
@@ -40,33 +40,33 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="<?php echo site_url('admin/cover') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Semua Acara</p>
+                  <p>Cover</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Semnas</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="<?php echo site_url('admin/itc') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>IT-Competition</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="<?php echo site_url('admin/kti') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>KTI</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="<?php echo site_url('admin/semnas') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Cover</p>
+                  <p>Semnas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo site_url('admin/semuaacara') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Semua Acara</p>
                 </a>
               </li>
             </ul>

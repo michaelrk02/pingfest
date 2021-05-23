@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Semnas extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,11 +18,11 @@ class Admin extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function dashboard()
+	public function index()
 	{
 		$this->load->view('/Admin/templates/header');
 		$this->load->view('/Admin/templates/sidebar');
-		$this->load->view('/Admin/dashboard');
+		$this->load->view('/Admin/semnas/index');
 		$this->load->view('/Admin/templates/footer');
 	}
 }
