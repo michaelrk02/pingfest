@@ -1,0 +1,19 @@
+<?php
+// ubah jika perlu (development/production)
+define('PF_ENV', 'development');
+
+// isi base_url (pakai / di akhir)
+// contoh: http://localhost/pingfest/
+define('PF_URL', 'isi dulu bre');
+
+// isi sesuai keadaan server kalian khususnya db user, db pass, dan db name
+define('PF_DB_HOST', 'localhost');
+define('PF_DB_USER', 'isi dulu bre');
+define('PF_DB_PASS', 'isi dulu bre');
+define('PF_DB_NAME', 'isi dulu bre');
+define('PF_DB_PREFIX', 'pf_');
+
+// ubah jika perlu
+define('PF_SESS_COOKIE', 'pf_session');
+define('PF_SESS_DIR', NULL);
+
