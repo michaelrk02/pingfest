@@ -32,20 +32,6 @@ INSERT INTO `pf_config` (`key`, `value`) VALUES
 ('admin_password',	'$2y$05$s/BXR4v4.Ro5ZPeHaY7WFefbZNQkFTmGUvjKZmgVRN.ZK9HagS7S2'),
 ('admin_username',	'admin');
 
-DROP TABLE IF EXISTS `pf_cover_data`;
-CREATE TABLE `pf_cover_data` (
-  `user_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `group_name` varchar(100) NOT NULL,
-  `leader` varchar(100) NOT NULL,
-  `member_1` varchar(100) NOT NULL,
-  `member_2` varchar(100) NOT NULL,
-  `song_name` varchar(100) NOT NULL,
-  `link` text NOT NULL,
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `pf_cover_data_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `pf_users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
 DROP TABLE IF EXISTS `pf_events`;
 CREATE TABLE `pf_events` (
   `event_id` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
@@ -72,6 +58,20 @@ CREATE TABLE `pf_event_participants` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
+DROP TABLE IF EXISTS `pf_music_data`;
+CREATE TABLE `pf_music_data` (
+  `user_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `group_name` varchar(100) NOT NULL,
+  `leader` varchar(100) NOT NULL,
+  `member_1` varchar(100) NOT NULL,
+  `member_2` varchar(100) NOT NULL,
+  `song_name` varchar(100) NOT NULL,
+  `link` text NOT NULL,
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `pf_music_data_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `pf_users` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 DROP TABLE IF EXISTS `pf_paper_data`;
 CREATE TABLE `pf_paper_data` (
   `user_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
@@ -93,6 +93,15 @@ CREATE TABLE `pf_semnas_data` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
+DROP TABLE IF EXISTS `pf_sso_apps`;
+CREATE TABLE `pf_sso_apps` (
+  `app_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `secret_key` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`app_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 DROP TABLE IF EXISTS `pf_users`;
 CREATE TABLE `pf_users` (
   `user_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
@@ -104,4 +113,4 @@ CREATE TABLE `pf_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- 2021-05-22 15:22:12
+-- 2021-05-31 14:03:19
