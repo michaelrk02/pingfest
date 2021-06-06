@@ -32,6 +32,7 @@ class Dashboard extends CI_Controller {
 		$countMusic = $this->Music_model->countRow(); 
 		$countPaper = $this->Paper_model->countRow(); 
 		$countSemnas = $this->Semnas_model->countRow(); 
+		$this->load->view('/Admin/templates/start');
 		$this->load->view('/Admin/templates/header');
 		$this->load->view('/Admin/templates/sidebar');
 		$this->load->view('/Admin/dashboard',[
@@ -41,5 +42,7 @@ class Dashboard extends CI_Controller {
 			'countSemnas' => $countSemnas
 		]);
 		$this->load->view('/Admin/templates/footer');
+		$this->load->view('/Admin/templates/dashboardjs');
+		$this->load->view('/Admin/templates/end');
 	}
 }

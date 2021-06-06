@@ -26,9 +26,12 @@ class Participants_Battle extends CI_Controller {
 	public function index()
 	{
 		$data["bettles"] = $this->Bettle_model->getAll(); 
+		$this->load->view('/Admin/templates/start');
 		$this->load->view('/Admin/templates/header');
 		$this->load->view('/Admin/templates/sidebar');
 		$this->load->view('/Admin/participants_battle/index', $data);
 		$this->load->view('/Admin/templates/footer');
+		$this->load->view('/Admin/participants_battle/tamplatejs');
+		$this->load->view('/Admin/templates/end');
 	}
 }

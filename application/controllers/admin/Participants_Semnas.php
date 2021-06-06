@@ -25,9 +25,12 @@ class Participants_Semnas extends CI_Controller {
 	public function index()
 	{
 		$data["semnas"] = $this->Semnas_model->getAll(); 
+		$this->load->view('/Admin/templates/start');
 		$this->load->view('/Admin/templates/header');
 		$this->load->view('/Admin/templates/sidebar');
 		$this->load->view('/Admin/participants_semnas/index',$data);
 		$this->load->view('/Admin/templates/footer');
+		$this->load->view('/Admin/participants_semnas/tamplatejs');
+		$this->load->view('/Admin/templates/end');
 	}
 }

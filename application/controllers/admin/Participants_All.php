@@ -20,9 +20,11 @@ class Participants_All extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->view('/Admin/templates/start');
 		$this->load->view('/Admin/templates/header');
 		$this->load->view('/Admin/templates/sidebar');
 		$this->load->view('/Admin/participants_all/index');
 		$this->load->view('/Admin/templates/footer');
+		$this->load->view('/Admin/templates/end');
 	}
 }
