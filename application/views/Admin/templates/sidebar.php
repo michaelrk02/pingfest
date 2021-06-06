@@ -40,31 +40,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url('admin/cover') ?>" class="nav-link">
+                <a href="<?php echo site_url('admin/participants_battle') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Cover</p>
+                  <p>Bettle of Technology</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('admin/itc') ?>" class="nav-link">
+                <a href="<?php echo site_url('admin/participants_music') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>IT-Competition</p>
+                  <p>IT-Music</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('admin/kti') ?>" class="nav-link">
+                <a href="<?php echo site_url('admin/participants_paper') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>KTI</p>
+                  <p>IT-Peper</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('admin/semnas') ?>" class="nav-link">
+                <a href="<?php echo site_url('admin/participants_semnas') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Semnas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('admin/semuaacara') ?>" class="nav-link">
+                <a href="<?php echo site_url('admin/participants_all') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Semua Acara</p>
                 </a>
