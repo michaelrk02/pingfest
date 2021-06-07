@@ -41,6 +41,12 @@ CREATE TABLE `pf_events` (
   PRIMARY KEY (`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+TRUNCATE `pf_events`;
+INSERT INTO `pf_events` (`event_id`, `name`, `price`, `locked`) VALUES
+('battle',	'Battle of Technology',	100000,	0),
+('music',	'IT-Music',	50000,	0),
+('paper',	'IT-Paper',	75000,	0),
+('semnas',	'Seminar Nasional',	0,	0);
 
 DROP TABLE IF EXISTS `pf_event_participants`;
 CREATE TABLE `pf_event_participants` (
@@ -101,6 +107,10 @@ CREATE TABLE `pf_sso_apps` (
   PRIMARY KEY (`app_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+TRUNCATE `pf_sso_apps`;
+INSERT INTO `pf_sso_apps` (`app_id`, `name`, `secret_key`) VALUES
+('botplatform',	'Battle of Technology',	'20d27EZOPZLKrO8fNp2Y8UWKvKH1pC9Ti6w1f7FSiOi8BS0tiNgriPqWzpTVWlRH'),
+('bottour',	'BoT Virtual Tour',	'3cKCdunIvZC3jddWiw9Cmdq7VAFsB4pmE7pF5oaPCMIpfF8R8J3vLnLN2IJthWeI');
 
 DROP TABLE IF EXISTS `pf_users`;
 CREATE TABLE `pf_users` (
@@ -108,9 +118,10 @@ CREATE TABLE `pf_users` (
   `password` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(254) NOT NULL,
+  `phone` varchar(20) NOT NULL,
   `hash` varchar(32) NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- 2021-05-31 14:03:19
+-- 2021-06-07 09:12:25
