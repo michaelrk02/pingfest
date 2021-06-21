@@ -25,13 +25,18 @@ class Participants_Music extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data["musics"] = $this->Music_model->getAll(); 
-		$this->load->view('/Admin/templates/start');
-		$this->load->view('/Admin/templates/header');
-		$this->load->view('/Admin/templates/sidebar');
-		$this->load->view('/Admin/participants_music/index',$data);
-		$this->load->view('/Admin/templates/footer');
-		$this->load->view('/Admin/participants_music/tamplatejs');
-		$this->load->view('/Admin/templates/end');
+		if(!empty($this->session->userdata("username_admin"))){
+			$data["musics"] = $this->Music_model->getAll(); 
+			$this->load->view('/Admin/templates/start');
+			$this->load->view('/Admin/templates/header');
+			$this->load->view('/Admin/templates/sidebar');
+			$this->load->view('/Admin/participants_music/index',$data);
+			$this->load->view('/Admin/templates/footer');
+			$this->load->view('/Admin/participants_music/tamplatejs');
+			$this->load->view('/Admin/templates/end');
+		}else{
+			redirect(base_url('Admin/login/index'));
+		}
+		
 	}
 }

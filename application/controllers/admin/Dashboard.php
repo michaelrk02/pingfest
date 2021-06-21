@@ -29,23 +29,27 @@ class Dashboard extends CI_Controller {
 	 */
 	public function index()
 	{
-		$countBettle = $this->Bettle_model->countRow(); 
-		$countMusic = $this->Music_model->countRow(); 
-		$countPaper = $this->Paper_model->countRow(); 
-		$countSemnas = $this->Semnas_model->countRow(); 
-		$countParticipant = $this->Event_participant_model->countRow(); 
-		$this->load->view('/Admin/templates/start');
-		$this->load->view('/Admin/templates/header');
-		$this->load->view('/Admin/templates/sidebar');
-		$this->load->view('/Admin/dashboard',[
-			'countBettle' => $countBettle,
-			'countMusic' => $countMusic,
-			'countPaper' => $countPaper,
-			'countSemnas' => $countSemnas,
-			'countParticipant' => $countParticipant
-		]);
-		$this->load->view('/Admin/templates/footer');
-		$this->load->view('/Admin/templates/dashboardjs');
-		$this->load->view('/Admin/templates/end');
+		if(!empty($this->session->userdata("username_admin"))){
+			$countBettle = $this->Bettle_model->countRow(); 
+			$countMusic = $this->Music_model->countRow(); 
+			$countPaper = $this->Paper_model->countRow(); 
+			$countSemnas = $this->Semnas_model->countRow(); 
+			$countParticipant = $this->Event_participant_model->countRow(); 
+			$this->load->view('/Admin/templates/start');
+			$this->load->view('/Admin/templates/header');
+			$this->load->view('/Admin/templates/sidebar');
+			$this->load->view('/Admin/dashboard',[
+				'countBettle' => $countBettle,
+				'countMusic' => $countMusic,
+				'countPaper' => $countPaper,
+				'countSemnas' => $countSemnas,
+				'countParticipant' => $countParticipant
+			]);
+			$this->load->view('/Admin/templates/footer');
+			$this->load->view('/Admin/templates/dashboardjs');
+			$this->load->view('/Admin/templates/end');
+		}else{
+			redirect(base_url('Admin/login/index'));
+		}
 	}
 }

@@ -71,6 +71,13 @@
               </li>
             </ul>
           </li>
+
+          <li class="nav-item">
+            <a href="<?php echo site_url('admin/login/logout') ?>" class="nav-link">
+              <i class="fas fa-sign-out-alt"></i>
+              <p>Logout</p>
+            </a>
+          </li> 
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

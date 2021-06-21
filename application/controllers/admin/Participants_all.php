@@ -24,14 +24,17 @@ class Participants_All extends CI_Controller {
 	 */
 	public function index()
 	{
-
-		$data["participants"] = $this->Event_participant_model->getAll(); 
-		$this->load->view('/Admin/templates/start');
-		$this->load->view('/Admin/templates/header');
-		$this->load->view('/Admin/templates/sidebar');
-		$this->load->view('/Admin/participants_all/index',$data);
-		$this->load->view('/Admin/templates/footer');
-		$this->load->view('/Admin/participants_semnas/tamplatejs');
-		$this->load->view('/Admin/templates/end');
+		if(!empty($this->session->userdata("username_admin"))){
+			$data["participants"] = $this->Event_participant_model->getAll(); 
+			$this->load->view('/Admin/templates/start');
+			$this->load->view('/Admin/templates/header');
+			$this->load->view('/Admin/templates/sidebar');
+			$this->load->view('/Admin/participants_all/index',$data);
+			$this->load->view('/Admin/templates/footer');
+			$this->load->view('/Admin/participants_semnas/tamplatejs');
+			$this->load->view('/Admin/templates/end');
+		}else{
+			redirect(base_url('Admin/login/index'));
+		}
 	}
 }
