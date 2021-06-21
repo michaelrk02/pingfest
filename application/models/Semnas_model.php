@@ -14,7 +14,10 @@ class Semnas_model extends CI_Model
     }
 
     public function countRow(){
-        $query = $this->db->query('SELECT * FROM pf_semnas_data');
+        $query = $this->db->query('
+            SELECT * FROM pf_semnas_data 
+            join pf_users on pf_users.user_id = pf_semnas_data.user_id
+        ');
         return $query->num_rows();
     }
 
