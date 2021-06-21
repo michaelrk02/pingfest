@@ -90,8 +90,7 @@
             <!-- small box -->
             <div class="small-box bg-dark">
               <div class="inner">
-                <h3>150</h3>
-
+                 <h3><?php echo $countParticipant ?></h3>  
                 <p>Semua</p>
               </div>
               <div class="icon">
