@@ -30,12 +30,56 @@ class Event_participant_model extends CI_Model
     public function getAll()
     { 
         $this->db->select('
-            pf_event_participants.timestamp,pf_users.user_id,pf_users.name as name_user,pf_users.email,pf_users.phone,pf_events.name as name_event
+            pf_event_participants.timestamp, 
+            pf_event_participants.status,
+            pf_event_participants.event_id,
+            pf_event_participants.invoice,
+            pf_event_participants.unique,
+            pf_event_participants.total,
+            pf_users.user_id,pf_users.name as name_user,
+            pf_users.email,
+            pf_users.phone,
+            pf_events.name as name_event
         '); 
         $this->db->from('pf_event_participants');
         $this->db->join('pf_users','pf_users.user_id = pf_event_participants.user_id'); 
         $this->db->join('pf_events','pf_events.event_id = pf_event_participants.event_id'); 
         $query = $this->db->get();
         return $query->result();
+    }
+
+     public function updatePayment()
+    {
+        $post = $this->input->post();
+        $this->user_id = $post["user_id"];
+        $this->event_id = $post["event_id"]; 
+        $this->status = $post["status"]; 
+        $this->timestamp = $post["timestamp"]; 
+        $this->invoice = $post["invoice"]; 
+        $this->unique = $post["unique"]; 
+        $this->total = $post["total"]; 
+        return $this->db->update(
+            $this->_table, 
+            $this, 
+            array(
+                'user_id' => $post['user_id'],
+                'event_id' => $post['event_id']
+            )
+        );
+    }
+
+
+    public function decline()
+    {
+        $post = $this->input->post();
+        $this->user_id = $post["user_id"];
+        $this->event_id = $post["event_id"]; 
+        return $this->db->delete(
+            $this->_table, 
+            array(
+                'user_id' => $post['user_id'],
+                'event_id' => $post['event_id']
+            )
+        );
     }
 }

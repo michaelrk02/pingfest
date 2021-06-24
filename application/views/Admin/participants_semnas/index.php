@@ -24,7 +24,7 @@
         <!-- DataTables -->
           <div class="card">
             <div class="card-header">
-              <a href="<?php echo site_url('admin/products/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+              <!-- <a href="<?php echo site_url('admin/products/add') ?>"><i class="fas fa-plus"></i> Add New</a> -->
             </div>
             <div class="card-body">
 
@@ -36,7 +36,7 @@
                       <th>Nama</th>
                       <th>E-mail</th> 
                       <th>Institusi</th>
-                      <th>Action</th>
+                      <!-- <th>Action</th> -->
                     </tr>
                   </thead>
                   <tbody>
@@ -54,12 +54,12 @@
                       <td>
                         <?php echo $semnas->institution ?>
                       </td>
-                      <td width="250">
+                      <!-- <td width="250"> -->
                         <!-- <a href="<?php echo site_url('admin/products/edit/'.$product->product_id) ?>"
                          class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
                         <a onclick="deleteConfirm('<?php echo site_url('admin/products/delete/'.$product->product_id) ?>')"
                          href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a> -->
-                      </td>
+                      <!-- </td> -->
                     </tr>
                     <?php endforeach; ?> 
 

@@ -25,31 +25,54 @@
         <!-- DataTables -->
           <div class="card">
             <div class="card-header">
-              <a href="<?php echo site_url('admin/products/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+              <!-- <a href="<?php echo site_url('admin/products/add') ?>"><i class="fas fa-plus"></i> Add New</a> -->
             </div>
-            <div class="card-body">
 
+            <div class="clearfix"></div>
+
+             <?php if ($this->session->flashdata('msg')) {?>
+
+                  <span class="alert alert-success col-sm-12"><?php echo $this->session->flashdata('msg');?></span>
+
+              <?php }?>
+
+            <div class="clearfix"></div>
+            <div class="card-body">
+              
               <div class="table-responsive">
-                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover" id="dataTable" width="100%">
                   <thead>
                     <tr>
+                      <th>Jenis Acara</th>
+                      <th>Status</th>
                       <th>Username</th>
                       <th>Timestamp</th>
                       <th>Nama</th>
                       <th>Email</th>
                       <th>No Telp</th>
-                      <th>Jenis Acara</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php foreach ($participants as $participant): ?>
                     <tr>
-                      <td width="150">
+                      <td>
+                       <?php echo $participant->name_event ?>
+                      </td> 
+                      <td>
+                        <?php 
+                          if($participant->status == 0){
+                           echo "belum";
+                          }else{
+                            echo "sudah";
+                          }
+                         ?> 
+                      </td> 
+                      <td>
                         <?php echo $participant->user_id ?>
                       </td>
                       <td>
-                        <?php echo $participant->timestamp ?>
+                        <?php echo date("Y-m-d H:i:s", $participant->timestamp) ?>
                       </td>
                       <td>
                         <?php echo $participant->name_user ?>
@@ -60,19 +83,54 @@
                       <td>
                        <?php echo $participant->phone ?>
                       </td>
-                      <td>
-                       <?php echo $participant->name_event ?>
-                      </td> 
                       <td width="250">
-                        <!-- <a href="<?php echo site_url('admin/products/edit/'.$product->product_id) ?>"
-                         class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-                        <a onclick="deleteConfirm('<?php echo site_url('admin/products/delete/'.$product->product_id) ?>')"
-                         href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a> -->
+                        <?php 
+                          if($participant->status == 0){
+                        ?> 
+                          <table>
+                            <tr>
+                              <td>
+                                 <form action="<?php echo base_url('Admin/participants_all/accept_payment'); ?>" method="post">
+                                    <input type="hidden" name="user_id" value="<?php echo $participant->user_id ?>">
+                                    <input type="hidden" name="event_id"value="<?php echo $participant->event_id ?>">
+                                    <input type="hidden" name="timestamp" value="<?php echo $participant->timestamp ?>">
+                                    <input type="hidden" name="invoice" value="<?php echo $participant->invoice ?>">
+                                    <input type="hidden" name="unique" value="<?php echo $participant->unique ?>">
+                                    <input type="hidden" name="total" value="<?php echo $participant->total ?>"> 
+                                    <input type="hidden" name="status" value="1">
+                                   <input type="submit" name="terima" value="sudah" class="btn btn-success">
+                                 </form> 
+                              </td>
+                              <td>
+                                 <form action="<?php echo base_url('Admin/participants_all/decline_payment'); ?>" method="post">
+                                   <input type="hidden" name="user_id" value="<?php echo $participant->user_id ?>">
+                                    <input type="hidden" name="event_id"value="<?php echo $participant->event_id ?>">
+                                    <input type="hidden" name="timestamp" value="<?php echo $participant->timestamp ?>">
+                                    <input type="hidden" name="invoice" value="<?php echo $participant->invoice ?>">
+                                    <input type="hidden" name="unique" value="<?php echo $participant->unique ?>">
+                                    <input type="hidden" name="total" value="<?php echo $participant->total ?>"> 
+                                    <input type="hidden" name="status" value="0">
+                                 <input type="submit" name="tolak" value="tolak" class="btn btn-danger">
+                               </form>
+                              </td>
+                            </tr>
+                          </table>
+                        <?php
+                          }else{
+                        ?> 
+                          <!-- <a href="#" class="btn btn-default">Detail</a> -->
+                        <?php
+                          }
+                        ?> 
+                        
                       </td>
                     </tr>
                     <?php endforeach; ?> 
 
                   </tbody>
+                  <tfoot>
+                    
+                  </tfoot>
                 </table>
               </div>
             </div>
