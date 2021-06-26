@@ -13,43 +13,47 @@ INSERT INTO `pf_battle_data` (`user_id`, `team_name`, `school`, `leader`, `membe
 ('bernier',	'Yahn Bernier\'s Team',	'Yahn Bernier\'s School',	'Yahn Bernier',	'noname',	'noname'),
 ('birdwell',	'Ken Birdwell\'s Team',	'Ken Birdwell\'s School',	'Ken Birdwell',	'noname',	'noname'),
 ('bond',	'Steve Bond\'s Team',	'Steve Bond\'s School',	'Steve Bond',	'noname',	'noname'),
-('johnson',	'Brett Johnson\'s Team',	'Brett Johnson\'s School',	'Brett Johnson',	'noname',	'noname');
+('johnson',	'Brett Johnson\'s Team',	'Brett Johnson\'s School',	'Brett Johnson',	'noname',	'noname')
+ON DUPLICATE KEY UPDATE `user_id` = VALUES(`user_id`), `team_name` = VALUES(`team_name`), `school` = VALUES(`school`), `leader` = VALUES(`leader`), `member_1` = VALUES(`member_1`), `member_2` = VALUES(`member_2`);
 
 INSERT INTO `pf_event_participants` (`user_id`, `event_id`, `status`, `timestamp`, `invoice`, `unique`, `total`) VALUES
-('backman',	'battle',	0,	0,	100000,	371,	100371),
-('bailey',	'battle',	0,	0,	100000,	47,	100047),
-('bernier',	'battle',	0,	0,	100000,	631,	100631),
-('birdwell',	'battle',	0,	0,	100000,	350,	100350),
-('bond',	'battle',	0,	0,	100000,	381,	100381),
-('johnson',	'battle',	0,	0,	100000,	922,	100922),
-('casali',	'music',	0,	0,	50000,	413,	50413),
-('cook',	'music',	0,	0,	50000,	80,	50080),
-('cumberland',	'music',	0,	0,	50000,	617,	50617),
-('jones',	'music',	0,	0,	50000,	917,	50917),
-('casali',	'paper',	0,	0,	75000,	7,	75007),
-('coomer',	'paper',	0,	0,	75000,	823,	75823),
-('guthrie',	'paper',	0,	0,	75000,	572,	75572),
-('laidlaw',	'paper',	0,	0,	75000,	503,	75503),
-('backman',	'semnas',	0,	0,	0,	322,	322),
-('bailey',	'semnas',	0,	0,	0,	129,	129),
-('harrington',	'semnas',	0,	0,	0,	902,	902),
-('laur',	'semnas',	0,	0,	0,	953,	953),
-('lundeen',	'semnas',	0,	0,	0,	604,	604),
-('mark',	'semnas',	0,	0,	0,	476,	476),
-('mennet',	'semnas',	0,	0,	0,	774,	774),
-('newell',	'semnas',	0,	0,	0,	308,	308);
+('backman',	'battle',	1,	0,	100000,	371,	100371),
+('bailey',	'battle',	1,	0,	100000,	47,	100047),
+('bernier',	'battle',	1,	0,	100000,	631,	100631),
+('birdwell',	'battle',	1,	0,	100000,	350,	100350),
+('bond',	'battle',	1,	0,	100000,	381,	100381),
+('johnson',	'battle',	1,	0,	100000,	922,	100922),
+('casali',	'music',	1,	0,	50000,	413,	50413),
+('cook',	'music',	1,	0,	50000,	80,	50080),
+('cumberland',	'music',	1,	0,	50000,	617,	50617),
+('jones',	'music',	1,	0,	50000,	917,	50917),
+('casali',	'paper',	1,	0,	75000,	7,	75007),
+('coomer',	'paper',	1,	0,	75000,	823,	75823),
+('guthrie',	'paper',	1,	0,	75000,	572,	75572),
+('laidlaw',	'paper',	1,	0,	75000,	503,	75503),
+('backman',	'semnas',	1,	0,	0,	322,	322),
+('bailey',	'semnas',	1,	0,	0,	129,	129),
+('harrington',	'semnas',	1,	0,	0,	902,	902),
+('laur',	'semnas',	1,	0,	0,	953,	953),
+('lundeen',	'semnas',	1,	0,	0,	604,	604),
+('mark',	'semnas',	1,	0,	0,	476,	476),
+('mennet',	'semnas',	1,	0,	0,	774,	774),
+('newell',	'semnas',	1,	0,	0,	308,	308)
+ON DUPLICATE KEY UPDATE `user_id` = VALUES(`user_id`), `event_id` = VALUES(`event_id`), `status` = VALUES(`status`), `timestamp` = VALUES(`timestamp`), `invoice` = VALUES(`invoice`), `unique` = VALUES(`unique`), `total` = VALUES(`total`);
 
 INSERT INTO `pf_music_data` (`user_id`, `group_name`, `leader`, `member_1`, `member_2`, `song_name`, `link`) VALUES
 ('casali',	'Dario Casali\'s Group',	'Dario Casali',	'noname',	'noname',	'My Amazing Song',	'http://localhost/'),
 ('cook',	'John Cook\'s Group',	'John Cook',	'noname',	'noname',	'My Amazing Song',	'http://localhost/'),
 ('cumberland',	'Wesley Cumberland\'s Group',	'Wesley Cumberland',	'noname',	'noname',	'My Amazing Song',	'http://localhost/'),
-('jones',	'Chuck Jones\'s Group',	'Chuck Jones',	'noname',	'noname',	'My Amazing Song',	'http://localhost/');
+('jones',	'Chuck Jones\'s Group',	'Chuck Jones',	'noname',	'noname',	'My Amazing Song',	'http://localhost/')
+ON DUPLICATE KEY UPDATE `user_id` = VALUES(`user_id`), `group_name` = VALUES(`group_name`), `leader` = VALUES(`leader`), `member_1` = VALUES(`member_1`), `member_2` = VALUES(`member_2`), `song_name` = VALUES(`song_name`), `link` = VALUES(`link`);
 
 INSERT INTO `pf_paper_data` (`user_id`, `institution`, `title`, `abstract`, `link`) VALUES
 ('casali',	'Dario Casali\'s University',	'My Amazing Paper',	'No description',	'http://localhost/'),
 ('coomer',	'Greg Coomer\'s University',	'My Amazing Paper',	'No description',	'http://localhost/'),
 ('guthrie',	'John Guthrie\'s University',	'My Amazing Paper',	'No description',	'http://localhost/'),
-('laidlaw',	'Marc Laidlaw\'s University',	'My Amazing Paper',	'No description',	'http://localhost/');
+('laidlaw',	'Marc Laidlaw\'s University',	'My Amazing Paper',	'No description',	'http://localhost/')
+ON DUPLICATE KEY UPDATE `user_id` = VALUES(`user_id`), `institution` = VALUES(`institution`), `title` = VALUES(`title`), `abstract` = VALUES(`abstract`), `link` = VALUES(`link`);
 
 INSERT INTO `pf_semnas_data` (`user_id`, `institution`) VALUES
 ('backman',	'Ted Backman\'s Institution'),
@@ -59,7 +63,8 @@ INSERT INTO `pf_semnas_data` (`user_id`, `institution`) VALUES
 ('lundeen',	'Randy Lundeen\'s Institution'),
 ('mark',	'Yatzse Mark\'s Institution'),
 ('mennet',	'Lisa Mennet\'s Institution'),
-('newell',	'Gabe Newell\'s Institution');
+('newell',	'Gabe Newell\'s Institution')
+ON DUPLICATE KEY UPDATE `user_id` = VALUES(`user_id`), `institution` = VALUES(`institution`);
 
 INSERT INTO `pf_users` (`user_id`, `password`, `name`, `email`, `phone`, `hash`) VALUES
 ('backman',	'$2y$05$by0ExgqlINJ6XARcl25jX.myh0z30MmMI3H4pxbz0H5zivFy9xTtW',	'Ted Backman',	'backman@localhost',	'0',	'0'),
@@ -88,6 +93,7 @@ INSERT INTO `pf_users` (`user_id`, `password`, `name`, `email`, `phone`, `hash`)
 ('theodore',	'$2y$05$QfzLcxKShrxL2K4FSHGPie1jXyQUmyPBi1dIgVlJrTUl2QVCMussa',	'Stephen Theodore',	'theodore@localhost',	'0',	'0'),
 ('vanburen',	'$2y$05$FOSs2/bJIkdtiYG1bHbX7eH41ksemcwgWBrfYCpSj3PvlB.ahCsDC',	'Bill Van Buren',	'vanburen@localhost',	'0',	'0'),
 ('walker',	'$2y$05$63EzQv9D/JqUTy98rr4ObunCf15KiAVSPhLDlXetm1G3hiX0uO16u',	'Robin Walker',	'walker@localhost',	'0',	'0'),
-('wood',	'$2y$05$NJDQF3KxC39f1VUQ6dM49uNpGDxO.vaQ7c51Qh4.sC.OdRsqe03EK',	'Douglas R. Wood',	'wood@localhost',	'0',	'0');
+('wood',	'$2y$05$NJDQF3KxC39f1VUQ6dM49uNpGDxO.vaQ7c51Qh4.sC.OdRsqe03EK',	'Douglas R. Wood',	'wood@localhost',	'0',	'0')
+ON DUPLICATE KEY UPDATE `user_id` = VALUES(`user_id`), `password` = VALUES(`password`), `name` = VALUES(`name`), `email` = VALUES(`email`), `phone` = VALUES(`phone`), `hash` = VALUES(`hash`);
 
--- 2021-06-07 09:08:30
+-- 2021-06-26 12:13:26
