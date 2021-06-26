@@ -90,7 +90,7 @@
                           <table>
                             <tr>
                               <td>
-                                 <form action="<?php echo base_url('Admin/participants_all/accept_payment'); ?>" method="post">
+                                 <form action="<?php echo site_url('admin/participants_all/accept_payment'); ?>" method="post">
                                     <input type="hidden" name="user_id" value="<?php echo $participant->user_id ?>">
                                     <input type="hidden" name="event_id"value="<?php echo $participant->event_id ?>">
                                     <input type="hidden" name="timestamp" value="<?php echo $participant->timestamp ?>">
@@ -102,7 +102,7 @@
                                  </form> 
                               </td>
                               <td>
-                                 <form action="<?php echo base_url('Admin/participants_all/decline_payment'); ?>" method="post">
+                                 <form action="<?php echo site_url('admin/participants_all/decline_payment'); ?>" method="post">
                                    <input type="hidden" name="user_id" value="<?php echo $participant->user_id ?>">
                                     <input type="hidden" name="event_id"value="<?php echo $participant->event_id ?>">
                                     <input type="hidden" name="timestamp" value="<?php echo $participant->timestamp ?>">

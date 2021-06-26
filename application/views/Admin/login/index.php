@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/dist/css/login.css">
 </head>
 <body class="main-bg">
-    <form action="<?php echo base_url('Admin/login/aksi_login'); ?>" method="post">
+    <form action="<?php echo site_url('admin/login/aksi_login'); ?>" method="post">
         <div class="login-container text-c animated flipInX">
             <div>
                 <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
