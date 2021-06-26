@@ -35,7 +35,7 @@ class Participants_Battle extends CI_Controller {
 			$this->load->view('/Admin/participants_battle/tamplatejs');
 			$this->load->view('/Admin/templates/end');
 		}else{
-			redirect(base_url('Admin/login/index'));
+			redirect(site_url('admin/login/index'));
 		}
 	}
 }

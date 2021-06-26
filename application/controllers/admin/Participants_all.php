@@ -34,20 +34,20 @@ class Participants_All extends CI_Controller {
 			$this->load->view('/Admin/participants_all/tamplatejs');
 			$this->load->view('/Admin/templates/end');
 		}else{
-			redirect(base_url('Admin/login/index'));
+			redirect(site_url('admin/login/index'));
 		}
 	}
 
 	public function accept_payment(){
 		$this->Event_participant_model->updatePayment(); 
 		$this->session->set_flashdata('msg', 'Peserta Diterima');
-		redirect(base_url('Admin/participants_all/index'));
+		redirect(site_url('admin/participants_all/index'));
 	}
 
 
 	public function decline_payment(){
 		$this->Event_participant_model->decline(); 
 		$this->session->set_flashdata('msg', 'Peserta Ditolak');
-		redirect(base_url('Admin/participants_all/index')); 
+		redirect(site_url('admin/participants_all/index')); 
 	}
 }

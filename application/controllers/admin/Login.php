@@ -49,13 +49,13 @@ class Login extends CI_Controller {
 
 			$this->session->set_userdata($data_session);
 
-			redirect(base_url("Admin/dashboard"));
+			redirect(site_url("admin/dashboard"));
 		}else{
-			redirect(base_url('Admin/login/index'));
+			redirect(site_url('admin/login/index'));
 		}
 	}
 	function logout(){
 		$this->session->sess_destroy();
-		redirect(base_url('Admin/login/index'));
+		redirect(site_url('admin/login/index'));
 	}
 }
