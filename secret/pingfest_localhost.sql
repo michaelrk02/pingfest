@@ -15,6 +15,7 @@ CREATE TABLE `pf_battle_data` (
   `leader` varchar(100) NOT NULL,
   `member_1` varchar(100) NOT NULL,
   `member_2` varchar(100) NOT NULL,
+  UNIQUE KEY `user_id_unique` (`user_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `pf_battle_data_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `pf_users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -57,6 +58,7 @@ CREATE TABLE `pf_event_participants` (
   `invoice` int(11) NOT NULL,
   `unique` int(11) NOT NULL,
   `total` int(11) NOT NULL,
+  UNIQUE KEY `user_id_event_id_unique` (`user_id`,`event_id`),
   KEY `user_id` (`user_id`),
   KEY `event_id` (`event_id`),
   CONSTRAINT `pf_event_participants_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `pf_users` (`user_id`),
@@ -73,6 +75,7 @@ CREATE TABLE `pf_music_data` (
   `member_2` varchar(100) NOT NULL,
   `song_name` varchar(100) NOT NULL,
   `link` text NOT NULL,
+  UNIQUE KEY `user_id_unique` (`user_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `pf_music_data_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `pf_users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -85,6 +88,7 @@ CREATE TABLE `pf_paper_data` (
   `title` varchar(100) NOT NULL,
   `abstract` varchar(100) NOT NULL,
   `link` text NOT NULL,
+  UNIQUE KEY `user_id_unique` (`user_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `pf_paper_data_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `pf_users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -94,6 +98,7 @@ DROP TABLE IF EXISTS `pf_semnas_data`;
 CREATE TABLE `pf_semnas_data` (
   `user_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `institution` varchar(100) NOT NULL,
+  UNIQUE KEY `user_id_unique` (`user_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `pf_semnas_data_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `pf_users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -124,4 +129,4 @@ CREATE TABLE `pf_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- 2021-06-07 09:12:25
+-- 2021-06-26 14:33:07
