@@ -12,6 +12,7 @@ CREATE TABLE `pf_battle_data` (
   `user_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `team_name` varchar(100) NOT NULL,
   `school` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
   `leader` varchar(100) NOT NULL,
   `member_1` varchar(100) NOT NULL,
   `member_2` varchar(100) NOT NULL,
@@ -31,23 +32,25 @@ CREATE TABLE `pf_config` (
 TRUNCATE `pf_config`;
 INSERT INTO `pf_config` (`key`, `value`) VALUES
 ('admin_password',	'$2y$05$s/BXR4v4.Ro5ZPeHaY7WFefbZNQkFTmGUvjKZmgVRN.ZK9HagS7S2'),
-('admin_username',	'admin');
+('admin_username',	'admin'),
+('invoice_expire',	'86400');
 
 DROP TABLE IF EXISTS `pf_events`;
 CREATE TABLE `pf_events` (
   `event_id` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `name` varchar(100) NOT NULL,
   `price` int(11) NOT NULL,
+  `available` tinyint(4) NOT NULL,
   `locked` tinyint(4) NOT NULL,
   PRIMARY KEY (`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `pf_events`;
-INSERT INTO `pf_events` (`event_id`, `name`, `price`, `locked`) VALUES
-('battle',	'Battle of Technology',	100000,	0),
-('music',	'IT-Music',	50000,	0),
-('paper',	'IT-Paper',	75000,	0),
-('semnas',	'Seminar Nasional',	0,	0);
+INSERT INTO `pf_events` (`event_id`, `name`, `price`, `available`, `locked`) VALUES
+('battle',	'Battle of Technology',	100000,	0,	0),
+('music',	'IT-Music',	50000,	0,	0),
+('paper',	'IT-Paper',	75000,	0,	0),
+('semnas',	'Seminar Nasional',	0,	0,	0);
 
 DROP TABLE IF EXISTS `pf_event_participants`;
 CREATE TABLE `pf_event_participants` (
@@ -71,10 +74,10 @@ CREATE TABLE `pf_music_data` (
   `user_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `group_name` varchar(100) NOT NULL,
   `leader` varchar(100) NOT NULL,
-  `member_1` varchar(100) NOT NULL,
-  `member_2` varchar(100) NOT NULL,
-  `song_name` varchar(100) NOT NULL,
-  `link` text NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `members` text NOT NULL,
+  `link_gdrive` text NOT NULL,
+  `link_igtv` text NOT NULL,
   UNIQUE KEY `user_id_unique` (`user_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `pf_music_data_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `pf_users` (`user_id`)
@@ -85,9 +88,11 @@ DROP TABLE IF EXISTS `pf_paper_data`;
 CREATE TABLE `pf_paper_data` (
   `user_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `institution` varchar(100) NOT NULL,
+  `leader` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `members` text NOT NULL,
   `title` varchar(100) NOT NULL,
   `abstract` varchar(100) NOT NULL,
-  `link` text NOT NULL,
   UNIQUE KEY `user_id_unique` (`user_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `pf_paper_data_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `pf_users` (`user_id`)
@@ -129,4 +134,4 @@ CREATE TABLE `pf_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- 2021-06-26 14:33:07
+-- 2021-07-04 06:29:50
