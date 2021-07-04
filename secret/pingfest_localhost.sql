@@ -47,10 +47,10 @@ CREATE TABLE `pf_events` (
 
 TRUNCATE `pf_events`;
 INSERT INTO `pf_events` (`event_id`, `name`, `price`, `available`, `locked`) VALUES
-('battle',	'Battle of Technology',	100000,	0,	0),
-('music',	'IT-Music',	50000,	0,	0),
-('paper',	'IT-Paper',	75000,	0,	0),
-('semnas',	'Seminar Nasional',	0,	0,	0);
+('battle',	'Battle of Technology',	100000,	1,	0),
+('music',	'IT-Music',	50000,	1,	0),
+('paper',	'IT-Paper',	75000,	1,	0),
+('semnas',	'Seminar Nasional',	0,	1,	0);
 
 DROP TABLE IF EXISTS `pf_event_participants`;
 CREATE TABLE `pf_event_participants` (
@@ -134,4 +134,4 @@ CREATE TABLE `pf_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- 2021-07-04 06:29:50
+-- 2021-07-04 06:47:21
