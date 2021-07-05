@@ -36,6 +36,7 @@
                       <th>Username</th>
                       <th>Nama tim</th>
                       <th>Asal sekolah</th>
+                      <th>Phone</th>
                       <th>Daftar anggota</th>
                       <th>Action</th>
                     </tr>
@@ -44,13 +45,16 @@
                     <?php foreach ($bettles as $bettle): ?>
                     <tr>
                       <td width="150">
-                        <?php echo $bettle->name ?>
+                        <?php echo $bettle->user_id ?>
                       </td>
                       <td>
                         <?php echo $bettle->team_name ?>
                       </td>
                       <td>
                        <?php echo $bettle->school ?>
+                      </td>
+                      <td>
+                       <?php echo $bettle->phone ?>
                       </td>
                       <td class="small">
                         <ul>
@@ -60,9 +64,7 @@
                         </ul> 
                       </td>
                       <td width="250">
-                        <a href="#" class="btn btn-primary">Liat</a>
-                       <!--  <a onclick="deleteConfirm('<?php echo site_url('admin/products/delete/'.$product->product_id) ?>')"
-                         href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a> -->
+                        <a href="#" class="btn btn-primary">Liat</a> 
                       </td>
                     </tr>
                     <?php endforeach; ?> 

@@ -33,9 +33,12 @@
                   <thead>
                     <tr>
                       <th>Username</th>
-                      <th>Nama</th>
+                      <th>Nama Ketua</th>
+                      <th>Phone</th>
+                      <th>Institution</th>
                       <th>Judul</th> 
                       <th>Abstrak</th>
+                      <th>Daftar anggota</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -43,7 +46,13 @@
                     <?php foreach ($papers as $paper): ?>
                     <tr>
                       <td width="150">
-                        <?php echo $paper->name ?>
+                        <?php echo $paper->user_id ?>
+                      </td>
+                      <td>
+                        <?php echo $paper->leader ?>
+                      </td>
+                      <td>
+                        <?php echo $paper->phone ?>
                       </td>
                       <td>
                         <?php echo $paper->institution ?>
@@ -54,8 +63,16 @@
                       <td>
                        <?php echo substr($paper->abstract, 0, 50) ?>...</td>
                       </td>  
+                      <td class="small">
+                        <ul>
+                          <?php $data = json_decode($paper->members, TRUE)['data'] ?> 
+                          <?php for ($i=0;$i<count($data);$i++): ?>
+                          <li><?php echo $data[$i]; ?></li> 
+                          <?php endfor; ?>
+                        </ul> 
+                      </td>
                       <td width="250">
-                        <a href="<?php echo $paper->link ?>" class="btn btn-primary">Liat</a>  
+                        <a href="#" class="btn btn-primary">Liat</a>  
                       </td>
                     </tr>
                     <?php endforeach; ?> 

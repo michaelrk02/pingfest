@@ -8,10 +8,7 @@ class Music_model extends CI_Model
     public $user_id;
     public $group_name;
     public $leader;
-    public $member_1;
-    public $member_2;
-    public $song_name;
-    public $link;
+    public $member;   
 
     public function rules()
     {
@@ -28,7 +25,7 @@ class Music_model extends CI_Model
 
     public function getAll()
     {
-        $this->db->select('*'); 
+        $this->db->select('pf_music_data.*'); 
         $this->db->from('pf_music_data');
         $this->db->join('pf_users','pf_users.user_id = pf_music_data.user_id'); 
         $query = $this->db->get();
@@ -45,11 +42,7 @@ class Music_model extends CI_Model
         $post = $this->input->post();
         $this->user_id = $post["user_id"];
         $this->group_name = $post["group_name"];
-        $this->leader = $post["leader"];
-        $this->member_1 = $post["member_1"];
-        $this->member_2 = $post["member_2"];
-        $this->song_name = $post["song_name"];
-        $this->link = $post["link"];
+        $this->leader = $post["leader"]; 
         return $this->db->insert($this->_table, $this);
     }
 
@@ -58,11 +51,7 @@ class Music_model extends CI_Model
         $post = $this->input->post();
         $this->user_id = $post["user_id"];
         $this->group_name = $post["group_name"];
-        $this->leader = $post["leader"];
-        $this->member_1 = $post["member_1"];
-        $this->member_2 = $post["member_2"];
-        $this->song_name = $post["song_name"];
-        $this->link = $post["link"];
+        $this->leader = $post["leader"]; 
         return $this->db->update($this->_table, $this, array('user_id' => $post['user_id']));
     }
 

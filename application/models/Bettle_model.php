@@ -27,7 +27,7 @@ class Bettle_model extends CI_Model
 
     public function getAll()
     { 
-        $this->db->select('*'); 
+        $this->db->select('pf_battle_data.*'); 
         $this->db->from('pf_battle_data');
         $this->db->join('pf_users','pf_users.user_id = pf_battle_data.user_id'); 
         $query = $this->db->get();

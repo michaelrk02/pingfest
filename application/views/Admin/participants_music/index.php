@@ -34,7 +34,8 @@
                     <tr>
                       <th>Username</th>
                       <th>Nama grup</th>
-                      <th>Judul Lagu</th> 
+                      <th>Nama Ketua</th> 
+                      <th>Phone</th> 
                       <th>Daftar anggota</th>
                       <th>Action</th>
                     </tr>
@@ -43,23 +44,34 @@
                     <?php foreach ($musics as $music): ?>
                     <tr>
                       <td width="150">
-                        <?php echo $music->name ?>
+                        <?php echo $music->user_id ?>
                       </td>
                       <td>
                         <?php echo $music->group_name ?>
                       </td>
                       <td>
-                       <?php echo $music->song_name ?>
+                       <?php echo $music->leader ?>
+                      </td> 
+                      <td>
+                       <?php echo $music->phone ?>
                       </td> 
                       <td class="small">
                         <ul>
-                          <li><?php echo $music->leader ?></li>
-                          <li><?php echo $music->member_1 ?></li>
-                          <li><?php echo $music->member_2 ?></li>
+                          <?php $data = json_decode($music->members, TRUE)['data'] ?> 
+                          <?php for ($i=0;$i<count($data);$i++): ?>
+                          <li><?php echo $data[$i]; ?></li> 
+                          <?php endfor; ?>
                         </ul> 
                       </td>
                       <td width="250">
-                        <a href="<?php echo $music->link ?>" class="btn btn-primary">Liat</a> 
+                        <a href="<?php echo $music->link_gdrive ?>" class="btn btn-primary">Lihat Karya</a> 
+                        <div style="display: none">
+                          <?php echo $music->link_gdrive ?>
+                        </div>
+                        <a href="<?php echo $music->link_igtv ?>" class="btn btn-primary">Liat IGTV</a> 
+                        <div style="display: none">
+                          <?php echo $music->link_igtv ?>
+                        </div>
                       </td>
                     </tr>
                     <?php endforeach; ?> 

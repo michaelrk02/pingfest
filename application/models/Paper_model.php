@@ -26,7 +26,7 @@ class Paper_model extends CI_Model
 
     public function getAll()
     {
-        $this->db->select('*'); 
+        $this->db->select('pf_paper_data.*'); 
         $this->db->from('pf_paper_data');
         $this->db->join('pf_users','pf_users.user_id = pf_paper_data.user_id'); 
         $query = $this->db->get();
