@@ -33,8 +33,8 @@
                   <thead>
                     <tr>
                       <th>Username</th>
-                      <th>Nama grup</th>
-                      <th>Nama Ketua</th> 
+                      <th>Nama ketua</th> 
+                      <th>Nama tim</th>
                       <th>Phone</th> 
                       <th>Daftar anggota</th>
                       <th>Action</th>
@@ -47,11 +47,11 @@
                         <?php echo $music->user_id ?>
                       </td>
                       <td>
-                        <?php echo $music->group_name ?>
-                      </td>
-                      <td>
                        <?php echo $music->leader ?>
                       </td> 
+                      <td>
+                        <?php echo $music->group_name ?>
+                      </td>
                       <td>
                        <?php echo $music->phone ?>
                       </td> 

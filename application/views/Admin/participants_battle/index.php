@@ -34,6 +34,7 @@
                   <thead>
                     <tr>
                       <th>Username</th>
+                      <th>Nama ketua</th>
                       <th>Nama tim</th>
                       <th>Asal sekolah</th>
                       <th>Phone</th>
@@ -48,6 +49,9 @@
                         <?php echo $bettle->user_id ?>
                       </td>
                       <td>
+                        <?php echo $bettle->leader ?>
+                      </td>
+                      <td>
                         <?php echo $bettle->team_name ?>
                       </td>
                       <td>
@@ -57,8 +61,7 @@
                        <?php echo $bettle->phone ?>
                       </td>
                       <td class="small">
-                        <ul>
-                          <li><?php echo $bettle->leader ?></li>
+                        <ul> 
                           <li><?php echo $bettle->member_1 ?></li>
                           <li><?php echo $bettle->member_2 ?></li>
                         </ul> 

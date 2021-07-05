@@ -35,6 +35,13 @@ class Dashboard extends CI_Controller {
 			$countPaper = $this->Paper_model->countRow(); 
 			$countSemnas = $this->Semnas_model->countRow(); 
 			$countParticipant = $this->Event_participant_model->countRow(); 
+
+			$sumBettle = $this->Event_participant_model->sumPrice('battle'); 
+			$sumMusic = $this->Event_participant_model->sumPrice('music'); 
+			$sumPaper = $this->Event_participant_model->sumPrice('paper'); 
+			$sumSemnas = $this->Event_participant_model->sumPrice('semnas'); 
+			$sumSemua = $this->Event_participant_model->sumPriceAll(); 
+
 			$this->load->view('/Admin/templates/start');
 			$this->load->view('/Admin/templates/header');
 			$this->load->view('/Admin/templates/sidebar');
@@ -43,7 +50,12 @@ class Dashboard extends CI_Controller {
 				'countMusic' => $countMusic,
 				'countPaper' => $countPaper,
 				'countSemnas' => $countSemnas,
-				'countParticipant' => $countParticipant
+				'countParticipant' => $countParticipant,
+				'sumBettle' => $sumBettle,
+				'sumMusic' => $sumMusic,
+				'sumPaper' => $sumPaper,
+				'sumSemnas' => $sumSemnas,
+				'sumSemua' => $sumSemua,
 			]);
 			$this->load->view('/Admin/templates/footer');
 			$this->load->view('/Admin/templates/dashboardjs');
