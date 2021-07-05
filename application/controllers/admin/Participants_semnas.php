@@ -31,6 +31,7 @@ class Participants_Semnas extends CI_Controller {
 			$this->load->view('/Admin/templates/sidebar');
 			$this->load->view('/Admin/participants_semnas/index',$data);
 			$this->load->view('/Admin/templates/footer');
+			$this->load->view('/Admin/templates/datatablejs');
 			$this->load->view('/Admin/participants_semnas/tamplatejs');
 			$this->load->view('/Admin/templates/end');
 		}else{

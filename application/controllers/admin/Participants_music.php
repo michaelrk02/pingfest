@@ -32,6 +32,7 @@ class Participants_Music extends CI_Controller {
 			$this->load->view('/Admin/templates/sidebar');
 			$this->load->view('/Admin/participants_music/index',$data);
 			$this->load->view('/Admin/templates/footer');
+			$this->load->view('/Admin/templates/datatablejs');
 			$this->load->view('/Admin/participants_music/tamplatejs');
 			$this->load->view('/Admin/templates/end');
 		}else{

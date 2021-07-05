@@ -20,7 +20,11 @@ $(document).ready(function() {
     var table = $('#dataTable').DataTable( {
         orderCellsTop: true,
         fixedHeader: true,
-      	scrollX: true
+      	scrollX: true,
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
     } );
-});
+}); 
 </script>

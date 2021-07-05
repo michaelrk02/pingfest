@@ -32,6 +32,7 @@ class Participants_Battle extends CI_Controller {
 			$this->load->view('/Admin/templates/sidebar');
 			$this->load->view('/Admin/participants_battle/index', $data);
 			$this->load->view('/Admin/templates/footer');
+			$this->load->view('/Admin/templates/datatablejs');
 			$this->load->view('/Admin/participants_battle/tamplatejs');
 			$this->load->view('/Admin/templates/end');
 		}else{
