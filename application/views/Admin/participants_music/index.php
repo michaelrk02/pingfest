@@ -64,6 +64,7 @@
                         </ul> 
                       </td>
                       <td width="250">
+                        <a href="#" class="btn btn-primary">ID Card</a> 
                         <a href="<?php echo $music->link_gdrive ?>" class="btn btn-primary">Lihat Karya</a> 
                         <div style="display: none">
                           <?php echo $music->link_gdrive ?>

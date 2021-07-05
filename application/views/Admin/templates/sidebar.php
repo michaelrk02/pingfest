@@ -71,7 +71,12 @@
               </li>
             </ul>
           </li>
-
+          <li class="nav-item">
+            <a href="<?php echo site_url('admin/event') ?>" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>Event</p>
+            </a>
+          </li> 
           <li class="nav-item">
             <a href="<?php echo site_url('admin/login/logout') ?>" class="nav-link">
               <i class="fas fa-sign-out-alt"></i>

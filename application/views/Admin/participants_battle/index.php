@@ -64,7 +64,7 @@
                         </ul> 
                       </td>
                       <td width="250">
-                        <a href="#" class="btn btn-primary">Liat</a> 
+                        <a href="#" class="btn btn-primary">ID Card</a> 
                       </td>
                     </tr>
                     <?php endforeach; ?> 
