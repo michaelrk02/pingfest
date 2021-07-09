@@ -33,7 +33,8 @@ TRUNCATE `pf_config`;
 INSERT INTO `pf_config` (`key`, `value`) VALUES
 ('admin_password',	'$2y$05$s/BXR4v4.Ro5ZPeHaY7WFefbZNQkFTmGUvjKZmgVRN.ZK9HagS7S2'),
 ('admin_username',	'admin'),
-('invoice_expire',	'86400');
+('bank_account',	'0123456789 (BNI a.n. Joko Widodo)'),
+('invoice_expire',	'60');
 
 DROP TABLE IF EXISTS `pf_events`;
 CREATE TABLE `pf_events` (
@@ -134,4 +135,4 @@ CREATE TABLE `pf_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- 2021-07-04 06:47:21
+-- 2021-07-09 03:57:13
