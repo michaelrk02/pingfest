@@ -6,6 +6,10 @@ class Participants_All extends CI_Controller {
     {
         parent::__construct();
         $this->load->model("Event_participant_model");
+        $this->load->model("Bettle_model");
+        $this->load->model("Music_model");
+        $this->load->model("Paper_model");
+        $this->load->model("Semnas_model");
     }
 	/**
 	 * Index Page for this controller.
@@ -50,5 +54,27 @@ class Participants_All extends CI_Controller {
 		$this->Event_participant_model->decline(); 
 		$this->session->set_flashdata('msg', 'Peserta Ditolak');
 		redirect(site_url('admin/participants_all/index')); 
+	}
+
+	public function show($id){
+		if(!empty($this->session->userdata("username_admin"))){
+			$bettle = $this->Bettle_model->getById($id); 
+			$music = $this->Music_model->getById($id); 
+			$paper = $this->Paper_model->getById($id); 
+			$semnas = $this->Semnas_model->getById($id); 
+			$this->load->view('/Admin/templates/start');
+			$this->load->view('/Admin/templates/header');
+			$this->load->view('/Admin/templates/sidebar');
+			$this->load->view('/Admin/participants_all/show',[
+				'bettle' => $bettle,
+				'music' => $music,
+				'paper' => $paper,
+				'semnas' => $semnas
+			]);
+			$this->load->view('/Admin/templates/footer'); 
+			$this->load->view('/Admin/templates/end');
+		}else{
+			redirect(site_url('admin/login/index'));
+		}
 	}
 }

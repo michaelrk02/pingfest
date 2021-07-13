@@ -31,8 +31,12 @@ class Semnas_model extends CI_Model
     }
     
     public function getById($id)
-    {
-        return $this->db->get_where($this->_table, ["user_id" => $id])->row();
+    { 
+        $this->db->from('pf_semnas_data as semnas');
+        $this->db->join('pf_users','pf_users.user_id = semnas.user_id'); 
+        $this->db->where(["semnas.user_id" => $id]);
+        $query = $this->db->get()->row();
+        return  $query;
     }
 
     public function save()

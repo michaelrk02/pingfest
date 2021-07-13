@@ -43,7 +43,7 @@
                     <?php foreach ($semnas as $semnas): ?>
                     <tr>
                       <td width="150">
-                        <?php echo $semnas->name ?>
+                        <?php echo $semnas->user_id ?>
                       </td>
                       <td>
                         <?php echo $semnas->name ?>
