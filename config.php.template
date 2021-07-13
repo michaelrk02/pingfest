@@ -16,4 +16,5 @@ define('PF_DB_PREFIX', 'pf_');
 // ubah jika perlu
 define('PF_SESS_COOKIE', 'pf_session');
 define('PF_SESS_DIR', NULL);
+define('PF_SECRET_KEY', 'Very_Secret_Key');
 
