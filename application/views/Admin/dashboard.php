@@ -109,7 +109,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h5><?php echo  "Rp. ". number_format( $sumBettle->invoice,0) ?></h5>
+                <h5><?php echo  "Rp. ". number_format( $sumBettle->total,0) ?></h5>
 
                 <p>Battle</p>
               </div>
@@ -124,7 +124,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h5><?php echo "Rp. ". number_format($sumMusic->invoice,0) ?></h5>
+                <h5><?php echo "Rp. ". number_format($sumMusic->total,0) ?></h5>
 
                 <p>Music</p>
               </div>
@@ -140,7 +140,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h5><?php echo "Rp. ". number_format($sumPaper->invoice,0) ?></h5>
+                <h5><?php echo "Rp. ". number_format($sumPaper->total,0) ?></h5>
 
                 <p>Paper</p>
               </div>
@@ -155,7 +155,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h5><?php echo  "Rp. ". number_format($sumSemnas->invoice,0) ?></h5>
+                <h5><?php echo  "Rp. ". number_format($sumSemnas->total,0) ?></h5>
 
                 <p>Semnas</p>
               </div>
@@ -169,7 +169,7 @@
             <!-- small box -->
             <div class="small-box bg-dark">
               <div class="inner">
-                 <h5><?php echo "Rp. ". number_format($sumSemua->invoice,0) ?></h5>  
+                 <h5><?php echo "Rp. ". number_format($sumSemua->total,0) ?></h5>  
                 <p>Semua</p>
               </div>
               <div class="icon">

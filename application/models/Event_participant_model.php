@@ -28,15 +28,14 @@ class Event_participant_model extends CI_Model
     }
 
     public function sumPrice($id){
-        $this->db->select_sum('invoice'); 
-        $query = $this->db->get_where($this->_table, ["event_id" => $id])->row(); 
+        $this->db->select_sum('total'); 
+        $query = $this->db->get_where($this->_table, ["event_id" => $id,'status' => 1])->row(); 
         return $query;
     }   
 
     public function sumPriceAll(){
-        $this->db->select_sum('invoice'); 
-        $this->db->from('pf_event_participants');
-        $query = $this->db->get()->row(); 
+        $this->db->select_sum('total');  
+        $query = $this->db->get_where($this->_table, ['status' => 1])->row(); 
         return $query;
     }   
 

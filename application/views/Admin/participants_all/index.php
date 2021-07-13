@@ -93,7 +93,7 @@
                                  <form action="<?php echo site_url('admin/participants_all/accept_payment'); ?>" method="post">
                                     <input type="hidden" name="user_id" value="<?php echo $participant->user_id ?>">
                                     <input type="hidden" name="event_id"value="<?php echo $participant->event_id ?>">
-                                    <input type="hidden" name="timestamp" value="<?php echo $participant->timestamp ?>">
+                                    <input type="hidden" name="timestamp" value="<?php echo strtotime(date("Y-m-d H:i:s")) ?>">
                                     <input type="hidden" name="invoice" value="<?php echo $participant->invoice ?>">
                                     <input type="hidden" name="unique" value="<?php echo $participant->unique ?>">
                                     <input type="hidden" name="total" value="<?php echo $participant->total ?>"> 
@@ -105,7 +105,7 @@
                                  <form action="<?php echo site_url('admin/participants_all/decline_payment'); ?>" method="post">
                                    <input type="hidden" name="user_id" value="<?php echo $participant->user_id ?>">
                                     <input type="hidden" name="event_id"value="<?php echo $participant->event_id ?>">
-                                    <input type="hidden" name="timestamp" value="<?php echo $participant->timestamp ?>">
+                                    <input type="hidden" name="timestamp" value="<?php echo strtotime(date("Y-m-d H:i:s")) ?>">
                                     <input type="hidden" name="invoice" value="<?php echo $participant->invoice ?>">
                                     <input type="hidden" name="unique" value="<?php echo $participant->unique ?>">
                                     <input type="hidden" name="total" value="<?php echo $participant->total ?>"> 
