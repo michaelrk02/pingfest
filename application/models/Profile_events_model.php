@@ -49,31 +49,72 @@ class Profile_events_model extends CI_Model {
     }
 
     public function music_add($identity) {
+        if (isset($identity['members'])) {
+            $identity['members'] = $this->json_serialize($identity['members']);
+        }
         return $this->db->insert('music_data', $identity);
     }
 
     public function music_get($user_id, $columns = '*') {
         $identity = $this->db->select($columns)->from('music_data')->where('user_id', $user_id)->get()->row_array(0);
         if (isset($identity['members'])) {
-            $identity['members'] = @json_decode($identity['members'], TRUE);
-            if (isset($identity['members'])) {
-                $identity['members'] = isset($identity['members']['data']) ? $identity['members']['data'] : [];
-            }
+            $identity['members'] = $this->json_deserialize($identity['members']);
         }
         return $identity;
     }
 
     public function music_set($user_id, $identity) {
         if (isset($identity['members'])) {
-            if (empty($identity['members']) || (!empty($identity['members']) && is_array($identity['members']))) {
-                if (empty($identity['members'])) {
-                    $identity['members'] = [];
-                }
-                $identity['members'] = @json_encode(['data' => $identity['members']]);
-            }
+            $identity['members'] = $this->json_serialize($identity['members']);
         }
-
         return $this->db->where('user_id', $user_id)->update('music_data', $identity);
+    }
+
+    public function paper_add($identity) {
+        if (isset($identity['members'])) {
+            $identity['members'] = $this->json_serialize($identity['members']);
+        }
+        return $this->db->insert('paper_data', $identity);
+    }
+
+    public function paper_get($user_id, $columns = '*') {
+        $identity = $this->db->select($columns)->from('paper_data')->where('user_id', $user_id)->get()->row_array(0);
+        if (isset($identity['members'])) {
+            $identity['members'] = $this->json_deserialize($identity['members']);
+        }
+        return $identity;
+    }
+
+    public function paper_set($user_id, $identity) {
+        if (isset($identity['members'])) {
+            $identity['members'] = $this->json_serialize($identity['members']);
+            var_dump($identity['members']);
+        }
+        return $this->db->where('user_id', $user_id)->update('paper_data', $identity);
+    }
+
+    public function semnas_add($identity) {
+        return $this->db->insert('semnas_data', $identity);
+    }
+
+    public function semnas_get($user_id, $columns = '*') {
+        return $this->db->select($columns)->from('semnas_data')->where('user_id', $user_id)->get()->row_array(0);
+    }
+
+    public function semnas_set($user_id, $identity) {
+        return $this->db->where('user_id', $user_id)->update('semnas_data', $identity);
+    }
+
+    private function json_serialize($arr) {
+        if (!is_array($arr)) {
+            $arr = [];
+        }
+        return @json_encode(['data' => $arr]);
+    }
+
+    private function json_deserialize($json) {
+        $data = @json_decode($json, TRUE);
+        return isset($data) && isset($data['data']) && is_array($data['data']) ? $data['data'] : NULL;
     }
 
 }

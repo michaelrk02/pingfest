@@ -34,7 +34,7 @@ INSERT INTO `pf_config` (`key`, `value`) VALUES
 ('admin_password',	'$2y$05$s/BXR4v4.Ro5ZPeHaY7WFefbZNQkFTmGUvjKZmgVRN.ZK9HagS7S2'),
 ('admin_username',	'admin'),
 ('bank_account',	'0123456789 (BNI a.n. Joko Widodo)'),
-('invoice_expire',	'60');
+('invoice_expire',	'86400');
 
 DROP TABLE IF EXISTS `pf_events`;
 CREATE TABLE `pf_events` (
@@ -43,15 +43,16 @@ CREATE TABLE `pf_events` (
   `price` int(11) NOT NULL,
   `available` tinyint(4) NOT NULL,
   `locked` tinyint(4) NOT NULL,
+  `announcements` text NOT NULL,
   PRIMARY KEY (`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE `pf_events`;
-INSERT INTO `pf_events` (`event_id`, `name`, `price`, `available`, `locked`) VALUES
-('battle',	'Battle of Technology',	100000,	1,	0),
-('music',	'IT-Music',	50000,	1,	0),
-('paper',	'IT-Paper',	75000,	1,	0),
-('semnas',	'Seminar Nasional',	0,	1,	0);
+INSERT INTO `pf_events` (`event_id`, `name`, `price`, `available`, `locked`, `announcements`) VALUES
+('battle',	'Battle of Technology',	100000,	1,	0,	''),
+('music',	'IT-Music',	50000,	1,	0,	''),
+('paper',	'IT-Paper',	75000,	1,	0,	''),
+('semnas',	'Seminar Nasional',	0,	1,	0,	'');
 
 DROP TABLE IF EXISTS `pf_event_participants`;
 CREATE TABLE `pf_event_participants` (
@@ -93,7 +94,7 @@ CREATE TABLE `pf_paper_data` (
   `phone` varchar(20) NOT NULL,
   `members` text NOT NULL,
   `title` varchar(100) NOT NULL,
-  `abstract` varchar(100) NOT NULL,
+  `abstract` text NOT NULL,
   UNIQUE KEY `user_id_unique` (`user_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `pf_paper_data_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `pf_users` (`user_id`)
@@ -135,4 +136,4 @@ CREATE TABLE `pf_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- 2021-07-09 03:57:13
+-- 2021-07-15 14:11:53

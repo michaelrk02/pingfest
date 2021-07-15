@@ -33,8 +33,8 @@ class Profile extends CI_Controller {
         $data = [];
 
         if ($tab === 'e_battle') {
-            $participant = $this->events->participant_get($_SESSION['user_id'], 'battle', 'user_id');
-            if (isset($participant)) {
+            $participant = $this->events->participant_get($_SESSION['user_id'], 'battle', 'status');
+            if (isset($participant) && ($participant['status'] == 1)) {
                 $identity = $this->events->battle_get($_SESSION['user_id']);
                 if (isset($_SESSION['profile_battle_identity'])) {
                     $identity = $_SESSION['profile_battle_identity'];
@@ -44,7 +44,7 @@ class Profile extends CI_Controller {
                     $this->load->library('storage');
 
                     $idcard_url = NULL;
-                    if ($this->storage->exists('idcard/'.$_SESSION['user_id'])) {
+                    if ($this->storage->exists('idcard/battle/'.$_SESSION['user_id'])) {
                         $idcard_url = site_url('profile/battle_idcard');
                     }
 
@@ -59,8 +59,8 @@ class Profile extends CI_Controller {
                 $data = ['event' => 'battle'];
             }
         } else if ($tab === 'e_music') {
-            $participant = $this->events->participant_get($_SESSION['user_id'], 'music', 'user_id');
-            if (isset($participant)) {
+            $participant = $this->events->participant_get($_SESSION['user_id'], 'music', 'status');
+            if (isset($participant) && ($participant['status'] == 1)) {
                 $identity = $this->events->music_get($_SESSION['user_id']);
                 if (isset($_SESSION['profile_music_identity'])) {
                     $identity = $_SESSION['profile_music_identity'];
@@ -78,11 +78,55 @@ class Profile extends CI_Controller {
                 $data = ['event' => 'music'];
             }
         } else if ($tab === 'e_paper') {
-            $page = 'profile/index/unregistered';
-            $data = ['event' => 'paper'];
+            $participant = $this->events->participant_get($_SESSION['user_id'], 'paper', 'status');
+            if (isset($participant) && ($participant['status'] == 1)) {
+                $identity = $this->events->paper_get($_SESSION['user_id']);
+                if (isset($_SESSION['profile_paper_identity'])) {
+                    $identity = $_SESSION['profile_paper_identity'];
+                    unset($_SESSION['profile_paper_identity']);
+                }
+                if (isset($identity)) {
+                    $this->load->library('storage');
+
+                    $idcard_url = NULL;
+                    if ($this->storage->exists('idcard/paper/'.$_SESSION['user_id'])) {
+                        $idcard_url = site_url('profile/paper_idcard');
+                    }
+
+                    $submission_url = NULL;
+                    if ($this->storage->exists('submission/paper/'.$_SESSION['user_id'])) {
+                        $submission_url = site_url('profile/paper_submission');
+                    }
+
+                    $page = 'profile/index/setup_paper';
+                    $data = ['identity' => $identity, 'idcard_url' => $idcard_url, 'submission_url' => $submission_url];
+                } else {
+                    $page = 'profile/index/setup';
+                    $data = ['event' => 'paper'];
+                }
+            } else {
+                $page = 'profile/index/unregistered';
+                $data = ['event' => 'paper'];
+            }
         } else if ($tab === 'e_semnas') {
-            $page = 'profile/index/unregistered';
-            $data = ['event' => 'semnas'];
+            $participant = $this->events->participant_get($_SESSION['user_id'], 'semnas', 'status');
+            if (isset($participant) && ($participant['status'] == 1)) {
+                $identity = $this->events->semnas_get($_SESSION['user_id']);
+                if (isset($_SESSION['profile_semnas_identity'])) {
+                    $identity = $_SESSION['profile_semnas_identity'];
+                    unset($_SESSION['profile_semnas_identity']);
+                }
+                if (isset($identity)) {
+                    $page = 'profile/index/setup_semnas';
+                    $data = ['identity' => $identity];
+                } else {
+                    $page = 'profile/index/setup';
+                    $data = ['event' => 'semnas'];
+                }
+            } else {
+                $page = 'profile/index/unregistered';
+                $data = ['event' => 'semnas'];
+            }
         } else {
             $invoice_expire = $this->cfg->get('invoice_expire');
             $invoice_expire = !empty($invoice_expire) ? $invoice_expire : 86400;
@@ -100,6 +144,12 @@ class Profile extends CI_Controller {
                     break;
                 case 'music':
                     $registration[$item['event_id']]['setup'] = $this->events->music_get($_SESSION['user_id']) !== NULL;
+                    break;
+                case 'battle':
+                    $registration[$item['event_id']]['setup'] = $this->events->paper_get($_SESSION['user_id']) !== NULL;
+                    break;
+                case 'semnas':
+                    $registration[$item['event_id']]['setup'] = $this->events->semnas_get($_SESSION['user_id']) !== NULL;
                     break;
                 default:
                     $registration[$item['event_id']]['setup'] = FALSE;
@@ -202,36 +252,64 @@ class Profile extends CI_Controller {
         $event_id = $this->input->get('event');
         $event = $this->events->get($event_id, 'event_id');
         if (isset($event)) {
-            if ($event_id === 'battle') {
-                $identity = [];
-                $identity['user_id'] = $_SESSION['user_id'];
-                $identity['team_name'] = '';
-                $identity['school'] = '';
-                $identity['phone'] = $this->user['phone'];
-                $identity['leader'] = $this->user['name'];
-                $identity['member_1'] = '';
-                $identity['member_2'] = '';
-                if ($this->events->battle_add($identity)) {
-                    $_SESSION['profile_status'] = 'SUCCESS: Berhasil membuat identitas. Silakan lengkapi identitas keikutsertaan anda sebelum terkunci';
-                } else {
-                    $_SESSION['profile_status'] = 'ERROR: Gagal membuat identitas. Silakan coba lagi. Hubungi CP apabila masalah masih berlanjut';
+            $participant = $this->events->participant_get($_SESSION['user_id'], $event_id, 'status');
+            if (isset($participant) && ($participant['status'] == 1)) {
+                if ($event_id === 'battle') {
+                    $identity = [];
+                    $identity['user_id'] = $_SESSION['user_id'];
+                    $identity['team_name'] = '';
+                    $identity['school'] = '';
+                    $identity['phone'] = $this->user['phone'];
+                    $identity['leader'] = $this->user['name'];
+                    $identity['member_1'] = '';
+                    $identity['member_2'] = '';
+                    if ($this->events->battle_add($identity)) {
+                        $_SESSION['profile_status'] = 'SUCCESS: Berhasil membuat identitas. Silakan lengkapi identitas keikutsertaan anda sebelum terkunci';
+                    } else {
+                        $_SESSION['profile_status'] = 'ERROR: Gagal membuat identitas. Silakan coba lagi. Hubungi CP apabila masalah masih berlanjut';
+                    }
+                } else if ($event_id === 'music') {
+                    $identity = [];
+                    $identity['user_id'] = $_SESSION['user_id'];
+                    $identity['group_name'] = '';
+                    $identity['leader'] = $this->user['name'];
+                    $identity['phone'] = $this->user['phone'];
+                    $identity['members'] = [];
+                    $identity['link_gdrive'] = '';
+                    $identity['link_igtv'] = '';
+                    if ($this->events->music_add($identity)) {
+                        $_SESSION['profile_status'] = 'SUCCESS: Berhasil membuat identitas. Silakan lengkapi identitas keikutsertaan anda sebelum terkunci';
+                    } else {
+                        $_SESSION['profile_status'] = 'ERROR: Gagal membuat identitas. Silakan coba lagi. Hubungi CP apabila masalah masih berlanjut';
+                    }
+                } else if ($event_id === 'paper') {
+                    $identity = [];
+                    $identity['user_id'] = $_SESSION['user_id'];
+                    $identity['institution'] = '';
+                    $identity['leader'] = $this->user['name'];
+                    $identity['phone'] = $this->user['phone'];
+                    $identity['members'] = [];
+                    $identity['title'] = '';
+                    $identity['abstract'] = '';
+                    if ($this->events->paper_add($identity)) {
+                        $_SESSION['profile_status'] = 'SUCCESS: Berhasil membuat identitas. Silakan lengkapi identitas keikutsertaan anda sebelum terkunci';
+                    } else {
+                        $_SESSION['profile_status'] = 'ERROR: Gagal membuat identitas. Silakan coba lagi. Hubungi CP apabila masalah masih berlanjut';
+                    }
+                } else if ($event_id === 'semnas') {
+                    $identity = [];
+                    $identity['user_id'] = $_SESSION['user_id'];
+                    $identity['institution'] = '';
+                    if ($this->events->semnas_add($identity)) {
+                        $_SESSION['profile_status'] = 'SUCCESS: Berhasil membuat identitas. Silakan lengkapi identitas keikutsertaan anda sebelum terkunci';
+                    } else {
+                        $_SESSION['profile_status'] = 'ERROR: Gagal membuat identitas. Silakan coba lagi. Hubungi CP apabila masalah masih berlanjut';
+                    }
                 }
-            } else if ($event_id === 'music') {
-                $identity = [];
-                $identity['user_id'] = $_SESSION['user_id'];
-                $identity['group_name'] = '';
-                $identity['leader'] = $this->user['name'];
-                $identity['phone'] = $this->user['phone'];
-                $identity['members'] = json_encode(['data' => []]);
-                $identity['link_gdrive'] = '';
-                $identity['link_igtv'] = '';
-                if ($this->events->music_add($identity)) {
-                    $_SESSION['profile_status'] = 'SUCCESS: Berhasil membuat identitas. Silakan lengkapi identitas keikutsertaan anda sebelum terkunci';
-                } else {
-                    $_SESSION['profile_status'] = 'ERROR: Gagal membuat identitas. Silakan coba lagi. Hubungi CP apabila masalah masih berlanjut';
-                }
+                redirect(site_url('profile/index').'?tab=e_'.urlencode($event_id));
+            } else {
+                $_SESSION['profile_status'] = 'ERROR: Anda tidak terdaftar dalam event ini. Silakan lakukan pendaftaran terlebih dahulu';
             }
-            redirect(site_url('profile/index').'?tab=e_'.urlencode($event_id));
         }
 
         redirect('profile/index');
@@ -286,10 +364,68 @@ class Profile extends CI_Controller {
     public function battle_idcard() {
         $this->check_login();
 
-        $this->load->library('storage');
+        return $this->access_storage('idcard/battle/'.$_SESSION['user_id'], 10);
+    }
 
-        $token = $this->storage->make_token('idcard/'.$_SESSION['user_id'], 10);
-        redirect(site_url('storage_data').'?token='.urlencode($token));
+    public function setup_paper() {
+        $this->check_login();
+
+        $site = site_url('profile/index').'?tab=e_paper';
+
+        $identity = $this->events->paper_get($_SESSION['user_id']);
+        if (!isset($identity)) {
+            redirect($site);
+        }
+
+        if (!empty($this->input->post('submit'))) {
+            $this->load->library('form_validation');
+
+            $identity = [];
+            $identity['institution'] = $this->input->post('institution');
+            $identity['leader'] = $this->input->post('leader');
+            $identity['phone'] = $this->input->post('phone');
+            $identity['members'] = $this->input->post('members');
+            $identity['title'] = $this->input->post('title');
+            $identity['abstract'] = $this->input->post('abstract');
+
+            if (!isset($identity['members'])) {
+                $identity['members'] = [];
+            }
+
+            $this->form_validation->set_rules('institution', 'Asal Institusi', 'required|max_length[100]');
+            $this->form_validation->set_rules('leader', 'Nama Ketua', 'required|max_length[100]');
+            $this->form_validation->set_rules('phone', 'No. Telp. Ketua', 'required|max_length[20]');
+            $this->form_validation->set_rules('title', 'Judul Karya Tulis', 'max_length[100]');
+            $this->form_validation->set_rules('abstract', 'Abstrak', 'max_length[1000]');
+
+            if ($this->form_validation->run()) {
+                if ($this->events->paper_set($_SESSION['user_id'], $identity)) {
+                    $upload_status = $this->upload_paper_idcard() && $this->upload_paper_submission();
+
+                    $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas'.(!$upload_status ? ' namun gagal mengunggah file kartu tanda mahasiswa atau file submisi' : '');
+                } else {
+                    $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
+                }
+            } else {
+                $_SESSION['profile_status'] = 'ERROR: '.implode(' ', $this->form_validation->error_array());
+            }
+
+            $_SESSION['profile_paper_identity'] = $identity;
+        }
+
+        redirect($site);
+    }
+
+    public function paper_idcard() {
+        $this->check_login();
+
+        return $this->access_storage('idcard/paper/'.$_SESSION['user_id'], 10);
+    }
+
+    public function paper_submission() {
+        $this->check_login();
+
+        return $this->access_storage('submission/paper/'.$_SESSION['user_id'], 10);
     }
 
     public function setup_music() {
@@ -313,6 +449,10 @@ class Profile extends CI_Controller {
             $identity['link_gdrive'] = $this->input->post('link_gdrive');
             $identity['link_igtv'] = $this->input->post('link_igtv');
 
+            if (!isset($identity['members'])) {
+                $identity['members'] = [];
+            }
+
             $this->form_validation->set_rules('group_name', 'Nama Group', 'required|max_length[50]');
             $this->form_validation->set_rules('leader', 'Nama Ketua', 'required|max_length[100]');
             $this->form_validation->set_rules('phone', 'No. Telp. Ketua', 'required|max_length[20]');
@@ -328,6 +468,34 @@ class Profile extends CI_Controller {
             }
 
             $_SESSION['profile_music_identity'] = $identity;
+        }
+
+        redirect($site);
+    }
+
+    public function setup_semnas() {
+        $this->check_login();
+
+        $site = site_url('profile/index').'?tab=e_semnas';
+
+        $identity = $this->events->semnas_get($_SESSION['user_id']);
+        if (!isset($identity)) {
+            redirect($site);
+        }
+
+        if (!empty($this->input->post('submit'))) {
+            $this->load->library('form_validation');
+
+            $identity = [];
+            $identity['institution'] = $this->input->post('institution');
+
+            if ($this->events->semnas_set($_SESSION['user_id'], $identity)) {
+                $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas';
+            } else {
+                $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
+            }
+
+            $_SESSION['profile_semnas_identity'] = $identity;
         }
 
         redirect($site);
@@ -381,21 +549,40 @@ class Profile extends CI_Controller {
     }
 
     private function upload_battle_idcard() {
+        return $this->upload_form_file('idcard/battle/'.$_SESSION['user_id'], 'idcard', 'application/pdf', 1578640);
+    }
+
+    private function upload_paper_idcard() {
+        return $this->upload_form_file('idcard/paper/'.$_SESSION['user_id'], 'idcard', 'application/pdf', 15728640);
+    }
+
+    private function upload_paper_submission() {
+        return $this->upload_form_file('submission/paper/'.$_SESSION['user_id'], 'submission', 'application/pdf', 20971520);
+    }
+
+    private function upload_form_file($id, $field, $mime, $max_size) {
         $this->load->library('storage');
 
-        $blob_path = $this->storage->blob_path('idcard/'.$_SESSION['user_id']);
+        $blob_path = $this->storage->blob_path($id);
 
-        if ($_FILES['idcard']['size'] > 0) {
-            if ($_FILES['idcard']['size'] <= 15728640) {
-                $contents = file_get_contents($_FILES['idcard']['tmp_name']);
-                $metadata = ['type' => mime_content_type($_FILES['idcard']['tmp_name'])];
-                if (($metadata['type'] === 'application/pdf') && $this->storage->put('idcard/'.$_SESSION['user_id'], $contents, $metadata)) {
+        if ($_FILES[$field]['size'] > 0) {
+            if ($_FILES[$field]['size'] <= $max_size) {
+                $contents = file_get_contents($_FILES[$field]['tmp_name']);
+                $metadata = ['type' => mime_content_type($_FILES[$field]['tmp_name'])];
+                if (($metadata['type'] === $mime) && $this->storage->put($id, $contents, $metadata)) {
                     return is_readable($blob_path);
                 }
             }
             return FALSE;
         }
         return TRUE;
+    }
+
+    private function access_storage($id, $age) {
+        $this->load->library('storage');
+
+        $token = $this->storage->make_token($id, $age);
+        redirect(site_url('storage_data').'?token='.urlencode($token));
     }
 
 }
