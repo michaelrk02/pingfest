@@ -105,6 +105,9 @@
                                  <input type="submit" name="tolak" value="tolak" class="btn btn-danger">
                                </form>
                               </td>
+                              <td> 
+                                <a href="<?php echo site_url() ?>/admin/participants_all/show/<?php echo $participant->user_id ?>" class="btn btn-primary">Detail</a>
+                              </td>
                             </tr>
                           </table>
                         <?php
@@ -114,7 +117,7 @@
                         <?php
                           }
                         ?> 
-                        <a href="<?php echo site_url() ?>/admin/participants_all/show/<?php echo $participant->user_id ?>" class="btn btn-success">Detail</a>
+                        <a href="<?php echo site_url() ?>/admin/participants_all/show/<?php echo $participant->user_id ?>" class="btn btn-primary">Detail</a>
                       </td>
                     </tr>
                     <?php endforeach; ?> 
