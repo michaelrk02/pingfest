@@ -47,9 +47,7 @@
                       <th>Status</th>
                       <th>Username</th>
                       <th>Timestamp</th>
-                      <th>Nama</th>
-                      <th>Email</th>
-                      <th>No Telp</th>
+                      <th>Invoice</th> 
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -75,14 +73,8 @@
                         <?php echo date("Y-m-d H:i:s", $participant->timestamp) ?>
                       </td>
                       <td>
-                        <?php echo $participant->name_user ?>
-                      </td>
-                      <td>
-                       <?php echo $participant->email ?>
-                      </td>
-                      <td>
-                       <?php echo $participant->phone ?>
-                      </td>
+                        <?php echo "Rp. ".number_format($participant->total,0) ?>
+                      </td> 
                       <td width="250">
                         <?php 
                           if($participant->status == 0){
