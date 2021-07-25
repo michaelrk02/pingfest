@@ -43,13 +43,15 @@ class Profile extends CI_Controller {
                 if (isset($identity)) {
                     $this->load->library('storage');
 
+                    $announcements = $this->events->get('battle', 'announcements')['announcements'];
+
                     $idcard_url = NULL;
                     if ($this->storage->exists('idcard/battle/'.$_SESSION['user_id'])) {
                         $idcard_url = site_url('profile/battle_idcard');
                     }
 
                     $page = 'profile/index/setup_battle';
-                    $data = ['identity' => $identity, 'idcard_url' => $idcard_url];
+                    $data = ['identity' => $identity, 'idcard_url' => $idcard_url, 'announcements' => $announcements];
                 } else {
                     $page = 'profile/index/setup';
                     $data = ['event' => 'battle'];
@@ -67,8 +69,10 @@ class Profile extends CI_Controller {
                     unset($_SESSION['profile_music_identity']);
                 }
                 if (isset($identity)) {
+                    $announcements = $this->events->get('music', 'announcements')['announcements'];
+
                     $page = 'profile/index/setup_music';
-                    $data = ['identity' => $identity];
+                    $data = ['identity' => $identity, 'announcements' => $announcements];
                 } else {
                     $page = 'profile/index/setup';
                     $data = ['event' => 'music'];
@@ -88,6 +92,8 @@ class Profile extends CI_Controller {
                 if (isset($identity)) {
                     $this->load->library('storage');
 
+                    $announcements = $this->events->get('paper', 'announcements')['announcements'];
+
                     $idcard_url = NULL;
                     if ($this->storage->exists('idcard/paper/'.$_SESSION['user_id'])) {
                         $idcard_url = site_url('profile/paper_idcard');
@@ -99,7 +105,7 @@ class Profile extends CI_Controller {
                     }
 
                     $page = 'profile/index/setup_paper';
-                    $data = ['identity' => $identity, 'idcard_url' => $idcard_url, 'submission_url' => $submission_url];
+                    $data = ['identity' => $identity, 'idcard_url' => $idcard_url, 'submission_url' => $submission_url, 'announcements' => $announcements];
                 } else {
                     $page = 'profile/index/setup';
                     $data = ['event' => 'paper'];
@@ -117,8 +123,10 @@ class Profile extends CI_Controller {
                     unset($_SESSION['profile_semnas_identity']);
                 }
                 if (isset($identity)) {
+                    $announcements = $this->events->get('battle', 'announcements')['announcements'];
+
                     $page = 'profile/index/setup_semnas';
-                    $data = ['identity' => $identity];
+                    $data = ['identity' => $identity, 'announcements' => $announcements];
                 } else {
                     $page = 'profile/index/setup';
                     $data = ['event' => 'semnas'];
