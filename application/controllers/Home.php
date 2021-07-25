@@ -20,7 +20,7 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('templates/header', ['title' => 'Hello world!']);
+		$this->load->view('templates/header', ['title' => 'Pingfest 2021']);
 		$this->load->view('home/index');
 		$this->load->view('templates/footer');
 	}

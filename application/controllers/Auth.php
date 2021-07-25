@@ -25,9 +25,9 @@ class Auth extends CI_Controller
         ]);
         
         if( $this->form_validation->run() == FALSE) {
-            $this->load->view('header', $data);
+            $this->load->view('templates/header', $data);
             $this->load->view('auth/login');
-            $this->load->view('footer');
+            $this->load->view('templates/footer');
         } else {
             $this->Auth_model->login();
         }
@@ -72,9 +72,9 @@ class Auth extends CI_Controller
         ]);
 
         if( $this->form_validation->run() == FALSE) {
-            $this->load->view('header', $data);
+            $this->load->view('templates/header', $data);
             $this->load->view('auth/registration');
-            $this->load->view('footer');
+            $this->load->view('templates/footer');
         } else {
             $this->Auth_model->addUserData();
             $session_data = [
@@ -91,9 +91,9 @@ class Auth extends CI_Controller
             'title' => 'Lupa Password'
         ];
         
-        $this->load->view('header', $data);
+        $this->load->view('templates/header', $data);
         $this->load->view('auth/forget');
-        $this->load->view('footer');
+        $this->load->view('templates/footer');
 
 
     }

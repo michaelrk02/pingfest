@@ -1,6 +1,4 @@
-const menuBtn = document.querySelector('.menu-toggle');
 const header = document.querySelector('.site-header');
-
 const Grid = document.querySelector('.text-itv');
 
 const itvJellyContainer = document.querySelector('.itv-jelly');
@@ -9,12 +7,10 @@ const itvTextContainer = document.querySelector('.itv-inner');
 const semJellyContainer = document.querySelector('.sem-jelly');
 const semTextContainer = document.querySelector('.sem-inner');
 
+$('.site-header').removeClass('sticky');
+
 window.addEventListener('scroll', function () {
   header.classList.toggle('sticky', window.scrollY > 0);
-});
-
-menuBtn.addEventListener('click', function () {
-  header.classList.toggle('mobile-menu');
 });
 
 $(window)

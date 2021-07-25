@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <title><?php echo htmlspecialchars($title); ?></title>
+    
+    <script src="<?php echo base_url('public/jquery/js/jquery-3.6.0.min.js'); ?>"></script>
+    <script src="<?php echo base_url('public/pingfest/js/pingfest-theme.js'); ?>"></script>
+    <script src="<?php echo base_url('public/pingfest/js/header.js'); ?>"></script>
+    <link rel="stylesheet" href="<?php echo base_url('public/fontawesome/css/all.min.css'); ?>">
 
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/style.css'); ?>" />
-
+    <link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/header.css'); ?>" />
     <link <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,11 +20,11 @@
     />
     <link href="https://fonts.googleapis.com/css2?family=Chivo&display=swap" rel="stylesheet"> 
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header sticky">
       <div class="logo-ping">
         <a href="">
           <svg
@@ -49,10 +52,10 @@
         </a>
       </div>
       <ul>
-        <li><a href="#" class="navlink"> Home</a></li>
-        <li><a href="#" class="navlink"> IT-Venture</a></li>
-        <li><a href="#" class="navlink"> Semnas</a></li>
-        <li><a href="#" class="login"> Login</a></li>
+        <li><a href="#" class="header-nav-link"> Home</a></li>
+        <li><a href="#" class="header-nav-link"> IT-Venture</a></li>
+        <li><a href="#" class="header-nav-link"> Semnas</a></li>
+        <li><a href="#" class="login-link"> Login</a></li>
       </ul>
       <div class="menu-toggle">
         <span></span>

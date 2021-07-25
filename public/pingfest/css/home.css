@@ -1,0 +1,238 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  transition: background-color 1s ease;
+  background-color: var(--light-color);
+
+  font-family: 'Chivo', sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.56;
+  letter-spacing: 0.9px;
+}
+
+.color-green {
+  background-color: var(--green-color);
+}
+
+/* Main*/
+
+.grid-container {
+  position: relative;
+  width: 80%;
+  padding-top: 75px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 80vh 80vh 80vh 40vh;
+
+  grid-template-areas:
+    'headline headline'
+    'logo-itv text-itv'
+    'text-semnas logo-semnas'
+    'sponsor sponsor';
+
+  row-gap: 50vh;
+}
+
+.item {
+  font-size: 3rem;
+}
+
+.headline {
+  place-self: center;
+  font-family: 'Bree Serif', serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-area: headline;
+}
+
+.headline h1 {
+  max-width: 100%;
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 1.09;
+  letter-spacing: 1.4px;
+  text-shadow: 0px 1px, 1px 0px, 1px 1px;
+  color: var(--dark-color);
+}
+
+.headline h1:nth-child(2) {
+  font-size: clamp(2.3rem, 6vw, 4.8rem);
+}
+
+.headline iframe {
+  border: none;
+  width: 45vw;
+  height: calc(0.5625 * 45vw);
+  overflow: hidden;
+  padding: 2vh;
+}
+
+.logo-itv {
+  background-color: #e52129;
+  grid-area: logo-itv;
+}
+
+.text-itv {
+  pointer-events: none;
+  position: relative;
+  display: flex;
+  grid-area: text-itv;
+}
+
+.text-semnas {
+  pointer-events: none;
+  position: relative;
+  display: flex;
+  grid-area: text-semnas;
+}
+
+.logo-semnas {
+  background-color: #00a2e9;
+
+  grid-area: logo-semnas;
+}
+
+.sponsor {
+  background-color: var(--green-color);
+  grid-area: sponsor;
+}
+
+.jelly-canvas {
+  pointer-events: auto;
+
+  position: absolute;
+  width: 850px;
+  height: 850px;
+  right: 0;
+  top: 0;
+}
+
+.inner {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  width: 850px;
+  height: 850px;
+  color: var(--light-color);
+}
+
+.itv-jelly,
+.itv-inner {
+  transform-origin: top right;
+}
+
+.sem-jelly,
+.sem-inner {
+  transform-origin: top left;
+}
+
+.inner .wrapper {
+  position: absolute;
+  top: 22%;
+  left: 22%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  z-index: 2;
+  justify-content: center;
+}
+
+.inner .title {
+  font-family: 'Bree Serif', serif;
+  max-width: 100%;
+  font-size: 3rem;
+  line-height: 1.2;
+  letter-spacing: 1.6px;
+  text-shadow: 0px 1px, 1px 0px, 1px 1px;
+}
+
+.inner .description {
+  margin-top: 10%;
+  font-size: 1.5rem;
+}
+
+.btn,
+button {
+  position: relative;
+
+  pointer-events: auto;
+  cursor: pointer;
+
+  stroke: var(--dark-color);
+  stroke-width: 4;
+
+  border: 5px solid var(--dark-color);
+  margin-top: 15%;
+  background-color: var(--green-color);
+
+  font-family: 'Bree Serif', serif;
+  font-size: 1.2rem;
+  padding: 0.7rem 0.7rem;
+  border-radius: 7px;
+  width: 45%;
+}
+
+.btn-arrow span {
+  display: inline-block;
+  position: relative;
+  transition: all 300ms ease-out;
+  will-change: transform;
+}
+.btn-arrow:hover span {
+  transform: translate3d(-1rem, 0, 0);
+}
+.btn-arrow svg {
+  position: absolute;
+  width: 1.1em;
+  right: 0px;
+  opacity: 0;
+  top: 60%;
+  fill: var(--dark-color);
+
+  transform: translateY(-50%);
+  transition: all 300ms ease-out;
+  will-change: right, opacity;
+}
+
+.btn-arrow:hover svg {
+  opacity: 1;
+  right: -2rem;
+}
+
+@media screen and (max-width: 900px) {
+  .grid-container {
+    pointer-events: none;
+    position: relative;
+    width: 95%;
+    grid-template-rows: 70vh 40vh 60vh 40vh 60vh 40vh;
+    row-gap: 30vh;
+
+    grid-template-areas:
+      'headline headline'
+      'logo-itv logo-itv'
+      'text-itv text-itv'
+      'logo-semnas logo-semnas'
+      'text-semnas text-semnas'
+      'sponsor sponsor';
+  }
+
+  .headline iframe {
+    width: 85vw;
+    height: calc(0.5625 * 85vw);
+  }
+  /* .logo-itv,
+    .logo-semnas,
+    .sponsor {
+      margin-top: 30vh;
+    } */
+}

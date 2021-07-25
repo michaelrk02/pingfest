@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/home.css'); ?>" />
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none">
       <path
@@ -108,5 +109,8 @@
       </div>
       <div class="item logo-semnas ">logo-semnas</div>
       <div class="item sponsor green-end">sponsor</div>
+    </div>
+    <script src="<?php echo base_url('public/pingfest/js/blob.js'); ?>"></script>
+    <script src="<?php echo base_url('public/pingfest/js/home.js'); ?>"></script>
       
 

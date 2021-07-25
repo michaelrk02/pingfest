@@ -171,10 +171,10 @@ class Profile extends CI_Controller {
             unset($_SESSION['profile_status']);
         }
 
-        $this->load->view('header', ['title' => 'Your Profile']);
+        $this->load->view('templates/header', ['title' => 'Your Profile']);
         $this->load->view('profile/details', ['user' => $this->user, 'tabs' => $tabs, 'tab' => $tab, 'status' => $status]);
         $this->load->view($page, $data);
-        $this->load->view('footer');
+        $this->load->view('templates/footer');
     }
 
     public function register() {
@@ -524,9 +524,9 @@ class Profile extends CI_Controller {
             }
         }
 
-        $this->load->view('header', ['title' => 'Fake Login']);
+        $this->load->view('templates/header', ['title' => 'Fake Login']);
         $this->load->view('profile/fake_login');
-        $this->load->view('footer');
+        $this->load->view('templates/footer');
     }
 
     public function fake_logout() {
