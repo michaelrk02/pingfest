@@ -10,6 +10,7 @@ class Event_model extends CI_Model
     public $price;
     public $available;
     public $locked; 
+    public $announcements; 
 
     public function rules()
     {
@@ -44,12 +45,21 @@ class Event_model extends CI_Model
 
     public function update()
     {
-        $post = $this->input->post();
+        $post = $this->input->post(); 
         $this->event_id = $post["event_id"];
         $this->name = $post["name"];
         $this->price = $post["price"];
-        $this->available = $post["available"];
-        $this->locked = $post["locked"]; 
+        if(isset($post["available"])){
+            $this->available = $post["available"];
+        }else{
+            $this->available = 0;
+        }
+        if(isset($post["available"])){
+            $this->locked = $post["locked"];
+        }else{
+            $this->locked = 0;
+        } 
+        $this->announcements = $post["announcements"]; 
         return $this->db->update($this->_table, $this, array('event_id' => $post['event_id']));
     }
 
