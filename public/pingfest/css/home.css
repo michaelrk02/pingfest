@@ -64,12 +64,30 @@ body {
   font-size: clamp(2.3rem, 6vw, 4.8rem);
 }
 
+.riseit-container {
+  height: 8vh;
+  width: 60vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.hay-text {
+  position: relative;
+  line-height: 1.5;
+  font-weight: 1000;
+  font-size: clamp(2rem, 4vw, 4rem);
+  top: 0;
+  animation: riseit 4s infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+
 .headline iframe {
   border: none;
   width: 45vw;
   height: calc(0.5625 * 45vw);
   overflow: hidden;
-  padding: 2vh;
+  margin-top: 6vh;
 }
 
 .logo-itv {
@@ -298,5 +316,17 @@ button {
   .headline iframe {
     width: 85vw;
     height: calc(0.5625 * 85vw);
+  }
+}
+
+@keyframes riseit {
+  0%,
+  25%,
+  100% {
+    transform: translateY(0);
+  }
+  60%,
+  90% {
+    transform: translateY(-1.5vh);
   }
 }

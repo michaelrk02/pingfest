@@ -14,6 +14,15 @@
       <div class="item headline ">
         <h1>Ayo ikuti pekan teknologi</h1>
         <h1>P!NGFEST 2021</h1>
+        <div class="riseit-container">
+            <div style="--i:1" class="hay-text">R</div>
+            <div style="--i:2" class="hay-text">i</div>
+            <div style="--i:3" class="hay-text">s</div>
+            <div style="--i:4" class="hay-text">e</div>
+            &nbsp;&nbsp;
+            <div style="--i:5" class="hay-text">I</div>
+            <div style="--i:6" class="hay-text">T</div>
+        </div>
             <iframe
               max-width: 100%;
               height: auto;
@@ -34,8 +43,8 @@
               IT⁠-⁠Venture adalah suatu perlombaan untuk kalangan pelajar SMA, SMK, atau sederajat se-Indonesia. Tema “Penjelajah Teknologi Masa Depan” yang diusung mengajak para peserta lomba untuk siap dalam menjelajahi teknologi yang akan datang.
             </div>
             <div class="text-button">
-              <button class="btn btn-arrow">
-                <span
+              <a href="<?php echo base_url(); ?>itv" class="btn btn-arrow">
+                <span 
                   >Selengkapnya<svg
                     version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +67,7 @@
                     </g>
                   </svg>
                 </span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -75,7 +84,7 @@
               Seminar Nasional: Creativation Talk adalah suatu seminar seputar hal kekinian dalam era digital. Tema “Unbox That Craziest Thought” yang diusung mengajak para peserta seminar untuk berani mengeluarkan ide-ide "gila" sehingga menghasilkan sesuatu yang baru.
             </div>
             <div class="text-button">
-              <button class="btn btn-arrow">
+              <a href="<?php echo base_url(); ?>semnas" class="btn btn-arrow">
                 <span
                   >Selengkapnya<svg
                     version="1.1"
@@ -99,7 +108,7 @@
                     </g>
                   </svg>
                 </span>
-              </button>
+              </a>
             </div>
           </div>
         </div>

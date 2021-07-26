@@ -6,7 +6,15 @@
     <div class="item-headline">
         <h1>Uji Kemampuanmu di</h1>
         <h1>IT-Venture XIV</h1>
-        <p>Find Your Idea</p>
+        <div class="riseit-container">
+            <div style="--i:1" class="hay-text">R</div>
+            <div style="--i:2" class="hay-text">i</div>
+            <div style="--i:3" class="hay-text">s</div>
+            <div style="--i:4" class="hay-text">e</div>
+            &nbsp;&nbsp;
+            <div style="--i:5" class="hay-text">I</div>
+            <div style="--i:6" class="hay-text">T</div>
+        </div>
     </div>
 </div>
 <div class=container-itv>
