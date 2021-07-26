@@ -54,7 +54,7 @@ class Event_model extends CI_Model
         }else{
             $this->available = 0;
         }
-        if(isset($post["available"])){
+        if(isset($post["locked"])){
             $this->locked = $post["locked"];
         }else{
             $this->locked = 0;

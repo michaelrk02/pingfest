@@ -72,7 +72,8 @@
                         </ul> 
                       </td>
                       <td width="250">
-                        <a href="#" class="btn btn-primary">Liat File</a>  
+                        <a href="<?php echo site_url() ?>/admin/participants_paper/id_card/<?php echo $paper->user_id ?>" class="btn btn-primary" download="IDCARD_PAPER_<?php echo $paper->user_id; ?>.pdf">ID Card</a> 
+                        <a href="<?php echo site_url() ?>/admin/participants_paper/submission/<?php echo $paper->user_id ?>" class="btn btn-primary" download="SUBMISSION_PAPER_<?php echo $paper->user_id; ?>.pdf">Liat File</a>  
                       </td>
                     </tr>
                     <?php endforeach; ?> 

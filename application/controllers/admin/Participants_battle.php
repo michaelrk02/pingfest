@@ -7,6 +7,7 @@ class Participants_Battle extends CI_Controller {
     {
         parent::__construct();
         $this->load->model("Bettle_model");
+        $this->load->library('pingfest'); 
     }
 	/**
 	 * Index Page for this controller.
@@ -35,6 +36,14 @@ class Participants_Battle extends CI_Controller {
 			$this->load->view('/Admin/templates/datatablejs');
 			$this->load->view('/Admin/participants_battle/tamplatejs');
 			$this->load->view('/Admin/templates/end');
+		}else{
+			redirect(site_url('admin/login/index'));
+		}
+	}
+
+	public function id_card($id){
+		if(!empty($this->session->userdata("username_admin"))){
+			$this->pingfest->view_battle_idcard($id);
 		}else{
 			redirect(site_url('admin/login/index'));
 		}

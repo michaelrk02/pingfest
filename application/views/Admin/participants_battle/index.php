@@ -67,7 +67,7 @@
                         </ul> 
                       </td>
                       <td width="250">
-                        <a href="#" class="btn btn-primary">ID Card</a> 
+                        <a href="<?php echo site_url() ?>/admin/participants_battle/id_card/<?php echo $bettle->user_id ?>" class="btn btn-primary" download="IDCARD_BATTLE_<?php echo $bettle->user_id; ?>.pdf">ID Card</a> 
                       </td>
                     </tr>
                     <?php endforeach; ?> 
