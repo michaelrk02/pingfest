@@ -31,10 +31,7 @@
           <div class="wrapper">
             <div class="title">IT⁠-⁠Venture XIV</div>
             <div class="description">
-              IT⁠-⁠Venture adalah suatu perlombaan untuk kalangan pelajar SMA, SMK,
-              atau sederajat se-Indonesia. Tema “Penjelajah Teknologi Masa Depan”
-              yang diusung mengajak para peserta lomba untuk siap dalam menjelajahi
-              teknologi yang akan datang.
+              IT⁠-⁠Venture adalah suatu perlombaan untuk kalangan pelajar SMA, SMK, atau sederajat se-Indonesia. Tema “Penjelajah Teknologi Masa Depan” yang diusung mengajak para peserta lomba untuk siap dalam menjelajahi teknologi yang akan datang.
             </div>
             <div class="text-button">
               <button class="btn btn-arrow">
@@ -108,7 +105,20 @@
         </div>
       </div>
       <div class="item logo-semnas ">logo-semnas</div>
-      <div class="item sponsor green-end">sponsor</div>
+      <div class="item dokumentasi green-end">
+        <p>Highlights</p>
+          <div class="dokumentasi-container">
+            <div class="square-wrapper"> <img class="square-image" width="300px" height="240px"></img></div>
+            <div class="square-wrapper"> <img class="square-image" width="300px" height="240px"></img></div>
+            <div class="square-wrapper"> <img class="square-image" width="300px" height="240px"></img></div>
+            <div class="square-wrapper"> <img class="square-image" width="300px" height="240px"></img></div>
+            <div class="square-wrapper"> <img class="square-image" width="300px" height="240px"></img></div>
+            <div class="square-wrapper"> <img class="square-image" width="300px" height="240px"></img></div>
+          </div>
+      </div>
+      <div class="item sponsor">
+        <p>Sponsor</p>
+      </div>
     </div>
     <script src="<?php echo base_url('public/pingfest/js/blob.js'); ?>"></script>
     <script src="<?php echo base_url('public/pingfest/js/home.js'); ?>"></script>

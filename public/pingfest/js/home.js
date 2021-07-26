@@ -34,6 +34,7 @@ $(window)
     }
   })
   .scroll();
+
 (function () {
   var itvOptions = {
     paths: '#itv-jelly',

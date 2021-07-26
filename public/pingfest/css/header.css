@@ -4,6 +4,11 @@
   --green-color: #31c48c;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 /* site-header */
 
 .site-header {
@@ -21,7 +26,7 @@
   font-size: 1.125rem;
   line-height: 1.56;
   letter-spacing: 0.9px;
-  background-color: var(--light-color);
+  /* background-color: var(--light-color); */
   transition: background 0.3s ease 0s;
   z-index: 1000;
 }
@@ -136,20 +141,20 @@ a.header-nav-link::before {
   content: '';
   position: absolute;
   width: 100%;
-  height: 2.5px;
+  height: 0.2rem;
   bottom: -5px;
   left: 0;
   background-color: var(--dark-color);
   border-radius: 25px;
 
+  transform-origin: top right;
   transform: scaleX(0);
-  transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
 
 .site-header ul li a:hover::before {
+  transform-origin: top left;
   transform: scaleX(1);
-  transform-origin: bottom left;
 }
 
 /* Sticky */

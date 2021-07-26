@@ -1,11 +1,13 @@
 .footer {
   position: relative;
-  margin-top: 10vh;
+  margin-top: 20vh;
   margin-bottom: 0px;
   box-sizing: border-box;
+  font-family: 'Chivo', sans-serif;
   line-height: 1.5;
   background-color: var(--dark-color);
   padding: 5rem 0 0 0;
+  width: 100%;
   font-size: 0.9rem;
 }
 .footer .container {
@@ -38,6 +40,7 @@
 }
 
 .footer-col .hubungi-wrapper {
+  margin-left: -0.5rem;
   display: grid;
   grid-template-columns: 2.5rem 16rem;
   row-gap: 0.5rem;
@@ -46,11 +49,14 @@
 }
 
 .footer-col .hubungi-wrapper i {
-  align-self: center;
   font-size: 1.2rem;
 
   line-height: 2rem;
-  margin: 0.5rem 0.8rem;
+  margin: 0.5rem 0rem 0.5rem 0.8rem;
+}
+
+.footer-col .hubungi-wrapper p {
+  margin: 0;
 }
 
 .footer-col .hubungi-wrapper a {
