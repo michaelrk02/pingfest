@@ -38,7 +38,7 @@
                     <div>
                         <span><b>Status:</b> <?php echo !empty($idcard_url) ? '<span class="badge badge-success">SUDAH DIUNGGAH</span>' : '<span class="badge badge-danger">BELUM DIUNGGAH</span>'; ?></span>
                         <?php if (!empty($idcard_url)): ?>
-                            <span>- <a href="<?php echo $idcard_url; ?>" download="Kartu Tanda Pelajar - <?php echo htmlspecialchars($identity['team_name']); ?>.pdf">Unduh</a></span>
+                            <span>- <a href="<?php echo $idcard_url; ?>" download="Kartu Tanda Pelajar - <?php echo htmlspecialchars(url_title($identity['team_name'], '_')); ?>.pdf">Unduh</a></span>
                         <?php endif; ?>
                     </div>
                     <input type="file" class="form-control-file" name="idcard" accept="application/pdf">

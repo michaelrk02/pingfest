@@ -10,6 +10,8 @@ class Profile extends CI_Controller {
 
         $this->load->helper('rupiah');
 
+        $this->load->library('pingfest');
+
         $this->load->model('profile_cfg_model', 'cfg');
         $this->load->model('profile_events_model', 'events');
         $this->load->model('profile_users_model', 'users');
@@ -372,7 +374,7 @@ class Profile extends CI_Controller {
     public function battle_idcard() {
         $this->check_login();
 
-        return $this->access_storage('idcard/battle/'.$_SESSION['user_id'], 10);
+        return $this->pingfest->view_battle_idcard($_SESSION['user_id']);
     }
 
     public function setup_paper() {
@@ -427,13 +429,13 @@ class Profile extends CI_Controller {
     public function paper_idcard() {
         $this->check_login();
 
-        return $this->access_storage('idcard/paper/'.$_SESSION['user_id'], 10);
+        return $this->pingfest->view_paper_idcard($_SESSION['user_id']);
     }
 
     public function paper_submission() {
         $this->check_login();
 
-        return $this->access_storage('submission/paper/'.$_SESSION['user_id'], 10);
+        return $this->pingfest->view_paper_submission($_SESSION['user_id']);
     }
 
     public function setup_music() {
@@ -584,13 +586,6 @@ class Profile extends CI_Controller {
             return FALSE;
         }
         return TRUE;
-    }
-
-    private function access_storage($id, $age) {
-        $this->load->library('storage');
-
-        $token = $this->storage->make_token($id, $age);
-        redirect(site_url('storage_data').'?token='.urlencode($token));
     }
 
 }

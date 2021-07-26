@@ -93,10 +93,13 @@ class Storage {
                     return isset($params['id']) ? $params['id'] : NULL;
                 }
             }
-            $this->ci->output->set_status_header(501);
-            exit;
         }
         return NULL;
+    }
+
+    public function access($id, $age) {
+        $token = $this->make_token($id, $age);
+        redirect(site_url('storage_data').'?token='.urlencode($token));
     }
 
 }
