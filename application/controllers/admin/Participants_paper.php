@@ -8,6 +8,7 @@ class Participants_Paper extends CI_Controller {
     {
         parent::__construct();
         $this->load->model("Paper_model");
+        $this->load->library('pingfest'); 
     }
 	/**
 	 * Index Page for this controller.
@@ -39,6 +40,21 @@ class Participants_Paper extends CI_Controller {
 		}else{
 			redirect(site_url('admin/login/index'));
 		}
-		
+	}
+
+	public function id_card($id){
+		if(!empty($this->session->userdata("username_admin"))){
+			$this->pingfest->view_paper_idcard($id);
+		}else{
+			redirect(site_url('admin/login/index'));
+		}
+	}
+
+	public function submission($id){
+		if(!empty($this->session->userdata("username_admin"))){
+			$this->pingfest->view_paper_submission($id);
+		}else{
+			redirect(site_url('admin/login/index'));
+		}
 	}
 }

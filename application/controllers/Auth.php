@@ -10,6 +10,8 @@ class Auth extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('Auth_model');
         $this->load->database();
+
+        $this->load->library('pingfest');
     }
     public function index()
     {
@@ -25,13 +27,14 @@ class Auth extends CI_Controller
         ]);
         
         if( $this->form_validation->run() == FALSE) {
+            $sso = $this->pingfest->sso_handle();
+
             $this->load->view('templates/header', $data);
-            $this->load->view('auth/login');
+            $this->load->view('auth/login', ['sso' => $sso, 'form_url_param' => (isset($sso) ? $sso['url_param'] : '')]);
             $this->load->view('templates/footer');
         } else {
             $this->Auth_model->login();
         }
-        
     }
 
 
@@ -81,7 +84,7 @@ class Auth extends CI_Controller
                 'auth_msg' => '<div class="alert alert-success" role="alert">Akun berhasil dibuat! Silahkan login</div>'
             ];
             $this->session->set_userdata($session_data);
-            redirect(base_url('auth'));
+            redirect(site_url('auth'));
         }
     }
 

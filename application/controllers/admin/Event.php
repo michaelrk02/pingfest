@@ -40,6 +40,40 @@ class Event extends CI_Controller {
 		}
 	}
 
+	public function edit($id)
+	{
+		if(!empty($this->session->userdata("username_admin"))){
+			$data = $this->Event_model->getById($id); 
+			if(empty($data)){
+				$this->session->set_flashdata('msg', 'Data tidak ditemukan');
+				redirect(site_url('admin/event/index'));
+			}
+			$this->load->view('/Admin/templates/start');
+			$this->load->view('/Admin/templates/header');
+			$this->load->view('/Admin/templates/sidebar');
+			$this->load->view('/Admin/event/edit', [
+				'data' => $data
+			]);
+			$this->load->view('/Admin/templates/footer');
+			$this->load->view('/Admin/templates/datatablejs');
+			$this->load->view('/Admin/event/tamplatejs');
+			$this->load->view('/Admin/templates/end');
+		}else{
+			redirect(site_url('admin/login/index'));
+		}
+	}
+
+	public function update($id){ 
+		$data = $this->Event_model->getById($id); 
+		if(empty($data)){
+			$this->session->set_flashdata('msg', 'Data tidak ditemukan');
+			redirect(site_url('admin/event/index'));
+		}
+
+		$this->Event_model->update(); 
+		$this->session->set_flashdata('msg', 'Berhasil diubah');
+		redirect(site_url('admin/event/index'));
+	}
 
 	public function available(){
 		$this->Event_model->update();  

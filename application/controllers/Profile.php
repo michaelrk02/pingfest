@@ -10,6 +10,8 @@ class Profile extends CI_Controller {
 
         $this->load->helper('rupiah');
 
+        $this->load->library('pingfest');
+
         $this->load->model('profile_cfg_model', 'cfg');
         $this->load->model('profile_events_model', 'events');
         $this->load->model('profile_users_model', 'users');
@@ -43,13 +45,15 @@ class Profile extends CI_Controller {
                 if (isset($identity)) {
                     $this->load->library('storage');
 
+                    $announcements = $this->events->get('battle', 'announcements')['announcements'];
+
                     $idcard_url = NULL;
                     if ($this->storage->exists('idcard/battle/'.$_SESSION['user_id'])) {
                         $idcard_url = site_url('profile/battle_idcard');
                     }
 
                     $page = 'profile/index/setup_battle';
-                    $data = ['identity' => $identity, 'idcard_url' => $idcard_url];
+                    $data = ['identity' => $identity, 'idcard_url' => $idcard_url, 'announcements' => $announcements];
                 } else {
                     $page = 'profile/index/setup';
                     $data = ['event' => 'battle'];
@@ -67,8 +71,10 @@ class Profile extends CI_Controller {
                     unset($_SESSION['profile_music_identity']);
                 }
                 if (isset($identity)) {
+                    $announcements = $this->events->get('music', 'announcements')['announcements'];
+
                     $page = 'profile/index/setup_music';
-                    $data = ['identity' => $identity];
+                    $data = ['identity' => $identity, 'announcements' => $announcements];
                 } else {
                     $page = 'profile/index/setup';
                     $data = ['event' => 'music'];
@@ -88,6 +94,8 @@ class Profile extends CI_Controller {
                 if (isset($identity)) {
                     $this->load->library('storage');
 
+                    $announcements = $this->events->get('paper', 'announcements')['announcements'];
+
                     $idcard_url = NULL;
                     if ($this->storage->exists('idcard/paper/'.$_SESSION['user_id'])) {
                         $idcard_url = site_url('profile/paper_idcard');
@@ -99,7 +107,7 @@ class Profile extends CI_Controller {
                     }
 
                     $page = 'profile/index/setup_paper';
-                    $data = ['identity' => $identity, 'idcard_url' => $idcard_url, 'submission_url' => $submission_url];
+                    $data = ['identity' => $identity, 'idcard_url' => $idcard_url, 'submission_url' => $submission_url, 'announcements' => $announcements];
                 } else {
                     $page = 'profile/index/setup';
                     $data = ['event' => 'paper'];
@@ -117,8 +125,10 @@ class Profile extends CI_Controller {
                     unset($_SESSION['profile_semnas_identity']);
                 }
                 if (isset($identity)) {
+                    $announcements = $this->events->get('battle', 'announcements')['announcements'];
+
                     $page = 'profile/index/setup_semnas';
-                    $data = ['identity' => $identity];
+                    $data = ['identity' => $identity, 'announcements' => $announcements];
                 } else {
                     $page = 'profile/index/setup';
                     $data = ['event' => 'semnas'];
@@ -364,7 +374,7 @@ class Profile extends CI_Controller {
     public function battle_idcard() {
         $this->check_login();
 
-        return $this->access_storage('idcard/battle/'.$_SESSION['user_id'], 10);
+        return $this->pingfest->view_battle_idcard($_SESSION['user_id']);
     }
 
     public function setup_paper() {
@@ -419,13 +429,13 @@ class Profile extends CI_Controller {
     public function paper_idcard() {
         $this->check_login();
 
-        return $this->access_storage('idcard/paper/'.$_SESSION['user_id'], 10);
+        return $this->pingfest->view_paper_idcard($_SESSION['user_id']);
     }
 
     public function paper_submission() {
         $this->check_login();
 
-        return $this->access_storage('submission/paper/'.$_SESSION['user_id'], 10);
+        return $this->pingfest->view_paper_submission($_SESSION['user_id']);
     }
 
     public function setup_music() {
@@ -542,7 +552,7 @@ class Profile extends CI_Controller {
 
     private function check_login() {
         if (empty($_SESSION['user_id'])) {
-            redirect('auth/login');
+            redirect('auth');
         }
 
         $this->user = $this->users->get($_SESSION['user_id'], 'name, email, phone');
@@ -576,13 +586,6 @@ class Profile extends CI_Controller {
             return FALSE;
         }
         return TRUE;
-    }
-
-    private function access_storage($id, $age) {
-        $this->load->library('storage');
-
-        $token = $this->storage->make_token($id, $age);
-        redirect(site_url('storage_data').'?token='.urlencode($token));
     }
 
 }

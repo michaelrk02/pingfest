@@ -19,7 +19,10 @@
                                         echo $this->session->userdata('auth_msg');
                                         $this->session->unset_userdata('auth_msg');
                                     } ?>
-                                    <form method="post" action="<?= base_url('auth'); ?>">
+                                    <?php if (isset($sso)): ?>
+                                        <p>Anda sedang menggunakan Single-Sign-On (SSO) untuk melanjutkan ke aplikasi <b><?php echo htmlspecialchars($sso['app_name']); ?></b></p>
+                                    <?php endif; ?>
+                                    <form method="post" action="<?= site_url('auth').$form_url_param; ?>">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
                                                 id="uname" name="uname" placeholder="Username" 
@@ -38,10 +41,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="<?= base_url('auth/forget/'); ?>">Lupa password?</a>
+                                        <a class="small" href="<?= site_url('auth/forget/'); ?>">Lupa password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="<?= base_url('auth/registration/'); ?>">Belum punya akun?</a>
+                                        <a class="small" href="<?= site_url('auth/registration/'); ?>">Belum punya akun?</a>
                                     </div>
                                 </div>
                             </div>

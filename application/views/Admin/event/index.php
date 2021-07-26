@@ -25,6 +25,15 @@
           <div class="card">
             <div class="card-header"> 
             </div>
+            <div class="clearfix"></div>
+
+             <?php if ($this->session->flashdata('msg')) {?>
+
+                  <span class="alert alert-success col-sm-12"><?php echo $this->session->flashdata('msg');?></span>
+
+              <?php }?>
+
+            <div class="clearfix"></div>
             <div class="card-body">
 
               <div class="table-responsive">
@@ -66,38 +75,7 @@
                        ?>
                       </td> 
                       <td width="250">
-                         <form action="<?php echo site_url('admin/event/available'); ?>" method="post">
-                            <input type="hidden" name="event_id" value="<?php echo $event->event_id ?>">
-                            <input type="hidden" name="name"value="<?php echo $event->name ?>">
-                            <input type="hidden" name="price" value="<?php echo $event->price ?>">
-                            <?php if($event->available == 1){ ?> 
-                              <input type="hidden" name="available" value="0"> 
-                            <?php  }else{ ?>
-                              <input type="hidden" name="available" value="1"> 
-                            <?php } ?>
-                            <input type="hidden" name="locked" value="<?php echo $event->locked ?>">
-                            <?php if($event->available == 1){ ?> 
-                              <input type="submit" name="submit" value="Tidak Tersedia" class="btn btn-danger">
-                            <?php  }else{ ?>
-                              <input type="submit" name="submit" value="Tersedia" class="btn btn-success">
-                            <?php } ?>  
-                         </form> 
-                          <form action="<?php echo site_url('admin/event/locked'); ?>" method="post">
-                            <input type="hidden" name="event_id" value="<?php echo $event->event_id ?>">
-                            <input type="hidden" name="name"value="<?php echo $event->name ?>">
-                            <input type="hidden" name="price" value="<?php echo $event->price ?>">
-                            <?php if($event->locked == 1){ ?> 
-                              <input type="hidden" name="locked" value="0"> 
-                            <?php  }else{ ?>
-                              <input type="hidden" name="locked" value="1"> 
-                            <?php } ?>
-                            <input type="hidden" name="available" value="<?php echo $event->available ?>">
-                            <?php if($event->locked == 1){ ?> 
-                              <input type="submit" name="submit" value="Dibuka" class="btn btn-success">
-                            <?php  }else{ ?>
-                              <input type="submit" name="submit" value="Ditutup" class="btn btn-danger">
-                            <?php } ?>  
-                         </form> 
+                         <a href="<?php echo site_url() ?>/admin/event/edit/<?php echo $event->event_id ?>" class="btn btn-primary">Edit</a>
                       </td>
                     </tr>
                     <?php endforeach; ?> 

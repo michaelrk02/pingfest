@@ -7,6 +7,7 @@ class Participants_Music extends CI_Controller {
     {
         parent::__construct();
         $this->load->model("Music_model");
+        $this->load->library('pingfest');
     }
 	/**
 	 * Index Page for this controller.
@@ -37,7 +38,6 @@ class Participants_Music extends CI_Controller {
 			$this->load->view('/Admin/templates/end');
 		}else{
 			redirect(site_url('admin/login/index'));
-		}
-		
+		} 
 	}
 }
