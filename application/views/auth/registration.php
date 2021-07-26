@@ -10,7 +10,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Registrasi Akun</h1>
                             </div>
-                            <form method="post" action="<?= base_url('auth/registration/'); ?>">
+                            <form method="post" action="<?= site_url('auth/registration/'); ?>">
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="uname" name="uname"
                                         placeholder="Username" value="<?= set_value('uname'); ?>">
@@ -50,7 +50,7 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="<?= base_url('auth'); ?>">Sudah punya akun?</a>
+                                <a class="small" href="<?= site_url('auth'); ?>">Sudah punya akun?</a>
                             </div>
                         </div>
                     </div>

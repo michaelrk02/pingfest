@@ -29,20 +29,26 @@ class Auth_model extends CI_model
                     'user_id' => $user['user_id']
                 ];
                 $this->session->set_userdata($session_data);
-                redirect(site_url('profile/index/'));
             } else {
                 $session_data = [
                     'auth_msg' => '<div class="alert alert-danger" role="alert">Username atau Password salah!</div>'
                 ];
                 $this->session->set_userdata($session_data);
-                redirect(base_url('auth/index'));
             }
         } else {
             $session_data = [
                 'auth_msg' => '<div class="alert alert-danger" role="alert">Username atau Password salah!</div>'
             ];
             $this->session->set_userdata($session_data);
-            redirect(base_url('auth/index'));
+        }
+
+        $sso = $this->pingfest->sso_handle();
+
+        if (isset($_SESSION['user_id'])) {
+            redirect(site_url('profile/index'));
+        } else {
+            $url_param = isset($sso['url_param']) ? $sso['url_param'] : '';
+            redirect(site_url('auth/index').$url_param);
         }
     }
 

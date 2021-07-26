@@ -7,6 +7,8 @@ class Storage {
 
     public function __construct() {
         $this->ci =& get_instance();
+
+        $this->ci->load->library('jwt');
     }
 
     public function get($id) {
@@ -74,27 +76,12 @@ class Storage {
     }
 
     public function make_token($id, $age) {
-        $params = [];
-        $params['id'] = $id;
-        $params['expired'] = time() + $age;
-        $params = base64_encode(json_encode($params));
-        $signature = hash_hmac('sha256', $params, PF_SECRET_KEY);
-        return base64_encode($params.':'.$signature);
+        return $this->ci->jwt->create(['id' => $id], $age, PF_SECRET_KEY);
     }
 
     public function get_id($token) {
-        $token = explode(':', @base64_decode($token));
-        if (count($token) == 2) {
-            $params = $token[0];
-            $signature = $token[1];
-            if ($signature === hash_hmac('sha256', $params, PF_SECRET_KEY)) {
-                $params = @json_decode(@base64_decode($params), TRUE);
-                if (isset($params) && (time() < $params['expired'])) {
-                    return isset($params['id']) ? $params['id'] : NULL;
-                }
-            }
-        }
-        return NULL;
+        $data = $this->ci->jwt->extract($token, PF_SECRET_KEY);
+        return isset($data) ? (isset($data['id']) ? $data['id'] : NULL) : NULL;
     }
 
     public function access($id, $age) {

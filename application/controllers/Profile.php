@@ -552,7 +552,7 @@ class Profile extends CI_Controller {
 
     private function check_login() {
         if (empty($_SESSION['user_id'])) {
-            redirect('auth/login');
+            redirect('auth');
         }
 
         $this->user = $this->users->get($_SESSION['user_id'], 'name, email, phone');
