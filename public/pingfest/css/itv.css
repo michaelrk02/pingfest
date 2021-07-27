@@ -9,6 +9,7 @@ body {
 }
 
 .headline {
+  position: relative;
   display: flex;
   height: 100vh;
   background-color: var(--dark-color);
@@ -17,7 +18,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  grid-area: headline;
   z-index: 10;
 }
 
@@ -67,21 +67,234 @@ body {
   position: relative;
   display: grid;
   grid-template-columns: 80vw;
-  grid-template-rows: 40vh 20vh 40vh;
+  grid-template-rows: 60vh 20vh 40vh;
   margin: 10% 10%;
-
+  row-gap: 5vh;
   grid-template-areas:
     'lomba-itv'
     'daftar-itv'
     'sponsor';
-
+  z-index: 0;
   top: 75px;
-  z-index: -1;
 }
 
 .lomba-itv {
-  background-color: aqua;
+  display: flex;
+  flex-wrap: wrap;
   grid-area: lomba-itv;
+  justify-content: space-around;
+}
+
+.lomba-card {
+  margin: 10vh 0;
+  width: 400px;
+  height: 400px;
+  box-sizing: border-box;
+  overflow: auto;
+  background-color: var(--light-color);
+  border: 3px solid var(--dark-color);
+  border-radius: 22px;
+  position: relative;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.lomba-card::-webkit-scrollbar {
+  display: none;
+}
+
+.page-1 {
+  display: flex;
+  place-content: center;
+  place-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 55%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.ping-bot .page-1 {
+  background-color: #c9bd9a;
+}
+
+.ping-music .page-1 {
+  background-color: #8aa89d;
+}
+
+.ping-paper .page-1 {
+  background-color: var(--green-color);
+}
+
+.page-1 p {
+  margin-top: -12%;
+  text-align: center;
+  max-width: 80%;
+  font-family: 'Bree Serif', serif;
+  letter-spacing: 1.95px;
+  font-weight: 1000;
+  font-size: 2rem;
+  color: var(--dark-color);
+}
+
+.daftar-button {
+  width: 10rem;
+}
+
+.button-atas {
+  position: absolute;
+  bottom: 2.5rem;
+}
+
+.guide-book-button {
+  margin: 2rem 0 1rem 0;
+
+  width: 10rem;
+}
+.guide-book-button .btn-arrow span {
+  transition: all 100ms ease;
+}
+
+.guide-book-button .btn-arrow:hover span {
+  transform-origin: center bottom;
+  transform: scale(1.05);
+}
+
+.button-bawah-wrapper {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.button-bawah-wrapper .daftar-button {
+  margin: 1rem 0 2.5rem 0;
+}
+
+.btn,
+button {
+  position: relative;
+
+  pointer-events: auto;
+  cursor: pointer;
+
+  stroke: var(--dark-color);
+  stroke-width: 4;
+
+  border: 2px solid var(--dark-color);
+
+  font-family: 'Bree Serif', serif;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.btn-arrow span {
+  display: inline-block;
+  position: relative;
+  transition: all 300ms ease-out;
+  will-change: transform;
+}
+.btn-arrow:hover span {
+  transform: translate3d(-0.5rem, 0, 0);
+}
+.btn-arrow svg {
+  position: absolute;
+  width: 1em;
+  right: 0px;
+  opacity: 0;
+  top: 60%;
+  fill: var(--dark-color);
+
+  transform: translateY(-50%);
+  transition: all 300ms ease-out;
+  will-change: right, opacity;
+}
+
+.btn-arrow:hover svg {
+  opacity: 1;
+  right: -1.2rem;
+}
+
+.page-2 {
+  top: 0;
+  position: relative;
+  z-index: 2;
+  background-color: var(--light-color);
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.page-2 .scroll-text {
+  position: sticky;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  top: 1rem;
+}
+
+.page-2 .scroll-text span {
+  color: var(--light-color);
+  background-color: var(--dark-color);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  letter-spacing: 1.95px;
+  margin-top: -1rem;
+}
+
+.page-2 .deskripsi-wrapper {
+  width: 80%;
+}
+
+.page-2 p.deskripsi-lomba {
+  text-align: center;
+  margin: 1.5rem 0;
+  font-weight: 100;
+  font-size: 1.2rem;
+  font-family: 'Bree Serif', serif;
+}
+
+.page-2 .deskripsi-wrapper .deskripsi-lomba span {
+  font-weight: 600;
+}
+
+.page-2 .deskripsi-wrapper h4 {
+  font-size: 1.4rem;
+  font-family: 'Bree Serif', serif;
+}
+
+.page-2 .deskripsi-wrapper hr {
+  margin-top: -0.05rem;
+  border-top: 1px dashed var(--dark-color);
+}
+
+.deskripsi-text-line {
+  color: var(--dark-color);
+  margin: 1rem 0;
+}
+
+.deskripsi-text-line .symbol {
+  margin-right: 0.5rem;
+  width: 2rem;
+  display: inline-block;
+  text-align: center;
+}
+
+.deskripsi-text-line .justify {
+  width: 9rem;
+  display: inline-block;
+}
+
+.deskripsi-text-line.timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deskripsi-text-line span {
+  font-size: 1rem;
 }
 
 .daftar-itv {

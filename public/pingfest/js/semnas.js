@@ -34,7 +34,7 @@
 class TextScramble {
   constructor(el) {
     this.el = el;
-    this.chars = 'findyouridea';
+    this.chars = 'FindYourIdea';
     this.update = this.update.bind(this);
   }
   setText(newText) {
@@ -90,26 +90,21 @@ var textArray = document.getElementsByClassName('hay-text');
 
 var indexText = 1;
 var hayText = ['Find', 'Your'];
-
+var counter = 2;
 $(document).on('mouseenter', '.idea', function () {
-  for (var i = 0; i < textArray.length; ++i) {
-    if (idea.innerText == textArray[i].innerText) {
-      var counter = i;
-      if (counter == 0) {
-        counter = 3;
-      }
-      counter--;
-      const fxIdea = new TextScramble(idea);
-      const fxText = new TextScramble(textArray[counter]);
-
-      fxText.setText('Idea');
-      fxIdea.setText(hayText[indexText]);
-      indexText = Math.abs(indexText - 1);
-
-      idea.classList.remove('idea');
-      textArray[counter].classList.add('idea');
-      idea = document.querySelector('.idea');
-      break;
-    }
+  if (counter == 0) {
+    counter = 3;
   }
+  counter--;
+  const fxIdea = new TextScramble(idea);
+  const fxText = new TextScramble(textArray[counter]);
+
+  fxIdea.setText(hayText[indexText]);
+  fxText.setText('Idea');
+
+  indexText = Math.abs(indexText - 1);
+
+  idea.classList.remove('idea');
+  textArray[counter].classList.add('idea');
+  idea = document.querySelector('.idea');
 });

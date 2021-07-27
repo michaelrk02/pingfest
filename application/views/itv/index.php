@@ -19,7 +19,264 @@
 </div>
 <div class=container-itv>
     <div class="lomba-itv">
-        asdjknasmkdlas
+        <div class ="lomba-card ping-bot">
+            <div class="page page-1">
+                <p> Battle Of Technology </p>
+                <div class="daftar-button button-atas">
+                    <a href="<?php echo site_url('profile/index').'?tab=e_battle'; ?>" class="btn btn-arrow">
+                        <span 
+                        >Daftar Sekarang<svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+
+                            viewBox="0 0 36.1 25.8"
+                            xml:space="preserve"
+                        >
+                            <g>
+                            <line
+                                x1="0"
+                                y1="12.9"
+                                x2="34"
+                                y2="12.9"
+                            ></line>
+                            <polyline
+                                fill="none"
+                                points="22.2,1.1 34,12.9 22.2,24.7"
+                            ></polyline>
+                            </g>
+                        </svg>
+                        </span>
+                    </a>
+                    </div>
+                </div>
+            <div class="page page-2">
+                <div class="scroll-text"><span>SCROLL ME</span></div>
+                <div class="deskripsi-wrapper">
+                    <p class="deskripsi-lomba">Uji kemampuan kamu mengenai <span>Ilmu Komputer dan Programming</span> dengan mengikuti Battle Of Technology (BOT).</p>
+                    <h4>Ketentuan</h4><hr>
+                    <div class="deskripsi-text-line"> <i class="symbol fas fa-user"></i><span>SMA/SMK/Sederajat<span> </div>
+                    <div class="deskripsi-text-line"> <i class="symbol fas fa-user-friends"></i><span>3 orang<span> </div>
+                    <div class="deskripsi-text-line"> <i class="symbol fa fa-dollar-sign"></i><span>Rp 100.000<span> </div>
+                    <h4>Hadiah</h4><hr>
+                    <div class="deskripsi-text-line"> <b class="symbol">#1</b><span>Rp 3.000.000<span> </div>
+                    <div class="deskripsi-text-line"> <b class="symbol">#2</b><span>Rp 2.000.000<span> </div>
+                    <div class="deskripsi-text-line"> <b class="symbol">#3</b><span>Rp 1.000.000<span> </div>
+                    <h4>Timeline</h4><hr>
+                    <div class="deskripsi-text-line timeline"> <b class="justify">Pendaftaran</b><span class="right">7 Agustus 2021 <span> </div>
+                    <div class="deskripsi-text-line timeline"> <b class="justify">Penyisihan</b></i><span class="right">25 September 2021<span> </div>
+                    <div class="deskripsi-text-line timeline"> <b class="justify">Final</b></i><span class="right">2 Oktober 2021<span> </div>
+                    <div class="button-bawah-wrapper">
+                        <div class="guide-book-button">
+                        <a href="<?php echo site_url('profile/index').'?tab=e_battle'; ?>" class="btn btn-arrow">
+                            <span>Guide Book</span>
+                        </a>
+                        </div>
+
+                        <div class="daftar-button">
+                        <a href="<?php echo site_url('profile/index').'?tab=e_battle'; ?>" class="btn btn-arrow">
+                            <span 
+                            >Daftar Sekarang<svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+
+                                viewBox="0 0 36.1 25.8"
+                                xml:space="preserve"
+                            >
+                                <g>
+                                <line
+                                    x1="0"
+                                    y1="12.9"
+                                    x2="34"
+                                    y2="12.9"
+                                ></line>
+                                <polyline
+                                    fill="none"
+                                    points="22.2,1.1 34,12.9 22.2,24.7"
+                                ></polyline>
+                                </g>
+                            </svg>
+                            </span>
+                        </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class ="lomba-card ping-music">
+        <div class="page page-1">
+                <p> IT-Music </p>
+                <div class="daftar-button button-atas">
+                    <a href="<?php echo site_url('profile/index').'?tab=e_music'; ?>" class="btn btn-arrow">
+                        <span 
+                        >Daftar Sekarang<svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+
+                            viewBox="0 0 36.1 25.8"
+                            xml:space="preserve"
+                        >
+                            <g>
+                            <line
+                                x1="0"
+                                y1="12.9"
+                                x2="34"
+                                y2="12.9"
+                            ></line>
+                            <polyline
+                                fill="none"
+                                points="22.2,1.1 34,12.9 22.2,24.7"
+                            ></polyline>
+                            </g>
+                        </svg>
+                        </span>
+                    </a>
+                    </div>
+                </div>
+            <div class="page page-2">
+                <div class="scroll-text"><span>SCROLL ME</span></div>
+                <div class="deskripsi-wrapper">
+                    <p class="deskripsi-lomba">Uji kemampuan kamu mengenai <span>Ilmu Komputer dan Programming</span> dengan mengikuti Battle Of Technology (BOT).</p>
+                    <h4>Ketentuan</h4><hr>
+                    <div class="deskripsi-text-line"> <i class="symbol fas fa-user"></i><span>Warga Indonesia<span> </div>
+                    <div class="deskripsi-text-line"> <i class="symbol fas fa-user-friends"></i><span>1-7 orang<span> </div>
+                    <div class="deskripsi-text-line"> <i class="symbol fa fa-dollar-sign"></i><span>Rp 100.000<span> </div>
+                    <h4>Hadiah</h4><hr>
+                    <div class="deskripsi-text-line"> <b class="symbol">#1</b><span>Rp 1.500.000<span> </div>
+                    <div class="deskripsi-text-line"> <b class="symbol">#2</b><span>Rp 1.000.000<span> </div>
+                    <div class="deskripsi-text-line"> <b class="symbol">#3</b><span>Rp 750.000<span> </div>
+                    <h4>Timeline</h4><hr>
+                    <div class="deskripsi-text-line timeline"> <b class="justify">Pendaftaran</b><span class="right">7 Agustus 2021 <span> </div>
+                    <div class="deskripsi-text-line timeline"> <b class="justify">Maksimal Pengumpulan</b></i><span class="right">7 September 2021<span> </div>
+                    <div class="deskripsi-text-line timeline"> <b class="justify">Pengumuman Juara</b></i><span class="right">24 Oktober 2021<span> </div>
+                    <div class="button-bawah-wrapper">
+                        <div class="guide-book-button">
+                        <a href="<?php echo site_url('profile/index').'?tab=e_battle'; ?>" class="btn btn-arrow">
+                            <span>Guide Book</span>
+                        </a>
+                        </div>
+
+                        <div class="daftar-button">
+                        <a href="<?php echo site_url('profile/index').'?tab=e_music'; ?>" class="btn btn-arrow">
+                            <span 
+                            >Daftar Sekarang<svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+
+                                viewBox="0 0 36.1 25.8"
+                                xml:space="preserve"
+                            >
+                                <g>
+                                <line
+                                    x1="0"
+                                    y1="12.9"
+                                    x2="34"
+                                    y2="12.9"
+                                ></line>
+                                <polyline
+                                    fill="none"
+                                    points="22.2,1.1 34,12.9 22.2,24.7"
+                                ></polyline>
+                                </g>
+                            </svg>
+                            </span>
+                        </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class ="lomba-card ping-paper">
+        <div class="page page-1">
+                <p> IT-Paper </p>
+                <div class="daftar-button button-atas">
+                    <a href="<?php echo site_url('profile/index').'?tab=e_paper'; ?>" class="btn btn-arrow">
+                        <span 
+                        >Daftar Sekarang<svg
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+
+                            viewBox="0 0 36.1 25.8"
+                            xml:space="preserve"
+                        >
+                            <g>
+                            <line
+                                x1="0"
+                                y1="12.9"
+                                x2="34"
+                                y2="12.9"
+                            ></line>
+                            <polyline
+                                fill="none"
+                                points="22.2,1.1 34,12.9 22.2,24.7"
+                            ></polyline>
+                            </g>
+                        </svg>
+                        </span>
+                    </a>
+                    </div>
+                </div>
+            <div class="page page-2">
+                <div class="scroll-text"><span>SCROLL ME</span></div>
+                <div class="deskripsi-wrapper">
+                    <p class="deskripsi-lomba">Uji kemampuan kamu mengenai <span>Ilmu Komputer dan Programming</span> dengan mengikuti Battle Of Technology (BOT).</p>
+                    <h4>Ketentuan</h4><hr>
+                    <div class="deskripsi-text-line"> <i class="symbol fas fa-user"></i><span>S1/D3/Sederajat<span> </div>
+                    <div class="deskripsi-text-line"> <i class="symbol fas fa-user-friends"></i><span>1 orang<span> </div>
+                    <div class="deskripsi-text-line"> <i class="symbol fa fa-dollar-sign"></i><span>Rp 100.000<span> </div>
+                    <h4>Hadiah</h4><hr>
+                    <div class="deskripsi-text-line"> <b class="symbol">#1</b><span>Rp 2.000.000<span> </div>
+                    <div class="deskripsi-text-line"> <b class="symbol">#2</b><span>Rp 1.500.000<span> </div>
+                    <div class="deskripsi-text-line"> <b class="symbol">#3</b><span>Rp 1.000.000<span> </div>
+                    <h4>Timeline</h4><hr>
+                    <div class="deskripsi-text-line timeline"> <b class="justify">Pendaftaran</b><span class="right">7 Agustus 2021 <span> </div>
+                    <div class="deskripsi-text-line timeline"> <b class="justify">Maksimal Pengumpulan</b></i><span class="right">7 September 2021<span> </div>
+                    <div class="deskripsi-text-line timeline"> <b class="justify">Final</b></i><span class="right">9 Oktober 2021<span> </div>
+                    <div class="button-bawah-wrapper">
+                        <div class="guide-book-button">
+                        <a href="<?php echo site_url('profile/index').'?tab=e_music'; ?>" class="btn btn-arrow">
+                            <span>Guide Book</span>
+                        </a>
+                        </div>
+
+                        <div class="daftar-button">
+                        <a href="<?php echo site_url('profile/index').'?tab=e_paper'; ?>" class="btn btn-arrow">
+                            <span 
+                            >Daftar Sekarang<svg
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+
+                                viewBox="0 0 36.1 25.8"
+                                xml:space="preserve"
+                            >
+                                <g>
+                                <line
+                                    x1="0"
+                                    y1="12.9"
+                                    x2="34"
+                                    y2="12.9"
+                                ></line>
+                                <polyline
+                                    fill="none"
+                                    points="22.2,1.1 34,12.9 22.2,24.7"
+                                ></polyline>
+                                </g>
+                            </svg>
+                            </span>
+                        </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
     <div class="daftar-itv">
         saodkasod
