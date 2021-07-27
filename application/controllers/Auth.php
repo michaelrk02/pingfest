@@ -15,6 +15,10 @@ class Auth extends CI_Controller
     }
     public function index()
     {
+        if( !empty($this->session->userdata('user_id')) ){
+            redirect(site_url('profile/index'));
+        } 
+
         $data = [
             'title' => 'Halaman Login'
         ];
@@ -35,11 +39,16 @@ class Auth extends CI_Controller
         } else {
             $this->Auth_model->login();
         }
+        
     }
 
 
     public function registration()
     {
+        if( !empty($this->session->userdata('user_id')) ){
+            redirect(site_url('profile/index'));
+        } 
+
         $data = [
             'title' => 'Halaman Registrasi'
         ];
@@ -84,12 +93,18 @@ class Auth extends CI_Controller
                 'auth_msg' => '<div class="alert alert-success" role="alert">Akun berhasil dibuat! Silahkan login</div>'
             ];
             $this->session->set_userdata($session_data);
-            redirect(site_url('auth'));
+            redirect(site_url('auth/index'));
         }
+        
+        
     }
 
     public function forget()
     {
+        if( !empty($this->session->userdata('user_id')) ){
+            redirect(site_url('profile/index'));
+        } 
+
         $data = [
             'title' => 'Lupa Password'
         ];
@@ -97,15 +112,20 @@ class Auth extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('auth/forget');
         $this->load->view('templates/footer');
+        
+        
 
 
     }
 
     public function logout()
     {
-        $this->session->unset_userdata('user_id');
-        redirect(site_url('auth'));
+        if( !empty($this->session->userdata('user_id')) ){
+            $this->session->unset_userdata('user_id');
+        }
+        redirect(site_url('auth/index'));
     }
 }
 
 ?>
+
