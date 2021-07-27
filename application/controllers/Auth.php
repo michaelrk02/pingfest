@@ -100,6 +100,12 @@ class Auth extends CI_Controller
 
 
     }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('user_id');
+        redirect(site_url('auth'));
+    }
 }
 
 ?>
