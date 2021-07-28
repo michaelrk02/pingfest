@@ -50,7 +50,7 @@
                     <div>
                         <span><b>Status:</b> <?php echo !empty($idcard_url) ? '<span class="badge badge-success">SUDAH DIUNGGAH</span>' : '<span class="badge badge-danger">BELUM DIUNGGAH</span>'; ?></span>
                         <?php if (!empty($idcard_url)): ?>
-                            <span>- <a href="<?php echo $idcard_url; ?>" download="Kartu Tanda Mahasiswa - <?php echo htmlspecialchars(url_title($identity['leader'], '_')); ?>.pdf">Unduh</a></span>
+                            <span>- <a href="<?php echo $idcard_url; ?>">Unduh</a></span>
                         <?php endif; ?>
                     </div>
                     <input type="file" class="form-control-file" name="idcard" accept="application/pdf">
@@ -61,7 +61,7 @@
                     <div>
                         <span><b>Status:</b> <?php echo !empty($submission_url) ? '<span class="badge badge-success">SUDAH DIUNGGAH</span>' : '<span class="badge badge-danger">BELUM DIUNGGAH</span>'; ?></span>
                         <?php if (!empty($submission_url)): ?>
-                            <span>- <a href="<?php echo $submission_url; ?>" download="File Submisi - <?php echo htmlspecialchars(url_title($identity['leader'], '_')); ?>.pdf">Unduh</a></span>
+                            <span>- <a href="<?php echo $submission_url; ?>">.pdf">Unduh</a></span>
                         <?php endif; ?>
                     </div>
                     <input type="file" class="form-control-file" name="submission" accept="application/pdf">

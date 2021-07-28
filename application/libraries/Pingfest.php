@@ -15,15 +15,15 @@ class Pingfest {
     }
 
     public function view_battle_idcard($user_id) {
-        $this->ci->storage->access('idcard/battle/'.$user_id, 10);
+        $this->ci->storage->access('idcard/battle/'.$user_id, 10, 'IDCARD_BATTLE_'.url_title($user_id).'.pdf');
     }
 
     public function view_paper_idcard($user_id) {
-        $this->ci->storage->access('idcard/paper/'.$user_id, 10);
+        $this->ci->storage->access('idcard/paper/'.$user_id, 10, 'IDCARD_PAPER_'.url_title($user_id).'.pdf');
     }
 
     public function view_paper_submission($user_id) {
-        $this->ci->storage->access('submission/paper/'.$user_id, 10);
+        $this->ci->storage->access('submission/paper/'.$user_id, 10, 'SUBMISSION_PAPER_'.url_title($user_id).'.pdf');
     }
 
     public function sso_handle() {

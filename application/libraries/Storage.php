@@ -84,9 +84,9 @@ class Storage {
         return isset($data) ? (isset($data['id']) ? $data['id'] : NULL) : NULL;
     }
 
-    public function access($id, $age) {
+    public function access($id, $age, $filename = NULL) {
         $token = $this->make_token($id, $age);
-        redirect(site_url('storage_data').'?token='.urlencode($token));
+        redirect(site_url('storage_data').'?token='.urlencode($token).(!empty($filename) ? '&filename='.urlencode($filename) : ''));
     }
 
 }
