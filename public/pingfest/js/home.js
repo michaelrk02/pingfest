@@ -89,3 +89,7 @@ function resize() {
 
 window.addEventListener('resize', resize);
 resize();
+
+var morphing = anime({
+  targets,
+});

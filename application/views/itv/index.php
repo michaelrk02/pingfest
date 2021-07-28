@@ -10,8 +10,7 @@
             <div style="--i:1" class="hay-text">R</div>
             <div style="--i:2" class="hay-text">i</div>
             <div style="--i:3" class="hay-text">s</div>
-            <div style="--i:4" class="hay-text">e</div>
-            &nbsp;&nbsp;
+            <div style="--i:4" class="hay-text">e&nbsp;</div>
             <div style="--i:5" class="hay-text">I</div>
             <div style="--i:6" class="hay-text">T</div>
         </div>
@@ -279,9 +278,19 @@
         </div>
     </div>
     <div class="daftar-itv">
-        saodkasod
+        <div class="itv-guide-book button">
+            <a href="<?php echo site_url('profile/index').'?tab=e_battle'; ?>" class="btn">
+                <span>Guide Book</span>
+            </a>
+        </div>
+        <div class="itv-daftar button">
+            <a href="<?php echo site_url('profile/index').'?tab=e_battle'; ?>" class="btn daftar-block">
+                <span class="daftar-text">Daftar Sekarang</span>
+            </a>
+        </div>
     </div>
     <div class="sponsor">
+        <p>Sponsor</p>
     </div>
 </div>
 
