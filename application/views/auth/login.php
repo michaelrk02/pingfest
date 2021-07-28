@@ -24,14 +24,16 @@
                                     <?php endif; ?>
                                     <form method="post" action="<?= site_url('auth').$form_url_param; ?>">
                                         <div class="form-group">
+                                            <label>Username</label>
                                             <input type="text" class="form-control form-control-user"
-                                                id="uname" name="uname" placeholder="Username" 
+                                                id="uname" name="uname" placeholder="Masukkan username anda" 
                                                 value="<?= set_value('uname'); ?>">
                                             <?= form_error('uname', '<small class="text-danger">', '</small>'); ?>
                                         </div>
                                         <div class="form-group">
+                                            <label>Password</label>
                                             <input type="password" class="form-control form-control-user"
-                                                id="password" name="password" placeholder="Password"
+                                                id="password" name="password" placeholder="Masukkan password anda"
                                                 value="<?= set_value('password'); ?>">
                                             <?= form_error('password', '<small class="text-danger">', '</small>'); ?>
                                         </div>
