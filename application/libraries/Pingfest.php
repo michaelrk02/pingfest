@@ -56,7 +56,7 @@ class Pingfest {
                                 if (($app_id === 'botplatform') || ($app_id === 'bottour')) {
                                     $battle_data = $this->ci->pingdb->get_battle_data($user['user_id'], 'team_name');
                                     if (isset($battle_data)) {
-                                        $response_data['name'] = $battle_data['team_name'];
+                                        $response_data['name'] = $battle_data['team_name'].' (@'.$user['user_id'].')';
                                     } else {
                                         $response_data['disallow'] = TRUE;
                                     }
