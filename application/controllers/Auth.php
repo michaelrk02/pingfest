@@ -15,9 +15,6 @@ class Auth extends CI_Controller
     }
     public function index()
     {
-        if( !empty($this->session->userdata('user_id')) ){
-            redirect(site_url('profile/index'));
-        } 
 
         $data = [
             'title' => 'Halaman Login'
@@ -33,10 +30,18 @@ class Auth extends CI_Controller
         if( $this->form_validation->run() == FALSE) {
             $sso = $this->pingfest->sso_handle();
 
+            if( !empty($this->session->userdata('user_id')) ){
+                redirect(site_url('profile/index'));
+            }
+
             $this->load->view('templates/header', $data);
             $this->load->view('auth/login', ['sso' => $sso, 'form_url_param' => (isset($sso) ? $sso['url_param'] : '')]);
             $this->load->view('templates/footer');
         } else {
+            if( !empty($this->session->userdata('user_id')) ){
+                redirect(site_url('profile/index'));
+            }
+
             $this->Auth_model->login();
         }
         
