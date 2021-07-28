@@ -12,9 +12,11 @@
                 <div class="card-body row">
                     <div class="col-md-2 col-12 my-auto text-center">
                         <div class="display-1 fa fa-user"></div>
+                        <div class="mt-2"><a class="text-danger" href="<?php echo site_url('auth/logout'); ?>" onclick="return confirm('Apakah anda yakin?')"><span class="fa fa-sign-out-alt mr-2"></span>Logout</a></div>
                     </div>
                     <div class="col-md-10 col-12">
                         <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><h3>Profil Anda</h3></li>
                             <li class="list-group-item"><b>User ID:</b> <span class="text-monospace"><?php echo $_SESSION['user_id']; ?></span></li>
                             <li class="list-group-item"><b>Nama Lengkap:</b> <?php echo htmlspecialchars($user['name']); ?></li>
                             <li class="list-group-item"><b>E-mail:</b> <?php echo htmlspecialchars($user['email']); ?></li>

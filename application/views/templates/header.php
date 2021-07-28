@@ -26,7 +26,7 @@
   <body>
     <header class="site-header sticky">
       <div class="logo-ping">
-        <a href="<?php echo base_url(); ?>">
+        <a href="<?php echo site_url(); ?>">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="238.775"
@@ -52,10 +52,16 @@
         </a>
       </div>
       <ul>
-        <li><a href="<?php echo base_url(); ?>" class="header-nav-link"> Home</a></li>
-        <li><a href="<?php echo base_url(); ?>itv" class="header-nav-link"> IT-Venture</a></li>
-        <li><a href="<?php echo base_url(); ?>semnas" class="header-nav-link"> Semnas</a></li>
-        <li><a href="<?php echo base_url(); ?>auth" class="login-link"> Login</a></li>
+        <li><a href="<?php echo site_url(); ?>" class="header-nav-link"> Home</a></li>
+        <li><a href="<?php echo site_url('itv'); ?>" class="header-nav-link"> IT-Venture</a></li>
+        <li><a href="<?php echo site_url('semnas'); ?>" class="header-nav-link"> Semnas</a></li>
+        <li>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="<?php echo site_url('profile'); ?>" class="login-link"> Profile</a>
+          <?php else: ?>
+            <a href="<?php echo site_url('auth'); ?>" class="login-link"> Login</a>
+          <?php endif; ?>
+        </li>
       </ul>
       <div class="menu-toggle">
         <span></span>
