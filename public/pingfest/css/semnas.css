@@ -32,7 +32,6 @@ body {
 .item-headline h1 {
   font-weight: 1000;
   font-size: clamp(2rem, 5vw, 4.5rem);
-  text-shadow: 0px 1px, 1px 0px, 1px 1px;
 }
 
 .item-headline h1:nth-child(2) {

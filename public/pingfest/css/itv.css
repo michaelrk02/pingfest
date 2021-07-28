@@ -32,7 +32,6 @@ body {
 .item-headline h1 {
   font-weight: 1000;
   font-size: clamp(2rem, 5vw, 4.5rem);
-  text-shadow: 0px 1px, 1px 0px, 1px 1px;
 }
 
 .item-headline h1:nth-child(2) {
@@ -57,7 +56,7 @@ body {
   font-weight: 1000;
   margin-top: 2.5vh;
   line-height: 1.5;
-  font-size: clamp(1.5rem, 4vw, 4rem);
+  font-size: clamp(1.7rem, 4vw, 4rem);
   top: 0;
   animation: riseit 4s infinite;
   animation-delay: calc(0.1s * var(--i));
@@ -67,8 +66,8 @@ body {
   position: relative;
   display: grid;
   grid-template-columns: 80vw;
-  grid-template-rows: 60vh 20vh 40vh;
-  margin: 10% 10%;
+  /* grid-template-rows: 60vh 20vh 40vh; */
+  margin: 5% 10%;
   row-gap: 5vh;
   grid-template-areas:
     'lomba-itv'
@@ -111,7 +110,7 @@ body {
   width: 100%;
   height: 55%;
   position: sticky;
-  top: 0;
+  top: -1px;
   z-index: 1;
 }
 
@@ -294,17 +293,50 @@ button {
 }
 
 .deskripsi-text-line span {
+  text-align: right;
   font-size: 1rem;
 }
 
 .daftar-itv {
-  background-color: blueviolet;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   grid-area: daftar-itv;
 }
 
+.daftar-itv .button {
+  margin: 2rem 2rem 1rem 2rem;
+  width: 19rem;
+}
+
+.daftar-itv .btn {
+  padding: 1.2rem 0;
+  border: 0.2rem solid var(--dark-color);
+}
+
+.daftar-itv .btn span {
+  font-size: 1.5rem;
+  display: inline-block;
+  position: relative;
+  will-change: transform;
+  transition: all 100ms ease;
+}
+
+.itv-guide-book .btn:hover span {
+  transform-origin: center;
+  transform: scale(1.15);
+}
+
 .sponsor {
-  background-color: burlywood;
   grid-area: sponsor;
+}
+
+.sponsor p {
+  font-weight: 700;
+
+  font-family: 'Bree Serif', serif;
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 4.5rem);
 }
 
 .container-fixed .container-itv {
@@ -323,6 +355,6 @@ button {
   }
   60%,
   90% {
-    transform: translateY(-2.5rem);
+    transform: translateY(-2vh);
   }
 }

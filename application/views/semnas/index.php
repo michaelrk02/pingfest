@@ -8,9 +8,9 @@
         <h1>Seminar Nasional</h1>
         <div class="idea-container">
             <div class="hay-text">Find</div>
-            &#160;&#160;&#160;&#160;
+            &#160;
             <div class="hay-text">Your</div>
-            &#160;&#160;&#160;&#160;
+            &#160;
             <div class="hay-text idea">Idea</div>
         </div>
     </div>

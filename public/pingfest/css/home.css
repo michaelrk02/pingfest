@@ -53,10 +53,9 @@ body {
   font-weight: 700;
   max-width: 100%;
   text-align: center;
-  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
   line-height: 1.09;
   letter-spacing: 1.4px;
-  /* text-shadow: 0px 1px, 1px 0px, 1px 1px; */
   color: var(--dark-color);
 }
 
@@ -123,7 +122,7 @@ body {
   font-family: 'Bree Serif', serif;
   text-align: center;
   font-size: clamp(2rem, 5vw, 4.5rem);
-  text-shadow: 0px 1px, 1px 0px, 1px 1px;
+  font-weight: 700;
 }
 
 .dokumentasi-container {
@@ -187,8 +186,8 @@ body {
 .sponsor p {
   font-family: 'Bree Serif', serif;
   text-align: center;
+  font-weight: 700;
   font-size: clamp(2rem, 5vw, 4.5rem);
-  text-shadow: 0px 1px, 1px 0px, 1px 1px;
 }
 
 .jelly-canvas {
@@ -238,8 +237,8 @@ body {
   max-width: 100%;
   font-size: 3rem;
   line-height: 1.2;
+  font-weight: 700;
   letter-spacing: 1.6px;
-  text-shadow: 0px 1px, 1px 0px, 1px 1px;
 }
 
 .inner .description {
@@ -302,7 +301,6 @@ button {
     width: 95%;
     grid-template-rows: 70vh 40vh 60vh 40vh 60vh;
     row-gap: 30vh;
-
     grid-template-areas:
       'headline headline'
       'logo-itv logo-itv'
