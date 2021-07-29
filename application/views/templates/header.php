@@ -20,7 +20,7 @@
     />
     <link href="https://fonts.googleapis.com/css2?family=Chivo&display=swap" rel="stylesheet"> 
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> -->
 
   </head>
   <body>

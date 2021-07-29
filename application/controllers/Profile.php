@@ -45,7 +45,9 @@ class Profile extends CI_Controller {
                 if (isset($identity)) {
                     $this->load->library('storage');
 
-                    $announcements = $this->events->get('battle', 'announcements')['announcements'];
+                    $event = $this->events->get('battle', 'announcements, locked');
+                    $announcements = $event['announcements'];
+                    $locked = !empty($event['locked']);
 
                     $idcard_url = NULL;
                     if ($this->storage->exists('idcard/battle/'.$_SESSION['user_id'])) {
@@ -53,7 +55,7 @@ class Profile extends CI_Controller {
                     }
 
                     $page = 'profile/index/setup_battle';
-                    $data = ['identity' => $identity, 'idcard_url' => $idcard_url, 'announcements' => $announcements];
+                    $data = ['identity' => $identity, 'locked' => $locked, 'idcard_url' => $idcard_url, 'announcements' => $announcements];
                 } else {
                     $page = 'profile/index/setup';
                     $data = ['event' => 'battle'];
@@ -71,10 +73,12 @@ class Profile extends CI_Controller {
                     unset($_SESSION['profile_music_identity']);
                 }
                 if (isset($identity)) {
-                    $announcements = $this->events->get('music', 'announcements')['announcements'];
+                    $event = $this->events->get('music', 'announcements, locked');
+                    $announcements = $event['announcements'];
+                    $locked = !empty($event['locked']);
 
                     $page = 'profile/index/setup_music';
-                    $data = ['identity' => $identity, 'announcements' => $announcements];
+                    $data = ['identity' => $identity, 'locked' => $locked, 'announcements' => $announcements];
                 } else {
                     $page = 'profile/index/setup';
                     $data = ['event' => 'music'];
@@ -94,7 +98,9 @@ class Profile extends CI_Controller {
                 if (isset($identity)) {
                     $this->load->library('storage');
 
-                    $announcements = $this->events->get('paper', 'announcements')['announcements'];
+                    $event = $this->events->get('paper', 'announcements, locked');
+                    $announcements = $event['announcements'];
+                    $locked = !empty($event['locked']);
 
                     $idcard_url = NULL;
                     if ($this->storage->exists('idcard/paper/'.$_SESSION['user_id'])) {
@@ -107,7 +113,7 @@ class Profile extends CI_Controller {
                     }
 
                     $page = 'profile/index/setup_paper';
-                    $data = ['identity' => $identity, 'idcard_url' => $idcard_url, 'submission_url' => $submission_url, 'announcements' => $announcements];
+                    $data = ['identity' => $identity, 'locked' => $locked, 'idcard_url' => $idcard_url, 'submission_url' => $submission_url, 'announcements' => $announcements];
                 } else {
                     $page = 'profile/index/setup';
                     $data = ['event' => 'paper'];
@@ -125,10 +131,12 @@ class Profile extends CI_Controller {
                     unset($_SESSION['profile_semnas_identity']);
                 }
                 if (isset($identity)) {
-                    $announcements = $this->events->get('battle', 'announcements')['announcements'];
+                    $event = $this->events->get('semnas', 'announcements, locked');
+                    $announcements = $event['announcements'];
+                    $locked = !empty($event['locked']);
 
                     $page = 'profile/index/setup_semnas';
-                    $data = ['identity' => $identity, 'announcements' => $announcements];
+                    $data = ['identity' => $identity, 'locked' => $locked, 'announcements' => $announcements];
                 } else {
                     $page = 'profile/index/setup';
                     $data = ['event' => 'semnas'];
@@ -335,37 +343,43 @@ class Profile extends CI_Controller {
             redirect($site);
         }
 
+        $locked = !empty($this->events->get('battle', 'locked')['locked']);
+
         if (!empty($this->input->post('submit'))) {
-            $this->load->library('form_validation');
+            if (!$locked) {
+                $this->load->library('form_validation');
 
-            $identity = [];
-            $identity['team_name'] = $this->input->post('team_name');
-            $identity['school'] = $this->input->post('school');
-            $identity['phone'] = $this->input->post('phone');
-            $identity['leader'] = $this->input->post('leader');
-            $identity['member_1'] = $this->input->post('member_1');
-            $identity['member_2'] = $this->input->post('member_2');
+                $identity = [];
+                $identity['team_name'] = $this->input->post('team_name');
+                $identity['school'] = $this->input->post('school');
+                $identity['phone'] = $this->input->post('phone');
+                $identity['leader'] = $this->input->post('leader');
+                $identity['member_1'] = $this->input->post('member_1');
+                $identity['member_2'] = $this->input->post('member_2');
 
-            $this->form_validation->set_rules('team_name', 'Nama Tim', 'required|max_length[100]');
-            $this->form_validation->set_rules('school', 'Asal Sekolah', 'required|max_length[100]');
-            $this->form_validation->set_rules('phone', 'No. Telp. Ketua', 'required|max_length[20]');
-            $this->form_validation->set_rules('leader', 'Nama Ketua', 'required|max_length[100]');
-            $this->form_validation->set_rules('member_1', 'Anggota #1', 'required|max_length[100]');
-            $this->form_validation->set_rules('member_2', 'Anggota #2', 'required|max_length[100]');
+                $this->form_validation->set_rules('team_name', 'Nama Tim', 'required|max_length[100]');
+                $this->form_validation->set_rules('school', 'Asal Sekolah', 'required|max_length[100]');
+                $this->form_validation->set_rules('phone', 'No. Telp. Ketua', 'required|max_length[20]');
+                $this->form_validation->set_rules('leader', 'Nama Ketua', 'required|max_length[100]');
+                $this->form_validation->set_rules('member_1', 'Anggota #1', 'required|max_length[100]');
+                $this->form_validation->set_rules('member_2', 'Anggota #2', 'required|max_length[100]');
 
-            if ($this->form_validation->run()) {
-                if ($this->events->battle_set($_SESSION['user_id'], $identity)) {
-                    $upload_status = $this->upload_battle_idcard();
+                if ($this->form_validation->run()) {
+                    if ($this->events->battle_set($_SESSION['user_id'], $identity)) {
+                        $upload_status = $this->upload_battle_idcard();
 
-                    $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas'.(!$upload_status ? ' namun gagal mengunggah file kartu tanda pelajar' : '');
+                        $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas'.(!$upload_status ? ' namun gagal mengunggah file kartu tanda pelajar' : '');
+                    } else {
+                        $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
+                    }
                 } else {
-                    $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
+                    $_SESSION['profile_status'] = 'ERROR: '.implode(' ', $this->form_validation->error_array());
                 }
-            } else {
-                $_SESSION['profile_status'] = 'ERROR: '.implode(' ', $this->form_validation->error_array());
-            }
 
-            $_SESSION['profile_battle_identity'] = $identity;
+                $_SESSION['profile_battle_identity'] = $identity;
+            } else {
+                $_SESSION['profile_status'] = 'ERROR: Pengisian data sudah dikunci. Anda tidak dapat merubah identitas anda lagi';
+            }
         }
 
         redirect($site);
@@ -387,40 +401,46 @@ class Profile extends CI_Controller {
             redirect($site);
         }
 
+        $locked = !empty($this->events->get('paper', 'locked')['locked']);
+
         if (!empty($this->input->post('submit'))) {
-            $this->load->library('form_validation');
+            if (!$locked) {
+                $this->load->library('form_validation');
 
-            $identity = [];
-            $identity['institution'] = $this->input->post('institution');
-            $identity['leader'] = $this->input->post('leader');
-            $identity['phone'] = $this->input->post('phone');
-            $identity['members'] = $this->input->post('members');
-            $identity['title'] = $this->input->post('title');
-            $identity['abstract'] = $this->input->post('abstract');
+                $identity = [];
+                $identity['institution'] = $this->input->post('institution');
+                $identity['leader'] = $this->input->post('leader');
+                $identity['phone'] = $this->input->post('phone');
+                $identity['members'] = $this->input->post('members');
+                $identity['title'] = $this->input->post('title');
+                $identity['abstract'] = $this->input->post('abstract');
 
-            if (!isset($identity['members'])) {
-                $identity['members'] = [];
-            }
-
-            $this->form_validation->set_rules('institution', 'Asal Institusi', 'required|max_length[100]');
-            $this->form_validation->set_rules('leader', 'Nama Ketua', 'required|max_length[100]');
-            $this->form_validation->set_rules('phone', 'No. Telp. Ketua', 'required|max_length[20]');
-            $this->form_validation->set_rules('title', 'Judul Karya Tulis', 'max_length[100]');
-            $this->form_validation->set_rules('abstract', 'Abstrak', 'max_length[1000]');
-
-            if ($this->form_validation->run()) {
-                if ($this->events->paper_set($_SESSION['user_id'], $identity)) {
-                    $upload_status = $this->upload_paper_idcard() && $this->upload_paper_submission();
-
-                    $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas'.(!$upload_status ? ' namun gagal mengunggah file kartu tanda mahasiswa atau file submisi' : '');
-                } else {
-                    $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
+                if (!isset($identity['members'])) {
+                    $identity['members'] = [];
                 }
-            } else {
-                $_SESSION['profile_status'] = 'ERROR: '.implode(' ', $this->form_validation->error_array());
-            }
 
-            $_SESSION['profile_paper_identity'] = $identity;
+                $this->form_validation->set_rules('institution', 'Asal Institusi', 'required|max_length[100]');
+                $this->form_validation->set_rules('leader', 'Nama Ketua', 'required|max_length[100]');
+                $this->form_validation->set_rules('phone', 'No. Telp. Ketua', 'required|max_length[20]');
+                $this->form_validation->set_rules('title', 'Judul Karya Tulis', 'max_length[100]');
+                $this->form_validation->set_rules('abstract', 'Abstrak', 'max_length[1000]');
+
+                if ($this->form_validation->run()) {
+                    if ($this->events->paper_set($_SESSION['user_id'], $identity)) {
+                        $upload_status = $this->upload_paper_idcard() && $this->upload_paper_submission();
+
+                        $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas'.(!$upload_status ? ' namun gagal mengunggah file kartu tanda mahasiswa atau file submisi' : '');
+                    } else {
+                        $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
+                    }
+                } else {
+                    $_SESSION['profile_status'] = 'ERROR: '.implode(' ', $this->form_validation->error_array());
+                }
+
+                $_SESSION['profile_paper_identity'] = $identity;
+            } else {
+                $_SESSION['profile_status'] = 'ERROR: Pengisian data sudah dikunci. Anda tidak dapat merubah identitas anda lagi';
+            }
         }
 
         redirect($site);
@@ -448,36 +468,42 @@ class Profile extends CI_Controller {
             redirect($site);
         }
 
+        $locked = !empty($this->events->get('music', 'locked')['locked']);
+
         if (!empty($this->input->post('submit'))) {
-            $this->load->library('form_validation');
+            if (!$locked) {
+                $this->load->library('form_validation');
 
-            $identity = [];
-            $identity['group_name'] = $this->input->post('group_name');
-            $identity['leader'] = $this->input->post('leader');
-            $identity['phone'] = $this->input->post('phone');
-            $identity['members'] = $this->input->post('members');
-            $identity['link_gdrive'] = $this->input->post('link_gdrive');
-            $identity['link_igtv'] = $this->input->post('link_igtv');
+                $identity = [];
+                $identity['group_name'] = $this->input->post('group_name');
+                $identity['leader'] = $this->input->post('leader');
+                $identity['phone'] = $this->input->post('phone');
+                $identity['members'] = $this->input->post('members');
+                $identity['link_gdrive'] = $this->input->post('link_gdrive');
+                $identity['link_igtv'] = $this->input->post('link_igtv');
 
-            if (!isset($identity['members'])) {
-                $identity['members'] = [];
-            }
-
-            $this->form_validation->set_rules('group_name', 'Nama Group', 'required|max_length[50]');
-            $this->form_validation->set_rules('leader', 'Nama Ketua', 'required|max_length[100]');
-            $this->form_validation->set_rules('phone', 'No. Telp. Ketua', 'required|max_length[20]');
-
-            if ($this->form_validation->run()) {
-                if ($this->events->music_set($_SESSION['user_id'], $identity)) {
-                    $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas';
-                } else {
-                    $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
+                if (!isset($identity['members'])) {
+                    $identity['members'] = [];
                 }
-            } else {
-                $_SESSION['profile_status'] = 'ERROR: '.implode(' ', $this->form_validation->error_array());
-            }
 
-            $_SESSION['profile_music_identity'] = $identity;
+                $this->form_validation->set_rules('group_name', 'Nama Group', 'required|max_length[50]');
+                $this->form_validation->set_rules('leader', 'Nama Ketua', 'required|max_length[100]');
+                $this->form_validation->set_rules('phone', 'No. Telp. Ketua', 'required|max_length[20]');
+
+                if ($this->form_validation->run()) {
+                    if ($this->events->music_set($_SESSION['user_id'], $identity)) {
+                        $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas';
+                    } else {
+                        $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
+                    }
+                } else {
+                    $_SESSION['profile_status'] = 'ERROR: '.implode(' ', $this->form_validation->error_array());
+                }
+
+                $_SESSION['profile_music_identity'] = $identity;
+            } else {
+                $_SESSION['profile_status'] = 'ERROR: Pengisian data sudah dikunci. Anda tidak dapat merubah identitas anda lagi';
+            }
         }
 
         redirect($site);
@@ -493,19 +519,25 @@ class Profile extends CI_Controller {
             redirect($site);
         }
 
+        $locked = !empty($this->events->get('semnas', 'locked')['locked']);
+
         if (!empty($this->input->post('submit'))) {
-            $this->load->library('form_validation');
+            if (!$locked) {
+                $this->load->library('form_validation');
 
-            $identity = [];
-            $identity['institution'] = $this->input->post('institution');
+                $identity = [];
+                $identity['institution'] = $this->input->post('institution');
 
-            if ($this->events->semnas_set($_SESSION['user_id'], $identity)) {
-                $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas';
+                if ($this->events->semnas_set($_SESSION['user_id'], $identity)) {
+                    $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas';
+                } else {
+                    $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
+                }
+
+                $_SESSION['profile_semnas_identity'] = $identity;
             } else {
-                $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
+                $_SESSION['profile_status'] = 'ERROR: Pengisian data sudah dikunci. Anda tidak dapat merubah identitas anda lagi';
             }
-
-            $_SESSION['profile_semnas_identity'] = $identity;
         }
 
         redirect($site);
