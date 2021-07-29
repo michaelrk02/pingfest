@@ -82,7 +82,7 @@ function generate_users_music($nick) {
     $group_name = $name.'\'s Group';
     $leader = $name;
     generate_participant($nick, E_MUSIC, 50000);
-    $members = ['data' => [$name, 'noname', 'noname']];
+    $members = ['data' => ['noname', 'noname', 'noname']];
     $members = json_encode($members);
     $members = addslashes($members);
     echo 'INSERT INTO '.T_MUSIC.' (user_id, group_name, leader, phone, members, link_gdrive, link_igtv) VALUES ("'.$nick.'", "'.$group_name.'", "'.$leader.'", "081233334444", "'.$members.'", "https://drive.google.com/", "https://instagram.com/");'.PHP_EOL;
@@ -92,7 +92,7 @@ function generate_users_paper($nick) {
     $name = username($nick);
     $institution = $name.'\'s University';
     generate_participant($nick, E_PAPER, 75000);
-    $members = ['data' => [$name, 'noname', 'noname']];
+    $members = ['data' => ['noname', 'noname']];
     $members = json_encode($members);
     $members = addslashes($members);
     echo 'INSERT INTO '.T_PAPER.' (user_id, institution, leader, phone, members, title, abstract) VALUES ("'.$nick.'", "'.$institution.'", "'.$name.'", "081233334444", "'.$members.'", "My Amazing Paper", "No description");'.PHP_EOL;

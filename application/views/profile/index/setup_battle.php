@@ -1,3 +1,4 @@
+<script src="<?php echo base_url('public/marked/js/marked.min.js'); ?>"></script>
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -9,7 +10,7 @@
         </div>
         <?php if ($locked): ?>
             <div class="col-12">
-                <div class="alert alert-danger">Pengisian data sudah ditutup</div>
+                <div class="alert alert-danger"><span class="fa fa-exclamation-circle"></span> Pengisian data sudah ditutup</div>
             </div>
         <?php endif; ?>
         <div class="col-12" style="padding-bottom: 3rem">
@@ -58,3 +59,10 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    $('#announcements').html(function(index, announcements) {
+        return marked(announcements);
+    });
+});
+</script>
