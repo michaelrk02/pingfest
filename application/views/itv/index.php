@@ -142,7 +142,7 @@
                     <h4>Ketentuan</h4><hr>
                     <div class="deskripsi-text-line"> <i class="symbol fas fa-user"></i><span>Warga Indonesia<span> </div>
                     <div class="deskripsi-text-line"> <i class="symbol fas fa-user-friends"></i><span>1-7 orang<span> </div>
-                    <div class="deskripsi-text-line"> <i class="symbol fa fa-dollar-sign"></i><span>Rp 100.000<span> </div>
+                    <div class="deskripsi-text-line"> <i class="symbol fa fa-dollar-sign"></i><span>Rp 75.000<span> </div>
                     <h4>Hadiah</h4><hr>
                     <div class="deskripsi-text-line"> <b class="symbol">#1</b><span>Rp 1.500.000<span> </div>
                     <div class="deskripsi-text-line"> <b class="symbol">#2</b><span>Rp 1.000.000<span> </div>
@@ -284,7 +284,7 @@
             </a>
         </div>
         <div class="itv-daftar button">
-            <a href="<?php echo site_url('profile/index').'?tab=e_battle'; ?>" class="btn daftar-block">
+            <a href="<?php echo site_url('profile/index').'?tab=registration'; ?>" class="btn daftar-block">
                 <span class="daftar-text">Daftar Sekarang</span>
             </a>
         </div>

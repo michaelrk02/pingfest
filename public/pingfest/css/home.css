@@ -90,8 +90,14 @@ body {
 }
 
 .logo-itv {
-  background-color: #e52129;
   grid-area: logo-itv;
+  display: flex;
+  place-items: center;
+}
+
+.logo-itv .logo-mobile {
+  width: 90%;
+  margin-left: 5%;
 }
 
 .text-itv {
