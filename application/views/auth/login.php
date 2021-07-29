@@ -43,7 +43,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="<?= site_url('auth/forget/'); ?>">Lupa password?</a>
+                                        <a class="small" href="<?= site_url('auth/forgot/'); ?>">Lupa password?</a>
                                     </div>
                                     <div class="text-center">
                                         <a class="small" href="<?= site_url('auth/registration/'); ?>">Belum punya akun?</a>
