@@ -10,6 +10,10 @@
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">Ubah Password</h1>
                     </div>
+                    <?php if( !empty($this->session->userdata('forgothandle_msg')) ){
+                        echo $this->session->userdata('forgothandle_msg');
+                        $this->session->unset_userdata('forgothandle_msg');
+                    } ?>
                     <form method="post" action="<?= site_url('auth/forgot_handle') . $url_param; ?>">
                         <div class="form-group">
                             <label>Username</label>

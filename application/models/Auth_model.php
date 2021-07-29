@@ -108,49 +108,50 @@ class Auth_model extends CI_model
 
         mail($to, $subject, $message, $header);
 
+        var_dump($message);
+        die;
+
     }
 
-    public function changePassword()
+    public function changePassword( $token )
     {
         $uname = $this->input->post('uname');
 
         $user = $this->db->get_where('pf_users', ['user_id' => $uname])->row_array();
-        $old_pw = $user['password'];
+        $old_pw = $user['password']; //hash pw lama
 
-        $data = [
-            'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT)
-        ];
-
-        $this->db->where('user_id', $uname);
-        $this->db->update('pf_users', $data);
-
-        //selesai ubah password
-
-        //KALO PW LAMA HARUS BEDA DENGAN PW BARU
-        /*
-        $user = $this->db->get_where('pf_users', ['user_id' => $uname])->row_array();
-        $new_pw = $user['password'];
-        if( $old_pw != $new_pw){
-            //pw baru beda dengan yg lama (berhasil ganti)
+        if( password_verify($this->input->post('password'), $old_pw) ){ //pw baru sama kaya yg sebelumnya
             $session_data = [
-                'auth_msg' => '<div class="alert alert-success" role="alert">Password berhasil diubah! Silahkan login</div>'
+                'forgothandle_msg' => '<div class="alert alert-danger" role="alert">Password baru tidak boleh sama dengan password lama!</div>'
             ];
             $this->session->set_userdata($session_data);
-        } else {
-            //pw baru sama dengan yg lama (gagal ganti)
-            $session_data = [
-                'auth_msg' => '<div class="alert alert-danger" role="alert">Password gagal diubah!</div>'
+            redirect(site_url('auth/forgot_handle') . "?token=" . urlencode($token) ); 
+        } else { //pw baru beda sama yg lama
+            $data = [
+                'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT)
             ];
-            $this->session->set_userdata($session_data);
+    
+            $this->db->where('user_id', $uname);
+            $this->db->update('pf_users', $data);
+
+            $user = $this->db->get_where('pf_users', ['user_id' => $uname])->row_array();
+            if( $user['password'] == $data['password'] ){ // berhasil update pw di db
+                $session_data = [
+                    'auth_msg' => '<div class="alert alert-success" role="alert">Password berhasil diubah! Silahkan login</div>'
+                ];
+                $this->session->set_userdata($session_data);
+                redirect(site_url('auth/index'));
+            } else { //gagal update pw di db
+                $session_data = [
+                    'forgothandle_msg' => '<div class="alert alert-danger" role="alert">Password gagal diubah!</div>'
+                ];
+                $this->session->set_userdata($session_data);
+                redirect(site_url('auth/forgot_handle') . "?token=" . urlencode($token) );
+            }
+
         }
-        */
 
-        $session_data = [
-            'auth_msg' => '<div class="alert alert-success" role="alert">Password berhasil diubah! Silahkan login</div>'
-        ];
-        $this->session->set_userdata($session_data);
         
-        redirect(site_url('auth/index'));
     }
 
 

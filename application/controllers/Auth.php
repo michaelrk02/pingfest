@@ -150,7 +150,7 @@ class Auth extends CI_Controller
         if( !empty($this->session->userdata('user_id')) ){
             redirect(site_url('profile/index'));
         } 
-        $token = urldecode( $this->input->get('token') );
+        $token = $this->input->get('token');
         $extract = $this->jwt->extract($token, PF_SECRET_KEY);
 
         if( empty($extract) ){
@@ -180,7 +180,7 @@ class Auth extends CI_Controller
             $this->load->view('auth/forgot_handle', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->Auth_model->changePassword();
+            $this->Auth_model->changePassword( $token );
         }
 
     }
