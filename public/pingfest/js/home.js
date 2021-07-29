@@ -3,6 +3,7 @@ const Grid = document.querySelector('.text-itv');
 
 const itvJellyContainer = document.querySelector('.itv-jelly');
 const itvTextContainer = document.querySelector('.itv-inner');
+const itvTextDescription = document.querySelector('.itv-text');
 
 const semJellyContainer = document.querySelector('.sem-jelly');
 const semTextContainer = document.querySelector('.sem-inner');
@@ -57,39 +58,31 @@ $(window)
 
 function resize() {
   var scale = Math.min(
-    1,
-    (Grid.clientWidth / itvJellyContainer.clientWidth) * 1.3,
-    (Grid.clientHeight / itvJellyContainer.clientHeight) * 1.3
+    (Grid.clientWidth / itvJellyContainer.clientWidth) * 1.2,
+    (Grid.clientHeight / itvJellyContainer.clientHeight) * 1.2
   );
-  if (window.innerWidth > 900) {
-    itvJellyContainer.style.right = '-' + scale * 25 + 'px';
-    itvTextContainer.style.right = '-' + scale * 25 + 'px';
 
-    semJellyContainer.style.left = '-' + scale * 25 + 'px';
-    semTextContainer.style.left = '-' + scale * 25 + 'px';
-  } else {
-    itvJellyContainer.style.right = '-' + (880 - Grid.clientWidth) / 4 + 'px';
-    itvTextContainer.style.right = '-' + (880 - Grid.clientWidth) / 4 + 'px';
-
-    semJellyContainer.style.left = '-' + (900 - Grid.clientWidth) / 4 + 'px';
-    semTextContainer.style.left = '-' + (900 - Grid.clientWidth) / 4 + 'px';
-  }
   var mobile = 0.4;
   if (window.innerWidth < 900) {
     mobile += window.innerWidth / 1200;
+    itvJellyContainer.style.right = '-' + (920 - Grid.clientWidth) / 4 + 'px';
+    itvTextContainer.style.right = '-' + (920 - Grid.clientWidth) / 4 + 'px';
+
+    semJellyContainer.style.left = '-' + (920 - Grid.clientWidth) / 4 + 'px';
+    semTextContainer.style.left = '-' + (920 - Grid.clientWidth) / 4 + 'px';
   }
-  scale = Math.max(scale, mobile, 0.7);
+  if (window.innerWidth < 400) {
+    scale = Math.max(scale, mobile);
+    itvJellyContainer.style.transform = 'scale(' + scale + ')';
+    itvTextContainer.style.transform = 'scale(' + scale + ')';
+    itvTextDescription.style.width = (1 / scale) * 99 + 'vw';
 
-  itvJellyContainer.style.transform = 'scale(' + scale + ')';
-  itvTextContainer.style.transform = 'scale(' + scale + ')';
-
-  semJellyContainer.style.transform = 'scale(' + scale + ')';
-  semTextContainer.style.transform = 'scale(' + scale + ')';
+    semJellyContainer.style.transform = 'scale(' + scale + ')';
+    semTextContainer.style.transform = 'scale(' + scale + ')';
+  } else {
+    itvTextDescription.style.width = 60 + '%';
+  }
 }
 
 window.addEventListener('resize', resize);
 resize();
-
-var morphing = anime({
-  targets,
-});

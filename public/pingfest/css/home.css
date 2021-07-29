@@ -18,7 +18,7 @@ body {
 
 .grid-container {
   position: relative;
-  width: 80%;
+  width: 1280px;
   padding-top: 75px;
   margin: auto;
 
@@ -93,17 +93,29 @@ body {
   grid-area: logo-itv;
   display: flex;
   place-items: center;
+  place-content: center;
+  z-index: 20;
+}
+
+.logo-mobile {
+  width: 80%;
+  max-width: unset;
 }
 
 .logo-itv .logo-mobile {
-  width: 90%;
-  margin-left: 5%;
+  margin-left: 10%;
+}
+
+.logo-semnas .logo-mobile {
+  transform-origin: top right;
+  margin-right: 10%;
 }
 
 .text-itv {
   pointer-events: none;
   position: relative;
   display: flex;
+  justify-items: flex-start;
   grid-area: text-itv;
 }
 
@@ -115,8 +127,11 @@ body {
 }
 
 .logo-semnas {
-  background-color: #00a2e9;
-
+  grid-area: logo-itv;
+  display: flex;
+  place-items: center;
+  place-content: center;
+  z-index: 20;
   grid-area: logo-semnas;
 }
 
@@ -219,17 +234,21 @@ body {
 .itv-jelly,
 .itv-inner {
   transform-origin: top right;
+  left: -100px;
+  transform: scale(1);
 }
 
 .sem-jelly,
 .sem-inner {
   transform-origin: top left;
+  right: -100px;
+  transform: scale(1);
 }
 
 .inner .wrapper {
   position: absolute;
   top: 22%;
-  left: 22%;
+  left: 20%;
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -239,17 +258,17 @@ body {
 }
 
 .inner .title {
-  font-family: 'Bree Serif', serif;
+  font-family: 'Bree Serif';
   max-width: 100%;
   font-size: 3rem;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: 1000;
   letter-spacing: 1.6px;
 }
 
 .inner .description {
   margin-top: 10%;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .btn,
@@ -300,11 +319,35 @@ button {
   right: -2rem;
 }
 
+@media screen and (max-width: 1280px) {
+  .grid-container {
+    width: 95%;
+  }
+
+  .logo-mobile {
+    width: 90% !important;
+    max-width: 500px;
+    margin: 0 !important;
+    transform: scale(0.9);
+  }
+
+  .itv-jelly,
+  .itv-inner {
+    left: -330px;
+    transform: scale(0.8);
+  }
+
+  .sem-jelly,
+  .sem-inner {
+    left: -80px !important;
+    transform: scale(0.8);
+  }
+}
+
 @media screen and (max-width: 900px) {
   .grid-container {
     pointer-events: none;
     position: relative;
-    width: 95%;
     grid-template-rows: 70vh 40vh 60vh 40vh 60vh;
     row-gap: 30vh;
     grid-template-areas:
@@ -317,6 +360,10 @@ button {
       'sponsor sponsor';
   }
 
+  .logo-mobile {
+    width: 95% !important;
+  }
+
   .headline iframe {
     width: 85vw;
     height: calc(0.5625 * 85vw);
@@ -324,6 +371,17 @@ button {
 
   .dokumentasi-container {
     max-width: 85vw;
+  }
+
+  .text-itv,
+  .text-semnas {
+    margin-top: -40vh;
+  }
+
+  .itv-jelly,
+  .itv-inner {
+    left: unset;
+    transform: scale(0.8);
   }
 }
 

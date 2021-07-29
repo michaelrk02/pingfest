@@ -12,12 +12,8 @@
     <link rel="stylesheet" href="<?php echo base_url('public/fontawesome/css/all.min.css'); ?>">
 
     <link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/header.css'); ?>" />
-    <link <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap"
-      rel="stylesheet"
-    />
+
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Chivo&display=swap" rel="stylesheet"> 
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
