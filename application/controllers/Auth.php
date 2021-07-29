@@ -129,7 +129,7 @@ class Auth extends CI_Controller
             //user dah input email
             if( $this->Auth_model->emailExist() ){
                 $session_data = [
-                    'forgot_msg' => '<div class="alert alert-success" role="alert">Silahkan cek email anda untuk mengubah password!</div>'
+                    'forgot_msg' => '<div class="alert alert-success" role="alert">Silahkan cek email anda untuk mengubah password! (cek kotak Spam apabila mail tidak ditemukan)</div>'
                 ];
                 $this->session->set_userdata($session_data);
                 $tokens = $this->Auth_model->generateForgotToken();
@@ -150,7 +150,7 @@ class Auth extends CI_Controller
         if( !empty($this->session->userdata('user_id')) ){
             redirect(site_url('profile/index'));
         } 
-        $token = $this->input->get('token');
+        $token = urldecode( $this->input->get('token') );
         $extract = $this->jwt->extract($token, PF_SECRET_KEY);
 
         if( empty($extract) ){

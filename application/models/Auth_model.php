@@ -101,7 +101,7 @@ class Auth_model extends CI_model
         Halo Sobat Ping!\n
         Berikut link untuk mengubah password pada username terkait:\n";
         foreach( $tokens as $user => $token ){
-            $message .= $user . " = www.pingfest.com/web/index.php/auth/forgot_handle?token=" . $token . "\n"; 
+            $message .= $user . " = " . site_url('auth/forgot_handle') . "?token=" . urlencode($token) . "\n"; 
         }
 
         $message .= "\nLink akan kadaluwarsa dalam 1 hari";
