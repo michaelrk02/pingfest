@@ -2,6 +2,7 @@
 
 class Auth_model extends CI_model 
 {
+
     public function addUserData()
     {
         $data = [
@@ -16,11 +17,12 @@ class Auth_model extends CI_model
         $this->db->insert('users', $data); 
     }
 
-    public function login(){
+    public function login()
+    {
         $uname = $this->input->post('uname', true);
         $password = $this->input->post('password');
 
-        $user = $this->db->get_where('users', ['user_id' => $uname])->row_array();
+        $user = $this->db->get_where('pf_users', ['user_id' => $uname])->row_array(); //updated table
         if( $user != NULL ){
             //Username bener
             if(password_verify($password, $user['password'])){
@@ -51,6 +53,127 @@ class Auth_model extends CI_model
             redirect(site_url('auth/index').$url_param);
         }
     }
+
+    public function isExistingEmail()
+    {
+        $email = $this->input->post('email');
+        $user = $this->db->get_where('pf_users', ['email' => $email])->row_array();
+
+        if( $user != NULL ){
+            //email ada
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function generateForgotToken()
+    {
+        $this->load->library('Jwt');
+
+        $email = $this->input->post('email');
+
+        $total = $this->db->get_where('pf_users', ['email' => $email])->num_rows();
+        for( $x=0; $x < $total; $x++){
+            $user = $this->db->get_where('pf_users', ['email' => $email])->row_array($x);
+            $id = $user['user_id'];
+            $password = $user['password'];
+            $data = [
+                'user_id' => $id
+            ];
+            $token = $this->jwt->create($data, 86400, PF_SECRET_KEY . $password);
+            $token_array[ $id ] = $token;
+        }
+
+        return $token_array;
+    }
+
+    public function extractForgotToken( $token )
+    {
+        $this->load->library('Jwt');
+
+        $data = $this->jwt->get_data($token);
+        if( empty($data) ){
+            return NULL;
+        }
+        $uname = $data['user_id'];
+
+        $user = $this->db->get_where('pf_users', ['user_id' => $uname])->row_array();
+        $password = $user['password'];
+
+        $extract = $this->jwt->extract( $token, PF_SECRET_KEY . $password);
+        return $extract;
+
+    }
+
+    public function sendTokenEmail($tokens)
+    {
+        if( !is_array($tokens) ){
+            return false;
+        }
+
+        $from = "noreply@pingfest.com";
+        $to = $this->input->post('email');
+        $subject = "Ubah Password Akun P!NGFEST";
+        $header[] = 'MIME-Version: 1.0';
+        $header[] = 'Content-type: text/html; charset=iso-8859-1';
+        $message = 
+        "
+        <h2>Halo Sobat P!NG!</h2><br>
+        Anda telah meminta untuk melakukan <b>ubah password</b> akun P!NGFEST.<br>
+        Berikut link untuk mengubah password pada username terkait:<br>";
+        foreach( $tokens as $user => $token ){
+            $message .= $user . ': ' . '<a href="' . site_url('auth/forgot_handle') . "?token=" . urlencode($token) . '">klik disini</a><br>'; 
+        }
+
+        $message .= "<br><b>PERINGATAN:</b> Link akan kadaluwarsa dalam 1 hari";
+
+        @mail($to, $subject, $message, implode("\r\n", $header) );
+
+    }
+
+    public function changePassword( $token )
+    {
+        $uname = $this->input->post('uname');
+
+        $user = $this->db->get_where('pf_users', ['user_id' => $uname])->row_array();
+        $old_pw = $user['password']; //hash pw lama
+
+        if( password_verify($this->input->post('password'), $old_pw) ){ //pw baru sama kaya yg sebelumnya
+            $session_data = [
+                'forgothandle_msg' => '<div class="alert alert-danger" role="alert">Password baru tidak boleh sama dengan password lama!</div>'
+            ];
+            $this->session->set_userdata($session_data);
+            redirect(site_url('auth/forgot_handle') . "?token=" . urlencode($token) ); 
+        } else { //pw baru beda sama yg lama
+            $data = [
+                'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT)
+            ];
+    
+            $this->db->where('user_id', $uname);
+            $this->db->update('pf_users', $data);
+
+            $user = $this->db->get_where('pf_users', ['user_id' => $uname])->row_array();
+            if( $user['password'] == $data['password'] ){ // berhasil update pw di db
+                $session_data = [
+                    'auth_msg' => '<div class="alert alert-success" role="alert">Password berhasil diubah! Silahkan login</div>'
+                ];
+                $this->session->set_userdata($session_data);
+                redirect(site_url('auth/index'));
+            } else { //gagal update pw di db
+                $session_data = [
+                    'forgothandle_msg' => '<div class="alert alert-danger" role="alert">Password gagal diubah!</div>'
+                ];
+                $this->session->set_userdata($session_data);
+                redirect(site_url('auth/forgot_handle') . "?token=" . urlencode($token) );
+            }
+
+        }
+
+        
+    }
+
+
 
 }
 

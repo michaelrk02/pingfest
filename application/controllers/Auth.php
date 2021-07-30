@@ -12,7 +12,9 @@ class Auth extends CI_Controller
         $this->load->database();
 
         $this->load->library('pingfest');
+        $this->load->library('Jwt');
     }
+
     public function index()
     {
 
@@ -104,7 +106,7 @@ class Auth extends CI_Controller
         
     }
 
-    public function forget()
+    public function forgot()
     {
         if( !empty($this->session->userdata('user_id')) ){
             redirect(site_url('profile/index'));
@@ -113,15 +115,96 @@ class Auth extends CI_Controller
         $data = [
             'title' => 'Lupa Password'
         ];
-        
-        $this->load->view('templates/header', $data);
-        $this->load->view('auth/forget');
-        $this->load->view('templates/footer');
-        
-        
 
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email', [
+            'required' => '{field} harus diisi',
+            'valid_email' => '{field} harus valid'
+        ]);
+
+        if( $this->form_validation->run() == FALSE){
+            $this->load->view('templates/header', $data);
+            $this->load->view('auth/forgot');
+            $this->load->view('templates/footer');
+        } else {
+            //user dah input email
+            if( $this->Auth_model->isExistingEmail() ){
+                $session_data = [
+                    'forgot_msg' => '<div class="alert alert-success" role="alert">Silahkan cek email anda untuk mengubah password! (cek kotak Spam apabila mail tidak ditemukan)</div>'
+                ];
+                $this->session->set_userdata($session_data);
+                $tokens = $this->Auth_model->generateForgotToken();
+                $this->Auth_model->sendTokenEmail($tokens);
+            } else {
+                $session_data = [
+                    'forgot_msg' => '<div class="alert alert-danger" role="alert">Email tidak ditemukan!</div>'
+                ];
+                $this->session->set_userdata($session_data);
+            }
+            redirect(site_url('auth/forgot/'));
+
+        }
+    }
+
+    public function forgot_handle()
+    {
+        if( !empty($this->session->userdata('user_id')) ){
+            redirect(site_url('profile/index'));
+        } 
+
+        $token = $this->input->get('token');
+        if( empty($token) ){
+            redirect(site_url('auth'));
+        }
+
+        $extract = $this->Auth_model->extractForgotToken( $token );
+        if( empty($extract) ){
+            $data = [
+                'title' => 'Ubah Password',
+                'id' => NULL,
+                'isValidToken' => FALSE,
+                'url_param' => "?token=" . $token
+            ];
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('auth/forgot_handle', $data);
+            $this->load->view('templates/footer');
+            //die; //??
+        } else {
+            $data = [
+                'title' => 'Ubah Password',
+                'id' => $extract['user_id'],
+                'isValidToken' => TRUE,
+                'url_param' => "?token=" . $token
+            ];
+    
+            $this->form_validation->set_rules('password', 'Password', 'required|matches[password2]|min_length[8]|max_length[72]', [
+                'required' => '{field} harus diisi', 
+                'matches' => '{field} tidak sama',
+                'min_length' => '{field} terlalu pendek',
+                'max_length' => '{field} terlalu panjang'
+            ]);
+            $this->form_validation->set_rules('password2', 'Password', 'required|matches[password]', [
+                'required' => '{field} harus diisi',
+                'matches' => '{field} tidak sama'
+            ]);
+    
+            if( $this->form_validation->run() == FALSE){
+                $this->load->view('templates/header', $data);
+                $this->load->view('auth/forgot_handle', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $this->Auth_model->changePassword( $token );
+            }
+        }
+        
+        //token work
+        
 
     }
+
+    
+        
+        
 
     public function logout()
     {
