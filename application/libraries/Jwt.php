@@ -7,7 +7,9 @@ class Jwt {
         if (!is_array($data)) {
             $data = [];
         }
-        $data['__exp'] = time() + $age;
+        if (isset($age)) {
+            $data['__exp'] = time() + $age;
+        }
         $data = base64_encode(json_encode($data));
         $signature = hash_hmac('sha256', $data, $secret);
         return base64_encode($data.':'.$signature);

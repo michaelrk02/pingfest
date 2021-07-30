@@ -62,7 +62,7 @@ class Pingfest {
                                     }
                                 }
 
-                                $response = $this->ci->jwt->create($response_data, 86400, $app['secret_key']);
+                                $response = $this->ci->jwt->create($response_data, NULL, $app['secret_key']);
                                 if (isset($request_data['redirect_url']) && isset($request_data['redirect_param'])) {
                                     redirect($request_data['redirect_url'].'?'.$request_data['redirect_param'].'='.urlencode($response));
                                 }
