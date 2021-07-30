@@ -111,25 +111,24 @@ class Auth_model extends CI_model
         if( !is_array($tokens) ){
             return false;
         }
+
         $from = "noreply@pingfest.com";
         $to = $this->input->post('email');
         $subject = "Ubah Password Akun P!NGFEST";
-        $header = "From: " . $from;
+        $header[] = 'MIME-Version: 1.0';
+        $header[] = 'Content-type: text/html; charset=iso-8859-1';
         $message = 
         "
-        Halo Sobat P!NG!\n
+        <h2>Halo Sobat P!NG!</h2><br>
+        Anda telah meminta untuk melakukan <b>ubah password</b> akun P!NGFEST.<br>
         Berikut link untuk mengubah password pada username terkait:<br>";
         foreach( $tokens as $user => $token ){
-            $message .= '<a href="' . site_url('auth/forgot_handle') . "?token=" . urlencode($token) . '">'
-            . $user . '</a><br>'; 
+            $message .= $user . ': ' . '<a href="' . site_url('auth/forgot_handle') . "?token=" . urlencode($token) . '">klik disini</a><br>'; 
         }
 
-        $message .= "\nLink akan kadaluwarsa dalam 1 hari";
+        $message .= "<br><b>PERINGATAN:</b> Link akan kadaluwarsa dalam 1 hari";
 
-        mail($to, $subject, $message, $header);
-
-        var_dump($message);
-        die;
+        @mail($to, $subject, $message, implode("\r\n", $header) );
 
     }
 
