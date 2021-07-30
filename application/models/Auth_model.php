@@ -54,7 +54,7 @@ class Auth_model extends CI_model
         }
     }
 
-    public function emailExist()
+    public function isExistingEmail()
     {
         $email = $this->input->post('email');
         $user = $this->db->get_where('pf_users', ['email' => $email])->row_array();
@@ -77,14 +77,33 @@ class Auth_model extends CI_model
         for( $x=0; $x < $total; $x++){
             $user = $this->db->get_where('pf_users', ['email' => $email])->row_array($x);
             $id = $user['user_id'];
+            $password = $user['password'];
             $data = [
                 'user_id' => $id
             ];
-            $token = $this->jwt->create($data, 86400, PF_SECRET_KEY);
+            $token = $this->jwt->create($data, 86400, PF_SECRET_KEY . $password);
             $token_array[ $id ] = $token;
         }
 
         return $token_array;
+    }
+
+    public function extractForgotToken( $token )
+    {
+        $this->load->library('Jwt');
+
+        $data = $this->jwt->get_data($token);
+        if( empty($data) ){
+            return NULL;
+        }
+        $uname = $data['user_id'];
+
+        $user = $this->db->get_where('pf_users', ['user_id' => $uname])->row_array();
+        $password = $user['password'];
+
+        $extract = $this->jwt->extract( $token, PF_SECRET_KEY . $password);
+        return $extract;
+
     }
 
     public function sendTokenEmail($tokens)
@@ -92,16 +111,17 @@ class Auth_model extends CI_model
         if( !is_array($tokens) ){
             return false;
         }
-        $from = "noreply@gmail.com";
+        $from = "noreply@pingfest.com";
         $to = $this->input->post('email');
-        $subject = "Ubah Password Akun Pingfest";
+        $subject = "Ubah Password Akun P!NGFEST";
         $header = "From: " . $from;
         $message = 
         "
-        Halo Sobat Ping!\n
-        Berikut link untuk mengubah password pada username terkait:\n";
+        Halo Sobat P!NG!\n
+        Berikut link untuk mengubah password pada username terkait:<br>";
         foreach( $tokens as $user => $token ){
-            $message .= $user . " = " . site_url('auth/forgot_handle') . "?token=" . urlencode($token) . "\n"; 
+            $message .= '<a href="' . site_url('auth/forgot_handle') . "?token=" . urlencode($token) . '">'
+            . $user . '</a><br>'; 
         }
 
         $message .= "\nLink akan kadaluwarsa dalam 1 hari";

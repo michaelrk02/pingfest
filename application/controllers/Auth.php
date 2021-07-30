@@ -127,7 +127,7 @@ class Auth extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             //user dah input email
-            if( $this->Auth_model->emailExist() ){
+            if( $this->Auth_model->isExistingEmail() ){
                 $session_data = [
                     'forgot_msg' => '<div class="alert alert-success" role="alert">Silahkan cek email anda untuk mengubah password! (cek kotak Spam apabila mail tidak ditemukan)</div>'
                 ];
@@ -150,38 +150,55 @@ class Auth extends CI_Controller
         if( !empty($this->session->userdata('user_id')) ){
             redirect(site_url('profile/index'));
         } 
-        $token = $this->input->get('token');
-        $extract = $this->jwt->extract($token, PF_SECRET_KEY);
 
-        if( empty($extract) ){
+        $token = $this->input->get('token');
+        if( empty($token) ){
             redirect(site_url('auth'));
         }
-        
-        //token work
-        $data = [
-            'title' => 'Ubah Password',
-            'id' => $extract['user_id'],
-            'url_param' => "?token=" . $token
-        ];
 
-        $this->form_validation->set_rules('password', 'Password', 'required|matches[password2]|min_length[8]|max_length[72]', [
-            'required' => '{field} harus diisi', 
-            'matches' => '{field} tidak sama',
-            'min_length' => '{field} terlalu pendek',
-            'max_length' => '{field} terlalu panjang'
-        ]);
-        $this->form_validation->set_rules('password2', 'Password', 'required|matches[password]', [
-            'required' => '{field} harus diisi',
-            'matches' => '{field} tidak sama'
-        ]);
+        $extract = $this->Auth_model->extractForgotToken( $token );
+        if( empty($extract) ){
+            $data = [
+                'title' => 'Ubah Password',
+                'id' => NULL,
+                'isValidToken' => FALSE,
+                'url_param' => "?token=" . $token
+            ];
 
-        if( $this->form_validation->run() == FALSE){
             $this->load->view('templates/header', $data);
             $this->load->view('auth/forgot_handle', $data);
             $this->load->view('templates/footer');
+            //die; //??
         } else {
-            $this->Auth_model->changePassword( $token );
+            $data = [
+                'title' => 'Ubah Password',
+                'id' => $extract['user_id'],
+                'isValidToken' => TRUE,
+                'url_param' => "?token=" . $token
+            ];
+    
+            $this->form_validation->set_rules('password', 'Password', 'required|matches[password2]|min_length[8]|max_length[72]', [
+                'required' => '{field} harus diisi', 
+                'matches' => '{field} tidak sama',
+                'min_length' => '{field} terlalu pendek',
+                'max_length' => '{field} terlalu panjang'
+            ]);
+            $this->form_validation->set_rules('password2', 'Password', 'required|matches[password]', [
+                'required' => '{field} harus diisi',
+                'matches' => '{field} tidak sama'
+            ]);
+    
+            if( $this->form_validation->run() == FALSE){
+                $this->load->view('templates/header', $data);
+                $this->load->view('auth/forgot_handle', $data);
+                $this->load->view('templates/footer');
+            } else {
+                $this->Auth_model->changePassword( $token );
+            }
         }
+        
+        //token work
+        
 
     }
 
