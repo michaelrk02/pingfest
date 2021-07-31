@@ -9,6 +9,8 @@ class Pingfest {
         $this->ci =& get_instance();
 
         $this->ci->load->model('pingdb_model', 'pingdb');
+        
+        $this->ci->load->helper('rupiah');
 
         $this->ci->load->library('email');
         $this->ci->load->library('jwt');
@@ -103,7 +105,7 @@ class Pingfest {
             $this->ci->email->to($to);
             $this->ci->email->subject('[PINGFEST] '.$subject);
             $this->ci->email->message($message);
-            $this->ci->email->send();
+            @$this->ci->email->send();
         }
     }
 
