@@ -114,10 +114,10 @@
                           }else{
                         ?> 
                           <!-- <a href="#" class="btn btn-default">Detail</a> -->
+                           <a href="<?php echo site_url() ?>/admin/participants_all/show/<?php echo $participant->user_id ?>" class="btn btn-primary">Detail</a>
                         <?php
                           }
                         ?> 
-                        <a href="<?php echo site_url() ?>/admin/participants_all/show/<?php echo $participant->user_id ?>" class="btn btn-primary">Detail</a>
                       </td>
                     </tr>
                     <?php endforeach; ?> 

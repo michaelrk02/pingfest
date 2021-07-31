@@ -10,6 +10,7 @@ class Participants_All extends CI_Controller {
         $this->load->model("Music_model");
         $this->load->model("Paper_model");
         $this->load->model("Semnas_model");
+        $this->load->library('pingfest'); 
     }
 	/**
 	 * Index Page for this controller.
@@ -44,14 +45,18 @@ class Participants_All extends CI_Controller {
 	}
 
 	public function accept_payment(){
+	 	$post = $this->input->post();
 		$this->Event_participant_model->updatePayment(); 
+	 	$this->pingfest->send_payment_accept_email($post["user_id"],$post["event_id"], $post["total"]); 
 		$this->session->set_flashdata('msg', 'Peserta Diterima');
 		redirect(site_url('admin/participants_all/index'));
 	}
 
 
 	public function decline_payment(){
+		$post = $this->input->post();
 		$this->Event_participant_model->decline(); 
+	 	$this->pingfest->send_payment_decline_email($post["user_id"],$post["event_id"], $post["total"]);
 		$this->session->set_flashdata('msg', 'Peserta Ditolak');
 		redirect(site_url('admin/participants_all/index')); 
 	}
