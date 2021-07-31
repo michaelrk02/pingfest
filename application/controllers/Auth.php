@@ -148,35 +148,38 @@ class Auth extends CI_Controller
     public function forgot_handle()
     {
         if( !empty($this->session->userdata('user_id')) ){
-            redirect(site_url('profile/index'));
-        } 
+            $data = [
+                'isLoggedIn' => TRUE
+            ];
+        } else {
+            $data = [
+                'isLoggedIn' => FALSE
+            ]; 
+        }
 
-        $token = $this->input->get('token');
+        $token = $this->input->get('token'); //kalo tokennya NULL
         if( empty($token) ){
             redirect(site_url('auth'));
         }
 
+        $data['title'] = 'Ubah Password';
+        $data['url_param'] = "?token=" . $token;
+
         $extract = $this->Auth_model->extractForgotToken( $token );
-        if( empty($extract) ){
-            $data = [
-                'title' => 'Ubah Password',
-                'id' => NULL,
-                'isValidToken' => FALSE,
-                'url_param' => "?token=" . $token
-            ];
+        if( empty($extract) ){ //tokennya salah
+            if( $data['isLoggedIn'] == TRUE ){
+                redirect(site_url('profile/index'));
+            }
+            $data['id'] = NULL;
+            $data['isValidToken'] = FALSE;
 
             $this->load->view('templates/header', $data);
             $this->load->view('auth/forgot_handle', $data);
             $this->load->view('templates/footer');
-            //die; //??
-        } else {
-            $data = [
-                'title' => 'Ubah Password',
-                'id' => $extract['user_id'],
-                'isValidToken' => TRUE,
-                'url_param' => "?token=" . $token
-            ];
-    
+        } else { //tokennya bener
+            $data['id'] = $extract['user_id'];
+            $data['isValidToken'] = TRUE;
+
             $this->form_validation->set_rules('password', 'Password', 'required|matches[password2]|min_length[8]|max_length[72]', [
                 'required' => '{field} harus diisi', 
                 'matches' => '{field} tidak sama',

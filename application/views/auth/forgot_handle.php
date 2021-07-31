@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg">
                 <div class="p-5">
-                    <?php if( $isValidToken ): ?>
+                    <?php if( $isValidToken && !$isLoggedIn): ?> <!-- token bener, status logged out -->
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Ubah Password</h1>
                         </div>
@@ -40,14 +40,22 @@
                         </form>
                         <hr>
                         
-                    <?php else: ?>
+                    <?php elseif( $isValidToken && $isLoggedIn ): ?> <!-- token bener, status logged in -->
+                        <div class="text-center align-middle alert alert-danger" role="alert">
+                            <h1 class="h4 text-gray-900 ">Harap logout terlebih dahulu untuk melanjutkan proses Ubah Password!</h1>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" href="<?= site_url('profile/index'); ?>">Menuju Profil</a>
+                        </div>
+                    <?php elseif( !$isValidToken && !$isLoggedIn ): ?> <!-- token salah, status logged out -->
                         <div class="text-center align-middle alert alert-danger" role="alert">
                             <h1 class="h4 text-gray-900 ">Token tidak valid atau kadaluwarsa</h1>
                         </div>
                         <div class="text-center">
                             <a class="small" href="<?= site_url('auth/index'); ?>">Kembali ke halaman Login</a>
                         </div>
-                    <?php endif ?>
+                    <!-- token salah, status logged in, dah diurus di controller, langsung ditendang ke profile/index -->
+                    <?php endif ?> 
                     
                 </div>
             </div>
