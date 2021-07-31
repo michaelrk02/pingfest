@@ -10,8 +10,18 @@ class Pingfest {
 
         $this->ci->load->model('pingdb_model', 'pingdb');
 
+        $this->ci->load->library('email');
         $this->ci->load->library('jwt');
         $this->ci->load->library('storage');
+
+        $this->ci->email->initialize([
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1',
+            'wordwrap' => TRUE,
+            'crlf' => "\r\n",
+            'newline' => "\r\n",
+            'validate' => TRUE
+        ]);
     }
 
     public function view_battle_idcard($user_id) {
@@ -82,6 +92,14 @@ class Pingfest {
         }
 
         return $sso;
+    }
+
+    public function send_email($to, $subject, $message) {
+        $this->ci->email->from(PF_EMAIL_ADDRESS, 'PINGFEST');
+        $this->ci->email->to($to);
+        $this->ci->email->subject('[PINGFEST] '.$subject);
+        $this->ci->email->message($message);
+        $this->ci->email->send();
     }
 
 }

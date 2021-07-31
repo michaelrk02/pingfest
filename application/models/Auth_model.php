@@ -108,28 +108,15 @@ class Auth_model extends CI_model
 
     public function sendTokenEmail($tokens)
     {
+        $this->load->library('pingfest');
+
         if( !is_array($tokens) ){
             return false;
         }
 
-        $from = "noreply@pingfest.com";
-        $to = $this->input->post('email');
-        $subject = "Ubah Password Akun P!NGFEST";
-        $header[] = 'MIME-Version: 1.0';
-        $header[] = 'Content-type: text/html; charset=iso-8859-1';
-        $message = 
-        "
-        <h2>Halo Sobat P!NG!</h2><br>
-        Anda telah meminta untuk melakukan <b>ubah password</b> akun P!NGFEST.<br>
-        Berikut link untuk mengubah password pada username terkait:<br>";
-        foreach( $tokens as $user => $token ){
-            $message .= $user . ': ' . '<a href="' . site_url('auth/forgot_handle') . "?token=" . urlencode($token) . '">klik disini</a><br>'; 
-        }
+        $message = $this->load->view('templates/email_forgot', ['tokens' => $tokens], TRUE);
 
-        $message .= "<br><b>PERINGATAN:</b> Link akan kadaluwarsa dalam 1 hari";
-
-        @mail($to, $subject, $message, implode("\r\n", $header) );
-
+        $this->pingfest->send_email($this->input->post('email'), 'Ubah Password Akun PINGFEST', $message);
     }
 
     public function changePassword( $token )
