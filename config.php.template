@@ -17,5 +17,6 @@ define('PF_DB_PREFIX', 'pf_');
 define('PF_SESS_COOKIE', 'pf_session');
 define('PF_SESS_DIR', NULL);
 define('PF_SECRET_KEY', 'Very_Secret_Key');
+define('PF_EMAIL_PIPE', NULL); // redirect isi email ke file. contoh: 'C:\output_email_pingfest.html' atau NULL jika mengirim email seperti biasanya
 define('PF_EMAIL_ADDRESS', 'http@localhost.localdomain');
 

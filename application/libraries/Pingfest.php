@@ -95,11 +95,40 @@ class Pingfest {
     }
 
     public function send_email($to, $subject, $message) {
-        $this->ci->email->from(PF_EMAIL_ADDRESS, 'PINGFEST');
-        $this->ci->email->to($to);
-        $this->ci->email->subject('[PINGFEST] '.$subject);
-        $this->ci->email->message($message);
-        $this->ci->email->send();
+        if (PF_EMAIL_PIPE !== NULL) {
+            $message = '<!-- to: '.htmlspecialchars($to).', subject: '.htmlspecialchars($subject).' -->'.PHP_EOL.$message;
+            file_put_contents(PF_EMAIL_PIPE, $message);
+        } else {
+            $this->ci->email->from(PF_EMAIL_ADDRESS, 'PINGFEST');
+            $this->ci->email->to($to);
+            $this->ci->email->subject('[PINGFEST] '.$subject);
+            $this->ci->email->message($message);
+            $this->ci->email->send();
+        }
+    }
+
+    public function send_payment_accept_email($user_id, $event_id, $invoice) {
+        $user = $this->ci->pingdb->get_user($user_id, 'email');
+        $event = $this->ci->pingdb->get_event($event_id, 'name');
+        $message = $this->ci->load->view('templates/email_accept_payment', [
+            'user_id' => $user_id,
+            'event_name' => $event['name'],
+            'invoice' => $invoice,
+            'profile_url' => site_url('profile/index')
+        ], TRUE);
+        $this->send_email($user['email'], 'Pembayaran Diterima ('.$user_id.' @ '.$event['name'].')', $message);
+    }
+
+    public function send_payment_decline_email($user_id, $event_id, $invoice) {
+        $user = $this->ci->pingdb->get_user($user_id, 'email');
+        $event = $this->ci->pingdb->get_event($event_id, 'name');
+        $message = $this->ci->load->view('templates/email_decline_payment', [
+            'user_id' => $user_id,
+            'event_name' => $event['name'],
+            'invoice' => $invoice,
+            'profile_url' => site_url('profile/index')
+        ], TRUE);
+        $this->send_email($user['email'], 'Pembayaran Ditolak ('.$user_id.' @ '.$event['name'].')', $message);
     }
 
 }
