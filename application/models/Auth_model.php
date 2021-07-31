@@ -115,6 +115,7 @@ class Auth_model extends CI_model
         }
 
         $message = $this->load->view('templates/email_forgot', ['tokens' => $tokens], TRUE);
+        var_dump($message); die;
 
         $this->pingfest->send_email($this->input->post('email'), 'Ubah Password Akun PINGFEST', $message);
     }

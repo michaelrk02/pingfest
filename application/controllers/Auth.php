@@ -112,37 +112,53 @@ class Auth extends CI_Controller
             redirect(site_url('profile/index'));
         } 
 
-        $data = [
-            'title' => 'Lupa Password'
-        ];
+        if( $this->session->userdata('forgot_flash') ){
+            $this->session->unset_userdata('forgot_flash');
+            $data = [
+                'title' => 'Lupa Password',
+                'msg_type' => 'success',
+                'msg_content' => 'Silahkan cek email anda untuk mengubah password! (cek kotak Spam apabila mail tidak ditemukan)',
+                'isAddingLink' => FALSE
+            ];
 
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email', [
-            'required' => '{field} harus diisi',
-            'valid_email' => '{field} harus valid'
-        ]);
-
-        if( $this->form_validation->run() == FALSE){
             $this->load->view('templates/header', $data);
-            $this->load->view('auth/forgot');
+            $this->load->view('auth/message', $data);
             $this->load->view('templates/footer');
         } else {
-            //user dah input email
-            if( $this->Auth_model->isExistingEmail() ){
-                $session_data = [
-                    'forgot_msg' => '<div class="alert alert-success" role="alert">Silahkan cek email anda untuk mengubah password! (cek kotak Spam apabila mail tidak ditemukan)</div>'
-                ];
-                $this->session->set_userdata($session_data);
-                $tokens = $this->Auth_model->generateForgotToken();
-                $this->Auth_model->sendTokenEmail($tokens);
-            } else {
-                $session_data = [
-                    'forgot_msg' => '<div class="alert alert-danger" role="alert">Email tidak ditemukan!</div>'
-                ];
-                $this->session->set_userdata($session_data);
-            }
-            redirect(site_url('auth/forgot/'));
+            $data = [
+                'title' => 'Lupa Password'
+            ];
 
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email', [
+                'required' => '{field} harus diisi',
+                'valid_email' => '{field} harus valid'
+            ]);
+    
+            if( $this->form_validation->run() == FALSE){
+                $this->load->view('templates/header', $data);
+                $this->load->view('auth/forgot');
+                $this->load->view('templates/footer');
+            } else {
+                //user dah input email
+                if( $this->Auth_model->isExistingEmail() ){
+                    $session_data = [
+                        'forgot_flash' => TRUE
+                    ];
+                    $this->session->set_userdata($session_data);
+                    $tokens = $this->Auth_model->generateForgotToken();
+                    $this->Auth_model->sendTokenEmail($tokens);
+                } else {
+                    $session_data = [
+                        'forgot_msg' => '<div class="alert alert-danger" role="alert">Email tidak ditemukan!</div>'
+                    ];
+                    $this->session->set_userdata($session_data);
+                }
+                redirect(site_url('auth/forgot/'));
+    
+            }
         }
+
+        
     }
 
     public function forgot_handle()
@@ -166,38 +182,55 @@ class Auth extends CI_Controller
         $data['url_param'] = "?token=" . $token;
 
         $extract = $this->Auth_model->extractForgotToken( $token );
-        if( empty($extract) ){ //tokennya salah
-            if( $data['isLoggedIn'] == TRUE ){
+        if( empty($extract) ){ 
+            if( $data['isLoggedIn'] == TRUE ){ //token salah, logged in
                 redirect(site_url('profile/index'));
-            }
-            $data['id'] = NULL;
-            $data['isValidToken'] = FALSE;
+            } else { //token salah, logged out
+                $data['msg_type'] = 'danger';
+                $data['msg_content'] = 'Token tidak valid atau kadaluwarsa';
+                $data['isAddingLink'] = TRUE;
+                $data['msg_link'] = site_url('auth/index');
+                $data['msg_link_content'] = 'Kembali ke halaman Login';
 
-            $this->load->view('templates/header', $data);
-            $this->load->view('auth/forgot_handle', $data);
-            $this->load->view('templates/footer');
-        } else { //tokennya bener
-            $data['id'] = $extract['user_id'];
-            $data['isValidToken'] = TRUE;
-
-            $this->form_validation->set_rules('password', 'Password', 'required|matches[password2]|min_length[8]|max_length[72]', [
-                'required' => '{field} harus diisi', 
-                'matches' => '{field} tidak sama',
-                'min_length' => '{field} terlalu pendek',
-                'max_length' => '{field} terlalu panjang'
-            ]);
-            $this->form_validation->set_rules('password2', 'Password', 'required|matches[password]', [
-                'required' => '{field} harus diisi',
-                'matches' => '{field} tidak sama'
-            ]);
-    
-            if( $this->form_validation->run() == FALSE){
                 $this->load->view('templates/header', $data);
-                $this->load->view('auth/forgot_handle', $data);
+                $this->load->view('auth/message', $data);
                 $this->load->view('templates/footer');
-            } else {
-                $this->Auth_model->changePassword( $token );
             }
+        } else { 
+            if( $data['isLoggedIn'] == TRUE ){ //token bener, logged in
+                $data['msg_type'] = 'danger';
+                $data['msg_content'] = 'Harap logout terlebih dahulu untuk melanjutkan proses Ubah Password!';
+                $data['isAddingLink'] = TRUE;
+                $data['msg_link'] = site_url('profile/index');
+                $data['msg_link_content'] = 'Menuju Profil';
+
+                $this->load->view('templates/header', $data);
+                $this->load->view('auth/message', $data);
+                $this->load->view('templates/footer');
+            } else { //token bener, logged out
+                $data['id'] = $extract['user_id'];
+                $data['isValidToken'] = TRUE;
+
+                $this->form_validation->set_rules('password', 'Password', 'required|matches[password2]|min_length[8]|max_length[72]', [
+                    'required' => '{field} harus diisi', 
+                    'matches' => '{field} tidak sama',
+                    'min_length' => '{field} terlalu pendek',
+                    'max_length' => '{field} terlalu panjang'
+                ]);
+                $this->form_validation->set_rules('password2', 'Password', 'required|matches[password]', [
+                    'required' => '{field} harus diisi',
+                    'matches' => '{field} tidak sama'
+                ]);
+        
+                if( $this->form_validation->run() == FALSE){
+                    $this->load->view('templates/header', $data);
+                    $this->load->view('auth/forgot_handle', $data);
+                    $this->load->view('templates/footer');
+                } else {
+                    $this->Auth_model->changePassword( $token );
+                }
+            }
+            
         }
         
         //token work

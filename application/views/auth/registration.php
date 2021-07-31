@@ -10,7 +10,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Registrasi Akun</h1>
                             </div>
-                            <form method="post" action="<?= site_url('auth/registration/'); ?>">
+                            <form method="post" action="<?= site_url('auth/registration/'); ?>" onsubmit="return confirm('Apakah anda yakin?')">
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input type="text" class="form-control form-control-user" id="uname" name="uname"
