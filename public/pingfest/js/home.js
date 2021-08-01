@@ -1,12 +1,8 @@
 const header = document.querySelector('.site-header');
 const Grid = document.querySelector('.text-itv');
 
-const itvJellyContainer = document.querySelector('.itv-jelly');
-const itvTextContainer = document.querySelector('.itv-inner');
-const itvTextDescription = document.querySelector('.itv-text');
-
-const semJellyContainer = document.querySelector('.sem-jelly');
-const semTextContainer = document.querySelector('.sem-inner');
+const itvContainer = document.querySelector('.itv-wrapper');
+const semContainer = document.querySelector('.sem-wrapper');
 
 $('.site-header').removeClass('sticky');
 
@@ -57,30 +53,14 @@ $(window)
 })();
 
 function resize() {
-  var scale = Math.min(
-    (Grid.clientWidth / itvJellyContainer.clientWidth) * 1.2,
-    (Grid.clientHeight / itvJellyContainer.clientHeight) * 1.2
-  );
+  if (window.innerWidth <= 900 && window.innerWidth >= 350) {
+    var scale = Math.max(0.4, Math.min(Grid.clientWidth / 550, 1));
 
-  var mobile = 0.4;
-  if (window.innerWidth < 900) {
-    mobile += window.innerWidth / 1200;
-    itvJellyContainer.style.right = '-' + (920 - Grid.clientWidth) / 4 + 'px';
-    itvTextContainer.style.right = '-' + (920 - Grid.clientWidth) / 4 + 'px';
+    itvContainer.style.transform = 'scale(' + scale + ')';
+    semContainer.style.transform = 'scale(' + scale + ')';
 
-    semJellyContainer.style.left = '-' + (920 - Grid.clientWidth) / 4 + 'px';
-    semTextContainer.style.left = '-' + (920 - Grid.clientWidth) / 4 + 'px';
-  }
-  if (window.innerWidth < 400) {
-    scale = Math.max(scale, mobile);
-    itvJellyContainer.style.transform = 'scale(' + scale + ')';
-    itvTextContainer.style.transform = 'scale(' + scale + ')';
-    itvTextDescription.style.width = (1 / scale) * 99 + 'vw';
-
-    semJellyContainer.style.transform = 'scale(' + scale + ')';
-    semTextContainer.style.transform = 'scale(' + scale + ')';
-  } else {
-    itvTextDescription.style.width = 60 + '%';
+    itvContainer.style.left = (Grid.clientWidth - 800 * scale) / 2 + 'px';
+    semContainer.style.left = (Grid.clientWidth - 800 * scale) / 2 + 'px';
   }
 }
 

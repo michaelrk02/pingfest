@@ -15,16 +15,14 @@
         </div>
     </div>
 </div>
-<div class=container-itv>
-    <div class="lomba-itv">
-        asdjknasmkdlas
-    </div>
-    <div class="daftar-itv">
-        saodkasod
+<div class=container-sem>
+    <div class="deskripsi-sem">
+        <p>Coming Soon!</p>
     </div>
     <div class="sponsor">
     </div>
 </div>
+
 
 
 <script src="<?php echo base_url('public/pingfest/js/semnas.js'); ?>"></script>

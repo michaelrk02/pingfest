@@ -249,7 +249,7 @@ button {
 
 .page-2 p.deskripsi-lomba {
   text-align: center;
-  margin: 1.5rem 0;
+  margin: 1.8rem 0 3rem 0;
   font-weight: 100;
   font-size: 1.2rem;
   font-family: 'Bree Serif', serif;
@@ -345,6 +345,12 @@ button {
 
 .container-fixed .footer {
   margin-top: 100vh;
+}
+
+@media screen and (max-width: 900px) {
+  .lomba-card {
+    height: 500px;
+  }
 }
 
 @keyframes riseit {

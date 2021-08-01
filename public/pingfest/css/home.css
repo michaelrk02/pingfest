@@ -19,12 +19,11 @@ body {
 .grid-container {
   position: relative;
   width: 1280px;
-  padding-top: 75px;
   margin: auto;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 80vh 80vh 80vh;
+  grid-template-rows: 90vh 40rem 40rem;
 
   grid-template-areas:
     'headline headline'
@@ -97,18 +96,10 @@ body {
   z-index: 20;
 }
 
-.logo-mobile {
-  width: 80%;
-  max-width: unset;
-}
+.logo-acara {
+  position: relative;
 
-.logo-itv .logo-mobile {
-  margin-left: 10%;
-}
-
-.logo-semnas .logo-mobile {
-  transform-origin: top right;
-  margin-right: 10%;
+  width: 600px;
 }
 
 .text-itv {
@@ -211,44 +202,34 @@ body {
   font-size: clamp(2rem, 5vw, 4.5rem);
 }
 
+.itv-wrapper,
+.sem-wrapper {
+  position: relative;
+  top: -80px;
+  right: 0;
+  bottom: 0;
+}
+
 .jelly-canvas {
   pointer-events: auto;
-
-  position: absolute;
-  width: 850px;
-  height: 850px;
+  position: relative;
+  width: 800px;
+  height: 800px;
   right: 0;
   top: 0;
 }
 
 .inner {
   position: absolute;
-  right: 0;
-  top: 0;
-
-  width: 850px;
-  height: 850px;
+  width: 800px;
+  height: 800px;
   color: var(--light-color);
-}
-
-.itv-jelly,
-.itv-inner {
-  transform-origin: top right;
-  left: -100px;
-  transform: scale(1);
-}
-
-.sem-jelly,
-.sem-inner {
-  transform-origin: top left;
-  right: -100px;
-  transform: scale(1);
 }
 
 .inner .wrapper {
   position: absolute;
-  top: 22%;
-  left: 20%;
+  top: 20%;
+  left: 21%;
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -282,12 +263,12 @@ button {
   stroke-width: 4;
 
   border: 5px solid var(--dark-color);
-  margin-top: 15%;
+  margin-top: 8%;
   background-color: var(--green-color);
 
   font-family: 'Bree Serif', serif;
-  font-size: 1.2rem;
-  padding: 0.7rem 0.7rem;
+  font-size: 1.1rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 7px;
   width: 45%;
 }
@@ -319,28 +300,41 @@ button {
   right: -2rem;
 }
 
+@media screen and (min-width: 1280px) {
+  .itv-wrapper,
+  .sem-wrapper {
+    left: -80px !important;
+  }
+}
+
+@media screen and (max-width: 1280px) and (min-width: 900px) {
+  .itv-wrapper,
+  .sem-wrapper {
+    transform: scale(0.8) !important;
+  }
+  .itv-wrapper {
+    left: calc(-0.425 * 380px) !important;
+  }
+
+  .sem-wrapper,
+  .logo-semnas .logo-acara {
+    left: -100px !important;
+  }
+  .logo-itv {
+    place-content: flex-start;
+  }
+}
+
 @media screen and (max-width: 1280px) {
   .grid-container {
-    width: 95%;
+    margin: auto;
+    width: 100vw;
   }
 
-  .logo-mobile {
-    width: 90% !important;
-    max-width: 500px;
+  .logo-acara {
+    width: 95% !important;
+    min-width: 500px;
     margin: 0 !important;
-    transform: scale(0.9);
-  }
-
-  .itv-jelly,
-  .itv-inner {
-    left: -330px;
-    transform: scale(0.8);
-  }
-
-  .sem-jelly,
-  .sem-inner {
-    left: -80px !important;
-    transform: scale(0.8);
   }
 }
 
@@ -348,8 +342,8 @@ button {
   .grid-container {
     pointer-events: none;
     position: relative;
-    grid-template-rows: 70vh 40vh 60vh 40vh 60vh;
-    row-gap: 30vh;
+    grid-template-rows: 100vh auto 50vh auto 80vh;
+    row-gap: 6rem;
     grid-template-areas:
       'headline headline'
       'logo-itv logo-itv'
@@ -360,8 +354,13 @@ button {
       'sponsor sponsor';
   }
 
-  .logo-mobile {
-    width: 95% !important;
+  .itv-wrapper,
+  .sem-wrapper {
+    z-index: 100;
+  }
+
+  .logo-acara {
+    min-width: 300px;
   }
 
   .headline iframe {
@@ -375,13 +374,13 @@ button {
 
   .text-itv,
   .text-semnas {
-    margin-top: -40vh;
+    margin-top: -14rem;
   }
+}
 
-  .itv-jelly,
-  .itv-inner {
-    left: unset;
-    transform: scale(0.8);
+@media screen and (max-width: 350px) {
+  .itv-text {
+    width: 120vw !important;
   }
 }
 

@@ -6,13 +6,14 @@ body {
   font-size: 1.125rem;
   line-height: 1.56;
   letter-spacing: 0.9px;
+  height: 500vh;
 }
 
 .headline {
   display: flex;
   height: 100vh;
   background-color: var(--dark-color);
-
+  position: relative;
   font-family: 'Bree Serif', serif;
   flex-direction: column;
   justify-content: center;
@@ -53,4 +54,34 @@ body {
 
 .hay-text.idea {
   color: var(--green-color);
+}
+
+.deskripsi-sem {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+}
+
+.deskripsi-sem p {
+  font-family: 'Bree Serif', serif;
+  font-weight: 1000;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  color: var(--dark-color);
+}
+
+.container-sem {
+  z-index: 0;
+  top: 75px;
+  width: 100vw;
+  position: relative;
+}
+
+.container-fixed .container-sem {
+  position: fixed;
+}
+
+.container-fixed .footer {
+  margin-top: 100vh;
 }
