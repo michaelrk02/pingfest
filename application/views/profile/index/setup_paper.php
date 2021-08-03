@@ -69,7 +69,7 @@
                     <div>
                         <span><b>Status:</b> <?php echo !empty($submission_url) ? '<span class="badge badge-success">SUDAH DIUNGGAH</span>' : '<span class="badge badge-danger">BELUM DIUNGGAH</span>'; ?></span>
                         <?php if (!empty($submission_url)): ?>
-                            <span>- <a href="<?php echo $submission_url; ?>">.pdf">Unduh</a></span>
+                            <span>- <a href="<?php echo $submission_url; ?>">Unduh</a></span>
                         <?php endif; ?>
                     </div>
                     <?php if (!$locked): ?>
