@@ -13,6 +13,12 @@ class Event_participant_model extends CI_Model
     public $unique;
     public $total;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model("Config_model");
+    }
+
     public function rules()
     {
         return [];
@@ -41,6 +47,10 @@ class Event_participant_model extends CI_Model
 
     public function getAll()
     { 
+        $whereExpire = array(
+            'key' => 'invoice_expire' 
+        );
+        $invoiceExpire = $this->Config_model->cekLogin($whereExpire)->row();
         $this->db->select('
             pf_event_participants.timestamp, 
             pf_event_participants.status,
@@ -51,7 +61,8 @@ class Event_participant_model extends CI_Model
             pf_users.user_id,pf_users.name as name_user,
             pf_users.email,
             pf_users.phone,
-            pf_events.name as name_event
+            pf_events.name as name_event,
+            ('.time().'> timestamp + '.$invoiceExpire->value.') AS expired
         '); 
         $this->db->from('pf_event_participants');
         $this->db->join('pf_users','pf_users.user_id = pf_event_participants.user_id'); 

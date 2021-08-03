@@ -48,6 +48,7 @@
                       <th>Username</th>
                       <th>Timestamp</th>
                       <th>Invoice</th> 
+                      <th>Expired</th> 
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -75,6 +76,15 @@
                       <td>
                         <?php echo "Rp. ".number_format($participant->total,0) ?>
                       </td> 
+                      <td>
+                        <?php
+                          if($participant->expired == 1){ 
+                            echo "Sudah";
+                          }else{
+                            echo "Belum"; 
+                          } 
+                        ?>
+                      </td>
                       <td width="250">
                         <?php 
                           if($participant->status == 0){
