@@ -183,14 +183,9 @@ class Profile extends CI_Controller {
             $data = ['events' => $events, 'registration' => $registration, 'bank_account' => $bank_account];
         }
 
-        $status = NULL;
-        if (isset($_SESSION['profile_status'])) {
-            $status = $_SESSION['profile_status'];
-            unset($_SESSION['profile_status']);
-        }
-
         $this->load->view('templates/header', ['title' => 'Your Profile']);
-        $this->load->view('profile/details', ['user' => $this->user, 'tabs' => $tabs, 'tab' => $tab, 'status' => $status]);
+        $this->load->view('profile/status', ['status' => $this->get_status()]);
+        $this->load->view('profile/details', ['user' => $this->user, 'tabs' => $tabs, 'tab' => $tab]);
         $this->load->view($page, $data);
         $this->load->view('templates/footer');
     }
@@ -331,6 +326,46 @@ class Profile extends CI_Controller {
         }
 
         redirect('profile/index');
+    }
+
+    public function settings() {
+        $this->check_login();
+
+        $user = $this->users->get($_SESSION['user_id'], 'name, email, phone');
+
+        if (!empty($this->input->post('submit'))) {
+            $this->load->library('form_validation');
+
+            $user['name'] = $this->input->post('name');
+            $user['email'] = $this->input->post('email');
+            $user['phone'] = $this->input->post('phone');
+
+            $this->form_validation->set_rules('password', 'Password', 'min_length[8]|max_length[72]');
+            $this->form_validation->set_rules('password_confirmation', 'Konfirmasi Password', 'matches[password]');
+            $this->form_validation->set_rules('name', 'Nama Lengkap', 'required|max_length[100]');
+            $this->form_validation->set_rules('email', 'E-mail', 'required|max_length[254]|valid_email');
+            $this->form_validation->set_rules('phone', 'No. Telepon', 'required|max_length[20]');
+
+            if ($this->form_validation->run()) {
+                $password = $this->input->post('password');
+                if (!empty($password)) {
+                    $user['password'] = password_hash($password, PASSWORD_BCRYPT, ['cost' => 5]);
+                }
+
+                if ($this->users->set($_SESSION['user_id'], $user)) {
+                    $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui data profil anda';
+                } else {
+                    $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui data profil anda. Hubungi CP apabila masalah masih berlanjut';
+                }
+            } else {
+                $_SESSION['profile_status'] = 'ERROR: '.implode(' ', $this->form_validation->error_array());
+            }
+        }
+
+        $this->load->view('templates/header', ['title' => 'Pengaturan Profil']);
+        $this->load->view('profile/status', ['status' => $this->get_status()]);
+        $this->load->view('profile/settings', ['user' => $user]);
+        $this->load->view('templates/footer');
     }
 
     public function setup_battle() {
@@ -588,6 +623,15 @@ class Profile extends CI_Controller {
         }
 
         $this->user = $this->users->get($_SESSION['user_id'], 'name, email, phone');
+    }
+
+    private function get_status() {
+        $status = NULL;
+        if (isset($_SESSION['profile_status'])) {
+            $status = $_SESSION['profile_status'];
+            unset($_SESSION['profile_status']);
+        }
+        return $status;
     }
 
     private function upload_battle_idcard() {
