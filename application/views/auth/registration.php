@@ -42,6 +42,11 @@
                                             id="password2" name="password2" placeholder="Ulangi password">
                                     </div>
                                 </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="checkbox2">
+                                    <label class="custom-control-label" for="checkbox2">Tampilkan password</label>
+                                </div>
+                                <br>
                                 <div class="form-group">
                                     <label>Nomor Telepon</label>
                                     <input type="text" class="form-control form-control-user" id="phone" name="phone"
@@ -63,3 +68,25 @@
         </div>
 
     </div>
+
+<script>
+    $(document).ready(function() {
+        $('#checkbox1').click(function() {
+            if( $(this).is(':checked') ){
+                $('#password').attr('type', 'text');
+            } else {
+                $('#password').attr('type', 'password');
+            }
+        })
+
+        $('#checkbox2').click(function() {
+            if( $(this).is(':checked') ){
+                $('#password').attr('type', 'text');
+                $('#password2').attr('type', 'text');
+            } else {
+                $('#password').attr('type', 'password');
+                $('#password2').attr('type', 'password');
+            }
+        })
+    })
+</script>

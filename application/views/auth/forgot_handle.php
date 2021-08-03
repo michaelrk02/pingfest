@@ -33,6 +33,11 @@
                                     id="password2" name="password2" placeholder="Ulangi password baru">
                             </div>
                         </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="checkbox2">
+                            <label class="custom-control-label" for="checkbox2">Tampilkan password</label>
+                        </div>
+                        <br>
                         <button type="submit" class="btn btn-primary btn-user btn-block">
                             Ubah
                         </button>
@@ -45,3 +50,25 @@
 </div>
 
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#checkbox1').click(function() {
+            if( $(this).is(':checked') ){
+                $('#password').attr('type', 'text');
+            } else {
+                $('#password').attr('type', 'password');
+            }
+        })
+
+        $('#checkbox2').click(function() {
+            if( $(this).is(':checked') ){
+                $('#password').attr('type', 'text');
+                $('#password2').attr('type', 'text');
+            } else {
+                $('#password').attr('type', 'password');
+                $('#password2').attr('type', 'password');
+            }
+        })
+    })
+</script>
