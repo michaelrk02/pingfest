@@ -35,7 +35,7 @@ $config['base_url'] = PF_URL;
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = PF_REWRITE_ENABLED ? '' : 'index.php';
 
 /*
 |--------------------------------------------------------------------------
