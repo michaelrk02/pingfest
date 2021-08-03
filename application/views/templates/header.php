@@ -7,7 +7,7 @@
     <title><?php echo htmlspecialchars($title); ?></title>
     
     <script src="<?php echo base_url('public/jquery/js/jquery-3.6.0.min.js'); ?>"></script>
-    <script src="<?php echo base_url('public/pingfest/js/pingfest-theme.js'); ?>"></script>
+    <script src="<?php echo base_url('public/pingfest/js/static/pingfest-theme.js'); ?>"></script>
     <script src="<?php echo base_url('public/pingfest/js/header.js'); ?>"></script>
     <link rel="stylesheet" href="<?php echo base_url('public/fontawesome/css/all.min.css'); ?>">
 
