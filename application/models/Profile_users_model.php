@@ -11,5 +11,9 @@ class Profile_users_model extends CI_Model {
         return $this->db->select($columns)->from('users')->where('user_id', $id)->get()->row_array(0);
     }
 
+    public function set($id, $data) {
+        return $this->db->where('user_id', $id)->update('users', $data);
+    }
+
 }
 

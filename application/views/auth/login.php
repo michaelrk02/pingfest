@@ -1,4 +1,4 @@
-
+    
     <div class="container">
 
         <!-- Outer Row -->
@@ -37,6 +37,11 @@
                                                 value="<?= set_value('password'); ?>">
                                             <?= form_error('password', '<small class="text-danger">', '</small>'); ?>
                                         </div>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox1">
+                                            <label class="custom-control-label" for="checkbox1">Tampilkan password</label>
+                                        </div>
+                                        <br>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Masuk
                                         </button>
@@ -59,4 +64,26 @@
         </div>
 
     </div>
+
+<script>
+    $(document).ready(function() {
+        $('#checkbox1').click(function() {
+            if( $(this).is(':checked') ){
+                $('#password').attr('type', 'text');
+            } else {
+                $('#password').attr('type', 'password');
+            }
+        })
+
+        $('#checkbox2').click(function() {
+            if( $(this).is(':checked') ){
+                $('#password').attr('type', 'text');
+                $('#password2').attr('type', 'text');
+            } else {
+                $('#password').attr('type', 'password');
+                $('#password2').attr('type', 'password');
+            }
+        })
+    })
+</script>
 

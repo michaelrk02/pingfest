@@ -1,18 +1,12 @@
-<div class="container pt-4">
+<div class="container">
     <div class="row my-2">
-        <?php if (!empty($status)): ?>
-            <div class="col-12">
-                <div class="alert alert-<?php echo substr($status, 0, 8) === 'SUCCESS:' ? 'success' : 'danger'; ?>">
-                    <span><?php echo htmlspecialchars($status); ?></span>
-                </div>
-            </div>
-        <?php endif; ?>
         <div class="col-12" style="padding-bottom: 2rem">
             <div class="card">
                 <div class="card-body row">
                     <div class="col-md-2 col-12 my-auto text-center">
-                        <div class="display-1 fa fa-user"></div>
-                        <div class="mt-2"><a class="text-danger" href="<?php echo site_url('auth/logout'); ?>" onclick="return confirm('Apakah anda yakin?')"><span class="fa fa-sign-out-alt mr-2"></span>Logout</a></div>
+                        <div class="display-1 fa fa-user mb-2"></div>
+                        <div><a href="<?php echo site_url('profile/settings'); ?>"><span class="fa fa-cog mr-2"></span>Pengaturan</a></div>
+                        <div><a class="text-danger" href="<?php echo site_url('auth/logout'); ?>" onclick="return confirm('Apakah anda yakin?')"><span class="fa fa-sign-out-alt mr-2"></span>Logout</a></div>
                     </div>
                     <div class="col-md-10 col-12">
                         <ul class="list-group list-group-flush">
