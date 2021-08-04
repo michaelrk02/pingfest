@@ -526,6 +526,9 @@ class Profile extends CI_Controller {
                 $this->form_validation->set_rules('phone', 'No. Telp. Ketua', 'required|max_length[20]');
 
                 if ($this->form_validation->run()) {
+                    $identity['link_gdrive'] = !empty($identity['link_gdrive']) ? prep_url($identity['link_gdrive']) : '';
+                    $identity['link_igtv'] = !empty($identity['link_igtv']) ? prep_url($identity['link_igtv']) : '';
+
                     if ($this->events->music_set($_SESSION['user_id'], $identity)) {
                         $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas';
                     } else {
