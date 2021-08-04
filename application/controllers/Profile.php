@@ -163,7 +163,7 @@ class Profile extends CI_Controller {
                 case 'music':
                     $registration[$item['event_id']]['setup'] = $this->events->music_get($_SESSION['user_id']) !== NULL;
                     break;
-                case 'battle':
+                case 'paper':
                     $registration[$item['event_id']]['setup'] = $this->events->paper_get($_SESSION['user_id']) !== NULL;
                     break;
                 case 'semnas':
