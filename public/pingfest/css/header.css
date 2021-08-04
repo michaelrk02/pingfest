@@ -49,16 +49,16 @@ body {
   transition: fill 0.3s ease;
 }
 
-.logo-ping svg:hover path:nth-child(1) {
+.logo-ping:hover path:nth-child(1) {
   fill: #ee7929;
 }
-.logo-ping svg:hover path:nth-child(2) {
+.logo-ping:hover path:nth-child(2) {
   fill: #e52129;
 }
-.logo-ping svg:hover path:nth-child(3) {
+.logo-ping:hover path:nth-child(3) {
   fill: #acce22;
 }
-.logo-ping svg:hover path:nth-child(4) {
+.logo-ping:hover path:nth-child(4) {
   fill: #00a2e9;
 }
 

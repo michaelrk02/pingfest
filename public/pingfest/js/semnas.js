@@ -108,3 +108,31 @@ $(document).on('mouseenter', '.idea', function () {
   textArray[counter].classList.add('idea');
   idea = document.querySelector('.idea');
 });
+
+$(function () {
+  skrollr.init({
+    forceHeight: false,
+  });
+});
+
+var daftarText = document.querySelector('.daftar-text');
+var daftarBlock = document.querySelector('.daftar-block');
+
+$('.daftar-block').mousemove(function (e) {
+  console.log(daftarText);
+
+  var offset = $('.daftar-block').offset();
+
+  daftarText.style.transform =
+    'translate(' +
+    (e.pageX - offset.left - 149) / 4 +
+    'px, ' +
+    (e.pageY - offset.top - 38) / 2.5 +
+    'px)';
+  daftarText.style.transitionDuration = '0s';
+});
+
+$(document).on('mouseleave', '.daftar-block', function () {
+  daftarText.style.transform = 'translate(0px , 0px)';
+  daftarText.style.transitionDuration = '0.2s';
+});

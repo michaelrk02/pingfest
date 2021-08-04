@@ -205,7 +205,7 @@
                 <p> <a href="http://wa.me/6281239930252" target="_blank">(+62) 812 3993 0252</a> (sabil) <br>  <a href="http://wa.me/6282139893021" target="_blank"> (+62) 821 3989 3021</a> (lia)</p>
 
                 <i class="fa fa-envelope"></i>
-                <p><a href="#">pingfest2019@gmail.com</a></p>
+                <p><a href="mailto:pingfest.himasteruns@gmail.com">pingfest.himasteruns@gmail.com</a></p>
             </div>
           </div>
           <div class="footer-col peta">
@@ -215,10 +215,10 @@
           <div class="footer-col follow">
             <h4>Ikuti Kami</h4>
             <div class="social-links">
-              <a href="https://twitter.com/himaster_uns" target="_blank"><i class="fab fa-twitter"></i></a>
-              <a href="https://www.instagram.com/himaster.uns/" target="_blank"><i class="fab fa-instagram"></i></a>
-              <a href="https://www.linkedin.com/company/himaster-uns/" target="_blank" ><i class="fab fa-linkedin"></i></a>
-              <a href="https://www.youtube.com/channel/UCLUJ6DRel_x7jglM6iZB0lQ" target="_blank"><i class="fab fa-youtube"></i></a>
+              <a href="https://twitter.com/pingfest" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/pingfest/" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.facebook.com/pingfest2021/" target="_blank" ><i class="fab fa-facebook"></i></a>
+              <a href="https://line.me/R/ti/p/%40ifr8598z" target="_blank"><i class="fab fa-line"></i></a>
             </div>
           </div>
         </div>

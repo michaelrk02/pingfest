@@ -91,7 +91,7 @@
 
     <div class="item logo-semnas ">
         <video class="logo-acara" autoplay muted loop>
-            <source src="<?php echo base_url('public/pingfest/video/itv.webm'); ?>" type="video/webm">
+            <source src="<?php echo base_url('public/pingfest/video/fyi.webm'); ?>" type="video/webm">
             Your browser does not support the video tag.
         </video>
     </div>

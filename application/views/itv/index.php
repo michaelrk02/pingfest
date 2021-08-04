@@ -62,7 +62,7 @@
                             Oktober 2021<span> </div>
                     <div class="button-bawah-wrapper">
                         <div class="guide-book-button">
-                            <a href="<?php echo site_url('profile/index').'?tab=e_battle'; ?>" class="btn btn-arrow">
+                            <a href="" class="btn btn-arrow">
                                 <span>Guide Book</span>
                             </a>
                         </div>
@@ -129,7 +129,7 @@
                             class="right">24 Oktober 2021<span> </div>
                     <div class="button-bawah-wrapper">
                         <div class="guide-book-button">
-                            <a href="<?php echo site_url('profile/index').'?tab=e_battle'; ?>" class="btn btn-arrow">
+                            <a href="" class="btn btn-arrow">
                                 <span>Guide Book</span>
                             </a>
                         </div>
@@ -196,7 +196,7 @@
                             Oktober 2021<span> </div>
                     <div class="button-bawah-wrapper">
                         <div class="guide-book-button">
-                            <a href="<?php echo site_url('profile/index').'?tab=e_music'; ?>" class="btn btn-arrow">
+                            <a href="" class="btn btn-arrow">
                                 <span>Guide Book</span>
                             </a>
                         </div>
@@ -222,7 +222,7 @@
     </div>
     <div class="daftar-itv">
         <div class="itv-guide-book button">
-            <a href="<?php echo site_url('profile/index').'?tab=e_battle'; ?>" class="btn">
+            <a href="" class="btn">
                 <span>Guide Book</span>
             </a>
         </div>

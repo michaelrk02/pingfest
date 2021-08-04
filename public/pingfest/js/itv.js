@@ -37,7 +37,6 @@ var daftarBlock = document.querySelector('.daftar-block');
 $('.daftar-block').mousemove(function (e) {
   var offset = $('.daftar-block').offset();
 
-  console.log(offset);
   daftarText.style.transform =
     'translate(' +
     (e.pageX - offset.left - 149) / 4 +

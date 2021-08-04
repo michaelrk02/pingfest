@@ -82,8 +82,9 @@ body {
 
 .headline iframe {
   border: none;
-  width: 45vw;
-  height: calc(0.5625 * 45vw);
+  --width-frame: max(45vw, 700px);
+  width: var(--width-frame);
+  height: calc(0.5625 * var(--width-frame));
   overflow: hidden;
   margin-top: 6vh;
 }
@@ -100,6 +101,10 @@ body {
   position: relative;
 
   width: 600px;
+}
+
+.logo-semnas video {
+  top: -40px;
 }
 
 .text-itv {
@@ -133,15 +138,13 @@ body {
 .dokumentasi p {
   font-family: 'Bree Serif', serif;
   text-align: center;
-  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 700;
 }
 
 .dokumentasi-container {
-  padding: 2vmax;
   display: flex;
   margin: auto;
-  max-width: 60vw;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -199,7 +202,7 @@ body {
   font-family: 'Bree Serif', serif;
   text-align: center;
   font-weight: 700;
-  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-size: clamp(3rem, 5vw, 4.5rem);
 }
 
 .itv-wrapper,
@@ -208,6 +211,7 @@ body {
   top: -80px;
   right: 0;
   bottom: 0;
+  transform: scale(1);
 }
 
 .jelly-canvas {
@@ -248,7 +252,7 @@ body {
 }
 
 .inner .description {
-  margin-top: 10%;
+  margin-top: 8%;
   font-size: 1.4rem;
 }
 
@@ -304,6 +308,7 @@ button {
   .itv-wrapper,
   .sem-wrapper {
     left: -80px !important;
+    transform: scale(1) !important;
   }
 }
 
@@ -340,10 +345,9 @@ button {
 
 @media screen and (max-width: 900px) {
   .grid-container {
-    pointer-events: none;
     position: relative;
     grid-template-rows: 100vh auto 50vh auto 80vh;
-    row-gap: 6rem;
+    row-gap: 10vh;
     grid-template-areas:
       'headline headline'
       'logo-itv logo-itv'
@@ -364,6 +368,8 @@ button {
   }
 
   .headline iframe {
+    pointer-events: auto;
+
     width: 85vw;
     height: calc(0.5625 * 85vw);
   }
@@ -379,7 +385,8 @@ button {
 }
 
 @media screen and (max-width: 350px) {
-  .itv-text {
+  .itv-text,
+  .sem-text {
     width: 120vw !important;
   }
 }
