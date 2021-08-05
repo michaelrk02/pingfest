@@ -26,7 +26,8 @@ body {
   height: max(calc(100% - 4%), calc(100% - 20px));
 }
 
-.container p.title {
+.container p.title,
+h1.title {
   font-weight: 1000;
   max-width: 100%;
   line-height: 1.09;
@@ -69,4 +70,9 @@ body {
 
 .text-center a {
   color: var(--green-color);
+}
+
+.bree {
+  margin: 0.5rem 0;
+  font-family: 'Bree Serif', serif;
 }
