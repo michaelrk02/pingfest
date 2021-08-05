@@ -14,7 +14,7 @@
                     <div class="col-lg">
                         <div class="p-5">
                             <div class="text-center">
-                                <p> Lupa Password</p><br>
+                                <p class="title"> Lupa Password</p><br>
                             </div>
                             <?php if( !empty($this->session->userdata('forgot_msg')) ){
                                 echo $this->session->userdata('forgot_msg');

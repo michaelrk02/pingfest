@@ -14,7 +14,7 @@
                             <div class="col-lg">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <p>Login</p>
+                                        <p class="title">Login</p>
                                     </div>
                                     <?php if( !empty($this->session->userdata('auth_msg')) ){
                                         echo $this->session->userdata('auth_msg');

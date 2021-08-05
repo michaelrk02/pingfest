@@ -39,6 +39,10 @@ body {
   border-color: rgba(33, 33, 33, 0.7) rgba(33, 33, 33, 0.7) var(--light-color) !important;
 }
 
+.list-group-item h3 {
+  font-family: 'Bree Serif', serif;
+}
+
 .nav-tabs {
   border-bottom: 2px solid rgba(33, 33, 33, 0.7);
 }

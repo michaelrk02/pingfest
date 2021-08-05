@@ -9,7 +9,7 @@
                     <div class="col-lg">
                         <div class="p-5">
                             <div class="text-center">
-                                <p>Registrasi Akun</p><br>
+                                <p class="title">Registrasi Akun</p><br>
                             </div>
                             <form method="post" action="<?= site_url('auth/registration/'); ?>" onsubmit="return confirm('Apakah anda yakin?')">
                                 <div class="form-group">

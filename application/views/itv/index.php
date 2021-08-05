@@ -177,7 +177,7 @@
                     <hr>
                     <div class="deskripsi-text-line"> <i class="symbol fas fa-user"></i><span>S1/D3/Sederajat<span>
                     </div>
-                    <div class="deskripsi-text-line"> <i class="symbol fas fa-user-friends"></i><span>1 orang<span>
+                    <div class="deskripsi-text-line"> <i class="symbol fas fa-user-friends"></i><span>1-3 orang<span>
                     </div>
                     <div class="deskripsi-text-line"> <i class="symbol fa fa-dollar-sign"></i><span>Rp 100.000<span>
                     </div>
