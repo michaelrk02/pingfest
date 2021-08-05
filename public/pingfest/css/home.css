@@ -196,6 +196,10 @@ body {
 
 .sponsor {
   grid-area: sponsor;
+  display: flex;
+  place-content: center;
+  flex-direction: column;
+  place-items: center;
 }
 
 .sponsor p {
@@ -203,6 +207,19 @@ body {
   text-align: center;
   font-weight: 700;
   font-size: clamp(3rem, 5vw, 4.5rem);
+}
+
+.sponsor .sponsor-button {
+  width: 30rem;
+  display: flex;
+  place-items: center;
+  place-content: center;
+}
+
+.sponsor .btn {
+  background-color: var(--light-color);
+  border-radius: 1rem;
+  border: 3px solid var(--dark-color);
 }
 
 .itv-wrapper,
