@@ -1,0 +1,17 @@
+<!-- to: backman@localhost, subject: Pembayaran Diterima (backman @ IT-Paper) -->
+<html>
+    <head>
+    </head>
+    <body>
+        <h2>Pembayaran Diterima</h2>
+        <div><b>Waktu:</b> Thu, 05 Aug 2021 07:54:26 +0200</div>
+        <div><b>User ID:</b> backman</div>
+        <div><b>Event:</b> IT-Paper</div>
+        <div><b>Invoice:</b> Rp. 75.067,00</div>
+        <p>
+            Pembayaran anda telah diterima oleh administrator kami.
+            Anda dapat melanjutkan prosedur berikutnya dengan mengisi identitas keikutsertaan anda pada event ini pada halaman profil anda
+        </p>
+        <p>Anda dapat mengakses profil anda di <a href="http://localhost/pingfest/index.php/profile/index">http://localhost/pingfest/index.php/profile/index</a> (harap login terlebih dahulu)</p>
+    </body>
+</html>

@@ -1,3 +1,6 @@
+
+<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/auth.min.css'); ?>" />
+
 <div class="container">
     <h1>Pengaturan</h1>
     <div class="row mt-4">

@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/auth.min.css'); ?>" />
+<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/profile.min.css'); ?>" />
+
 <div class="container">
     <div class="row my-2">
         <div class="col-12" style="padding-bottom: 2rem">

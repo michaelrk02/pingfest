@@ -1,0 +1,57 @@
+body {
+  font-size: 1rem;
+}
+
+.bg-primary {
+  background-color: var(--green-color) !important;
+}
+
+.bg-info {
+  background-color: #f1d000 !important;
+}
+
+.list-group-item h5 {
+  margin: 0.3rem 0;
+}
+
+.text-center h5 {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.3rem;
+  line-height: 1.09;
+  letter-spacing: 1.4px;
+}
+
+.card-body {
+  position: relative;
+}
+
+.list-group-item {
+  background-color: var(--light-color);
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  background-color: var(--light-color);
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  border-color: rgba(33, 33, 33, 0.7) rgba(33, 33, 33, 0.7) var(--light-color) !important;
+}
+
+.nav-tabs {
+  border-bottom: 2px solid rgba(33, 33, 33, 0.7);
+}
+
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+  border-color: rgba(33, 33, 33, 0.5);
+}
+
+a {
+  color: var(--green-color);
+}
+
+.identitas {
+  color: var(--light-color) !important;
+}

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/plugins/fontawesome-free/css/all.css'); ?>" />
 
 <footer class="footer">
-      <div class="container">
+      <div class="footer-container">
         <div class="row">
           <div class="footer-col logo">
             <a href="https://himaster.mipa.uns.ac.id" target="_blank">
