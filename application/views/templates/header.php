@@ -8,15 +8,14 @@
     
     <script src="<?php echo base_url('public/jquery/js/jquery-3.6.0.min.js'); ?>"></script>
     <script src="<?php echo base_url('public/pingfest/js/static/pingfest-theme.js'); ?>"></script>
-    <script src="<?php echo base_url('public/pingfest/js/header.js'); ?>"></script>
-    <link rel="stylesheet" href="<?php echo base_url('public/fontawesome/css/all.min.css'); ?>">
+    <script src="<?php echo base_url('public/pingfest/js/header.min.js'); ?>"></script>
 
-    <link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/header.css'); ?>" />
+    <link rel="stylesheet" href="<?php echo base_url('public/fontawesome/css/all.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/header.min.css'); ?>" />
 
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Chivo&display=swap" rel="stylesheet"> 
 
-    <!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> -->
 
   </head>
   <body>

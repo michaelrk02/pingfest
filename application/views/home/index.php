@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/home.css'); ?>" />
+<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/home.min.css'); ?>" />
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none">
     <path id="itv-jelly"
@@ -113,5 +113,5 @@
 
 </div>
 
-<script src="<?php echo base_url('public/pingfest/js/blob.js'); ?>"></script>
-<script src="<?php echo base_url('public/pingfest/js/home.js'); ?>"></script>
+<script src="<?php echo base_url('public/pingfest/js/blob.min.js'); ?>"></script>
+<script src="<?php echo base_url('public/pingfest/js/home.min.js'); ?>"></script>

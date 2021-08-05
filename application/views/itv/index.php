@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/itv.css'); ?>" />
+<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/itv.min.css'); ?>" />
 
 
 
@@ -238,4 +238,4 @@
 </div>
 
 
-<script src="<?php echo base_url('public/pingfest/js/itv.js'); ?>"></script>
+<script src="<?php echo base_url('public/pingfest/js/itv.min.js'); ?>"></script>

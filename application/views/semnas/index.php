@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/semnas.css'); ?>" />
+<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/semnas.min.css'); ?>" />
 
 
 
@@ -87,5 +87,5 @@
 
 
 
-<script src="<?php echo base_url('public/pingfest/js/skrollr.js'); ?>"></script>
-<script src="<?php echo base_url('public/pingfest/js/semnas.js'); ?>"></script>
+<script src="<?php echo base_url('public/pingfest/js/skrollr.min.js'); ?>"></script>
+<script src="<?php echo base_url('public/pingfest/js/semnas.min.js'); ?>"></script>

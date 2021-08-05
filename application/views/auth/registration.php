@@ -1,14 +1,15 @@
+<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/auth.min.css'); ?>" />
 
     <div class="container">
 
-        <div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
+        <div class="card o-hidden my-5 col-lg-7 mx-auto">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Registrasi Akun</h1>
+                                <p>Registrasi Akun</p><br>
                             </div>
                             <form method="post" action="<?= site_url('auth/registration/'); ?>" onsubmit="return confirm('Apakah anda yakin?')">
                                 <div class="form-group">

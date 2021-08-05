@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/footer.css'); ?>" />
+<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/footer.min.css'); ?>" />
 <link rel="stylesheet" href="<?php echo base_url('assets/plugins/fontawesome-free/css/all.css'); ?>" />
 
 <footer class="footer">
