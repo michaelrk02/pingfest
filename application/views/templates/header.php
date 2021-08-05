@@ -10,8 +10,13 @@
     <script src="<?php echo base_url('public/pingfest/js/static/pingfest-theme.js'); ?>"></script>
     <script src="<?php echo base_url('public/pingfest/js/header.min.js'); ?>"></script>
 
+
+
     <link rel="stylesheet" href="<?php echo base_url('public/fontawesome/css/all.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/header.min.css'); ?>" />
+
+    <link href="<?php echo base_url('public/pingfest/img/ping.png'); ?>" rel="icon">
+    <link href="<?php echo base_url('public/pingfest/img/ping.png'); ?>" rel="apple-touch-icon">
 
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Chivo&display=swap" rel="stylesheet"> 
