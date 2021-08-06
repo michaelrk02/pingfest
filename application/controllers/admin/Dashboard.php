@@ -30,10 +30,14 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		if(!empty($this->session->userdata("username_admin"))){
-			$countBettle = $this->Bettle_model->countRow(); 
-			$countMusic = $this->Music_model->countRow(); 
-			$countPaper = $this->Paper_model->countRow(); 
-			$countSemnas = $this->Semnas_model->countRow(); 
+			// $countBettle = $this->Bettle_model->countRow(); 
+			// $countMusic = $this->Music_model->countRow(); 
+			// $countPaper = $this->Paper_model->countRow(); 
+			// $countSemnas = $this->Semnas_model->countRow(); 
+			$countBettle = $this->Event_participant_model->countTableRow('battle'); 
+			$countMusic = $this->Event_participant_model->countTableRow('music'); 
+			$countPaper = $this->Event_participant_model->countTableRow('paper'); 
+			$countSemnas = $this->Event_participant_model->countTableRow('semnas'); 
 			$countParticipant = $this->Event_participant_model->countRow(); 
 
 			$sumBettle = $this->Event_participant_model->sumPrice('battle'); 

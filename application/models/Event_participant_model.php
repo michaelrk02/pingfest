@@ -29,18 +29,29 @@ class Event_participant_model extends CI_Model
             SELECT * FROM pf_event_participants 
             join pf_users on pf_users.user_id = pf_event_participants.user_id 
             join pf_events on pf_events.event_id = pf_event_participants.event_id
+            where pf_event_participants.status = 1
+        '); 
+        return $query->num_rows();
+    }
+
+    public function countTableRow($id){
+        $query = $this->db->query('
+            SELECT * FROM pf_event_participants 
+            join pf_users on pf_users.user_id = pf_event_participants.user_id 
+            join pf_events on pf_events.event_id = pf_event_participants.event_id
+            where pf_event_participants.event_id = "'.$id.'" and  pf_event_participants.status = 1
         '); 
         return $query->num_rows();
     }
 
     public function sumPrice($id){
-        $this->db->select_sum('total'); 
+        $this->db->select_sum('invoice'); 
         $query = $this->db->get_where($this->_table, ["event_id" => $id,'status' => 1])->row(); 
         return $query;
     }   
 
     public function sumPriceAll(){
-        $this->db->select_sum('total');  
+        $this->db->select_sum('invoice');  
         $query = $this->db->get_where($this->_table, ['status' => 1])->row(); 
         return $query;
     }   
