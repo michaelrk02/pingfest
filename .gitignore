@@ -8,4 +8,5 @@ application/storage/*
 !application/storage/index.html
 
 /config.php
+/.htaccess
 
