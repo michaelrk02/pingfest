@@ -6,6 +6,11 @@ body {
   font-size: 1.125rem;
   line-height: 1.56;
   letter-spacing: 0.9px;
+  height: auto;
+}
+
+.site-header {
+  position: fixed !important;
 }
 
 .headline {
