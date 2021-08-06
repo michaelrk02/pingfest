@@ -9,6 +9,8 @@
     <script src="<?php echo base_url('public/jquery/js/jquery-3.6.0.min.js'); ?>"></script>
     <script src="<?php echo base_url('public/pingfest/js/static/pingfest-theme.js'); ?>"></script>
     <script src="<?php echo base_url('public/pingfest/js/header.min.js'); ?>"></script>
+    <script src="<?php echo base_url('public/popper/js/popper.min.js'); ?>"></script>
+    <script src="<?php echo base_url('public/bootstrap/js/bootstrap.min.js'); ?>"></script>
 
 
 

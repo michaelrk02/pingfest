@@ -11,8 +11,7 @@
                             <div class="text-center">
                                 <p class="title">Registrasi Akun</p><br>
                             </div>
-                            <form method="post" action="<?= site_url('auth/registration/'); ?>" onsubmit="return confirm('Apakah anda yakin?')">
-                                <div class="form-group">
+                            <form method="post" action="<?= site_url('auth/registration/'); ?>">
                                     <label>Username</label>
                                     <input type="text" class="form-control form-control-user" id="uname" name="uname"
                                         placeholder="Masukkan username" value="<?= set_value('uname'); ?>">
@@ -54,7 +53,13 @@
                                         placeholder="Nomor Telepon" value="<?= set_value('phone'); ?>">
                                     <?= form_error('phone', '<small class="text-danger ">', '</small>'); ?>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="TOSbox">
+                                    <label class="custom-control-label" for="TOSbox">Saya telah membaca <a href="##TOSmodal" data-target="#TOSModal" data-toggle="modal">Term of Service</a> dan saya menyetujuinya</label>
+                                </div>
+                                <br>
+
+                                <button type="submit" class="btn btn-primary btn-user btn-block" id="submit">
                                     Daftar Akun
                                 </button>
                             </form>
@@ -71,6 +76,7 @@
     </div>
 
 <script>
+
     $(document).ready(function() {
         $('#checkbox1').click(function() {
             if( $(this).is(':checked') ){
@@ -87,6 +93,15 @@
             } else {
                 $('#password').attr('type', 'password');
                 $('#password2').attr('type', 'password');
+            }
+        })
+
+        $('#submit').click(function() {
+            if( $('#TOSbox').is(':checked') ){
+                return confirm('Apakah anda yakin?');
+            } else {
+                alert('Anda harus mencentang kotak persetujuan Term of Service untuk melanjutkan!');
+                return false;
             }
         })
     })

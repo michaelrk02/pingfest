@@ -92,6 +92,7 @@ class Auth extends CI_Controller
 
         if( $this->form_validation->run() == FALSE) {
             $this->load->view('templates/header', $data);
+            $this->load->view('auth/TOS_modal');
             $this->load->view('auth/registration');
             $this->load->view('templates/footer');
         } else {
