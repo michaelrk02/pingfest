@@ -16,7 +16,7 @@ body {
 .headline {
   position: relative;
   display: flex;
-  height: 100vh;
+  height: max(40rem, 100vh);
   background-color: var(--dark-color);
 
   font-family: 'Bree Serif', serif;

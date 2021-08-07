@@ -23,7 +23,7 @@ body {
 
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 90vh 40rem 40rem;
+  grid-template-rows: minmax(50rem, 100vh) 40rem 40rem;
 
   grid-template-areas:
     'headline headline'

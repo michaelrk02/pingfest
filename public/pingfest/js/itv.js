@@ -23,19 +23,18 @@ function isOnScreen(elem) {
 }
 
 var autoScroll = true;
+const headline = document.querySelector('.headline');
 
 window.addEventListener('scroll', () => {
   if (!isOnScreen(jQuery('.auto-scroll'))) {
     if (autoScroll) {
-      window.scrollTo({ top: this.window.innerHeight, behavior: 'smooth' });
+      window.scrollTo({ top: headline.clientHeight, behavior: 'smooth' });
       autoScroll = false;
     }
   } else {
     autoScroll = true;
   }
 });
-
-const headline = document.querySelector('.headline');
 
 jQuery(document).ready(function () {
   window.addEventListener('scroll', function (e) {
