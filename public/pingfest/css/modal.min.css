@@ -1,1 +1,1 @@
-.modal-content{border-radius:.5rem;background-color:var(--light-color)}.modal-title{font-weight:500;font-family:'Bree Serif',serif;letter-spacing:1.4px}.btn-secondary{color:var(--light-color);background-color:var(--green-color);border-color:var(--green-color)}
+#TOSModal .modal-content{border-radius:.5rem;background-color:var(--light-color)}#TOSModal .modal-title{font-weight:500;font-family:'Bree Serif',serif;letter-spacing:1.4px}#TOSModal .btn-secondary{color:var(--light-color);background-color:var(--green-color);border-color:var(--green-color)}

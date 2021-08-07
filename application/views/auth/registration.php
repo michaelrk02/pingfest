@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/auth.min.css'); ?>" />
-<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/modal.min.css'); ?>" />
 
 <div class="container">
 
