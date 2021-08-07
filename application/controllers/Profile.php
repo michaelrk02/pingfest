@@ -184,6 +184,7 @@ class Profile extends CI_Controller {
         }
 
         $this->load->view('templates/header', ['title' => 'Your Profile']);
+        $this->load->view('auth/TOS_modal');
         $this->load->view('profile/status', ['status' => $this->get_status()]);
         $this->load->view('profile/details', ['user' => $this->user, 'tabs' => $tabs, 'tab' => $tab]);
         $this->load->view($page, $data);

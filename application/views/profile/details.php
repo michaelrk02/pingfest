@@ -18,6 +18,7 @@
                             <li class="list-group-item"><b>Nama Lengkap:</b> <?php echo htmlspecialchars($user['name']); ?></li>
                             <li class="list-group-item"><b>E-mail:</b> <?php echo htmlspecialchars($user['email']); ?></li>
                             <li class="list-group-item"><b>No. Telepon:</b> <?php echo htmlspecialchars($user['phone']); ?></li>
+                            <li class="list-group-item">Anda dapat melihat Terms of Service dengan mengklik <a href="#TOSModal" data-toggle="modal" data-target="#TOSModal">di sini<a></li>
                         </ul>
                     </div>
                 </div>
