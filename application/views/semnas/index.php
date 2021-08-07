@@ -5,7 +5,7 @@
 <div class="headline">
     <div class="item-headline">
         <h1>Perluas wawasanmu di</h1>
-        <h1>Seminar Nasional</h1>
+        <h1 class="auto-scroll">Seminar Nasional</h1>
         <div class="idea-container">
             <div class="hay-text">Find</div>
             &#160;
@@ -18,7 +18,8 @@
 <div class=container-sem>
     <div class="deskripsi-sem">
         <h2>Coming Soon!</h2>
-        <p>Acaranya masih dalam tahap perancangan, tapi apa salahnya kalau daftar sekarang :))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))</p>
+        <p>Acaranya masih dalam tahap perancangan, tapi apa salahnya kalau daftar sekarang
+            :))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))</p>
         <div class="daftar-sem button">
             <a href="<?php echo site_url('profile/index').'?tab=e_semnas'; ?>" class="btn daftar-block">
                 <span class="daftar-text">Daftar Sekarang</span>

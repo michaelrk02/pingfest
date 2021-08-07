@@ -22,6 +22,21 @@ function isOnScreen(elem) {
   );
 }
 
+var autoScroll = true;
+
+window.addEventListener('scroll', () => {
+  if (!isOnScreen(jQuery('.auto-scroll'))) {
+    if (autoScroll) {
+      window.scrollTo({ top: this.window.innerHeight, behavior: 'smooth' });
+      autoScroll = false;
+    }
+  } else {
+    autoScroll = true;
+  }
+});
+
+const headline = document.querySelector('.headline');
+
 jQuery(document).ready(function () {
   window.addEventListener('scroll', function (e) {
     document.body.classList.toggle(

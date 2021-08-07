@@ -11,7 +11,7 @@
 <div class="headline">
     <div class="item-headline">
         <h1>Uji Kemampuanmu di</h1>
-        <h1>IT-Venture XIV</h1>
+        <h1 class="auto-scroll">IT-Venture XIV</h1>
         <div class="riseit-container">
             <div style="--i:1" class="hay-text">R</div>
             <div style="--i:2" class="hay-text">i</div>

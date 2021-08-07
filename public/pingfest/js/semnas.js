@@ -109,6 +109,19 @@ $(document).on('mouseenter', '.idea', function () {
   idea = document.querySelector('.idea');
 });
 
+var autoScroll = true;
+
+window.addEventListener('scroll', () => {
+  if (!isOnScreen(jQuery('.auto-scroll'))) {
+    if (autoScroll) {
+      window.scrollTo({ top: this.window.innerHeight, behavior: 'smooth' });
+      autoScroll = false;
+    }
+  } else {
+    autoScroll = true;
+  }
+});
+
 $(function () {
   skrollr.init({
     forceHeight: false,

@@ -231,8 +231,8 @@ button {
 
 .page-2 .scroll-text {
   position: sticky;
-  width: 100%;
   display: flex;
+  max-width: 80%;
   justify-content: center;
   place-items: center;
   top: 1rem;
@@ -243,6 +243,7 @@ button {
   background-color: var(--dark-color);
   font-weight: 700;
   font-size: 0.8rem;
+  text-align: center;
   padding: 4px 8px;
   letter-spacing: 1.95px;
   margin-top: -1rem;
