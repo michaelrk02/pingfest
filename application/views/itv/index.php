@@ -1,6 +1,12 @@
 <link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/itv.min.css'); ?>" />
 
-
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+    style="display: none">
+    <symbol viewBox="0 0 36.1 25.8" id="button-arrow">
+        <line x1="0" y1="12.9" x2="34" y2="12.9"></line>
+        <polyline fill="none" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
+    </symbol>
+</svg>
 
 <div class="headline">
     <div class="item-headline">
@@ -23,12 +29,10 @@
                 <p> Battle Of Technology </p>
                 <div class="daftar-button button-atas">
                     <a href="<?php echo site_url('profile/index').'?tab=e_battle'; ?>" class="btn btn-arrow">
-                        <span>Daftar Sekarang<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36.1 25.8" xml:space="preserve">
-                                <g>
-                                    <line x1="0" y1="12.9" x2="34" y2="12.9"></line>
-                                    <polyline fill="none" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
-                                </g>
+                        <span>
+                            Daftar Sekarang
+                            <svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" href="#button-arrow"></use>
                             </svg>
                         </span>
                     </a>
@@ -62,20 +66,17 @@
                             Oktober 2021<span> </div>
                     <div class="button-bawah-wrapper">
                         <div class="guide-book-button">
-                            <a href="" class="btn btn-arrow">
+                            <a href="http://tiny.cc/GuidebookITV_BOT" target="_blank" class="btn btn-arrow">
                                 <span>Guide Book</span>
                             </a>
                         </div>
 
                         <div class="daftar-button">
                             <a href="<?php echo site_url('profile/index').'?tab=e_battle'; ?>" class="btn btn-arrow">
-                                <span>Daftar Sekarang<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36.1 25.8"
-                                        xml:space="preserve">
-                                        <g>
-                                            <line x1="0" y1="12.9" x2="34" y2="12.9"></line>
-                                            <polyline fill="none" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
-                                        </g>
+                                <span>
+                                    Daftar Sekarang
+                                    <svg>
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" href="#button-arrow"></use>
                                     </svg>
                                 </span>
                             </a>
@@ -90,12 +91,10 @@
                 <p> IT-Music </p>
                 <div class="daftar-button button-atas">
                     <a href="<?php echo site_url('profile/index').'?tab=e_music'; ?>" class="btn btn-arrow">
-                        <span>Daftar Sekarang<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36.1 25.8" xml:space="preserve">
-                                <g>
-                                    <line x1="0" y1="12.9" x2="34" y2="12.9"></line>
-                                    <polyline fill="none" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
-                                </g>
+                        <span>
+                            Daftar Sekarang
+                            <svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" href="#button-arrow"></use>
                             </svg>
                         </span>
                     </a>
@@ -129,20 +128,17 @@
                             class="right">24 Oktober 2021<span> </div>
                     <div class="button-bawah-wrapper">
                         <div class="guide-book-button">
-                            <a href="" class="btn btn-arrow">
+                            <a href="http://tiny.cc/GuidebookITV_IT-Music" target="_blank" class="btn btn-arrow">
                                 <span>Guide Book</span>
                             </a>
                         </div>
 
                         <div class="daftar-button">
                             <a href="<?php echo site_url('profile/index').'?tab=e_music'; ?>" class="btn btn-arrow">
-                                <span>Daftar Sekarang<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36.1 25.8"
-                                        xml:space="preserve">
-                                        <g>
-                                            <line x1="0" y1="12.9" x2="34" y2="12.9"></line>
-                                            <polyline fill="none" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
-                                        </g>
+                                <span>
+                                    Daftar Sekarang
+                                    <svg>
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" href="#button-arrow"></use>
                                     </svg>
                                 </span>
                             </a>
@@ -157,12 +153,10 @@
                 <p> IT-Paper </p>
                 <div class="daftar-button button-atas">
                     <a href="<?php echo site_url('profile/index').'?tab=e_paper'; ?>" class="btn btn-arrow">
-                        <span>Daftar Sekarang<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36.1 25.8" xml:space="preserve">
-                                <g>
-                                    <line x1="0" y1="12.9" x2="34" y2="12.9"></line>
-                                    <polyline fill="none" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
-                                </g>
+                        <span>
+                            Daftar Sekarang
+                            <svg>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" href="#button-arrow"></use>
                             </svg>
                         </span>
                     </a>
@@ -196,20 +190,17 @@
                             Oktober 2021<span> </div>
                     <div class="button-bawah-wrapper">
                         <div class="guide-book-button">
-                            <a href="" class="btn btn-arrow">
+                            <a href="http://tiny.cc/GuidebookITV_IT-Paper" target="_blank" class="btn btn-arrow">
                                 <span>Guide Book</span>
                             </a>
                         </div>
 
                         <div class="daftar-button">
                             <a href="<?php echo site_url('profile/index').'?tab=e_paper'; ?>" class="btn btn-arrow">
-                                <span>Daftar Sekarang<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36.1 25.8"
-                                        xml:space="preserve">
-                                        <g>
-                                            <line x1="0" y1="12.9" x2="34" y2="12.9"></line>
-                                            <polyline fill="none" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
-                                        </g>
+                                <span>
+                                    Daftar Sekarang
+                                    <svg>
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" href="#button-arrow"></use>
                                     </svg>
                                 </span>
                             </a>
@@ -222,7 +213,8 @@
     </div>
     <div class="daftar-itv">
         <div class="itv-guide-book button">
-            <a href="" class="btn">
+            <a href="https://drive.google.com/drive/folders/1GuJ0DZSDXGbRLSXWGzrCbfBo-vQg-w5C" target="_blank"
+                class="btn">
                 <span>Guide Book</span>
             </a>
         </div>

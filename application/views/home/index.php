@@ -7,6 +7,14 @@
         d="M711.901 316.012Q632.906 237.017 580.996 141.471 529.086 45.927 414.732 42.917 300.378 39.907 213.108 112.131 125.839 184.355 91.984 289.68 58.129 395.006 115.306 483.028 172.483 571.05 237.183 659.072 301.883 747.095 413.979 739.571 526.076 732.048 577.986 641.017 629.898 549.985 710.396 472.495 790.895 395.006 711.901 316.012Z" />
 </svg>
 
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+    style="display: none">
+    <symbol viewBox="0 0 36.1 25.8" id="button-arrow">
+        <line x1="0" y1="12.9" x2="34" y2="12.9"></line>
+        <polyline fill="none" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
+    </symbol>
+</svg>
+
 <div class="grid-container">
     <div class="item headline ">
         <h1>Ayo ikuti pekan teknologi</h1>
@@ -43,13 +51,9 @@
                     </div>
                     <div class="text-button">
                         <a href="<?php echo site_url('itv'); ?>" class="btn btn-arrow">
-                            <span>Selengkapnya<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36.1 25.8"
-                                    xml:space="preserve">
-                                    <g>
-                                        <line x1="0" y1="12.9" x2="34" y2="12.9"></line>
-                                        <polyline fill="none" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
-                                    </g>
+                            <span>Selengkapnya
+                                <svg>
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" href="#button-arrow"></use>
                                 </svg>
                             </span>
                         </a>
@@ -72,13 +76,10 @@
                     </div>
                     <div class="text-button">
                         <a href="<?php echo site_url('semnas'); ?>" class="btn btn-arrow">
-                            <span>Selengkapnya<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36.1 25.8"
-                                    xml:space="preserve">
-                                    <g>
-                                        <line x1="0" y1="12.9" x2="34" y2="12.9"></line>
-                                        <polyline fill="none" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
-                                    </g>
+                            <span>
+                                Selengkapnya
+                                <svg>
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" href="#button-arrow"></use>
                                 </svg>
                             </span>
                         </a>
@@ -111,13 +112,10 @@
         <p>Sponsor</p>
         <div class="sponsor-button">
             <a href="<?php echo site_url('sponsors/join'); ?>" class="btn btn-arrow">
-                <span>Sponsor Us<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36.1 25.8"
-                        xml:space="preserve">
-                        <g>
-                            <line x1="0" y1="12.9" x2="34" y2="12.9"></line>
-                            <polyline fill="none" points="22.2,1.1 34,12.9 22.2,24.7"></polyline>
-                        </g>
+                <span>
+                    Sponsor Us
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" href="#button-arrow"></use>
                     </svg>
                 </span>
             </a>
