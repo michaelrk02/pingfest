@@ -28,7 +28,7 @@ const headline = document.querySelector('.headline');
 window.addEventListener('scroll', () => {
   if (!isOnScreen(jQuery('.auto-scroll'))) {
     if (autoScroll) {
-      window.scrollTo({ top: headline.clientHeight, behavior: 'smooth' });
+      $('html, body').animate({ scrollTop: headline.clientHeight }, '50');
       autoScroll = false;
     }
   } else {

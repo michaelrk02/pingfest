@@ -50,9 +50,9 @@ body {
 
 .headline h1 {
   font-weight: 700;
-  max-width: 100%;
+  max-width: 90%;
   text-align: center;
-  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-size: clamp(2.2rem, 5vmin, 4.5rem);
   line-height: 1.09;
   letter-spacing: 1.4px;
   color: var(--dark-color);
@@ -363,7 +363,7 @@ button {
 @media screen and (max-width: 900px) {
   .grid-container {
     position: relative;
-    grid-template-rows: 100vh auto 50vh auto 80vh;
+    grid-template-rows: minmax(50rem, 100vh) auto 40rem auto 40rem;
     row-gap: 10vh;
     grid-template-areas:
       'headline headline'

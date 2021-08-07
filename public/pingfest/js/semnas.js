@@ -28,8 +28,8 @@ const headline = document.querySelector('.headline');
 window.addEventListener('scroll', () => {
   if (!isOnScreen(jQuery('.auto-scroll'))) {
     if (autoScroll) {
-      window.scrollTo({ top: headline.clientHeight, behavior: 'smooth' });
       autoScroll = false;
+      $('html, body').animate({ scrollTop: headline.clientHeight }, '50');
     }
   } else {
     autoScroll = true;
