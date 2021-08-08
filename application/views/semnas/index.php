@@ -27,7 +27,7 @@
         </div> -->
     </div>
 
-    <div id="skrollr-body" class="makan">
+    <div class="makan">
 
         <div data-2400="opacity: 0;top: 50%;" data-2600="opacity: 1.5; " data-3000="" data-3200="opacity: 0; top: 70%;">
             Why you keep scrolling?</div>
