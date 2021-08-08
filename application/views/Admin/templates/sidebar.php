@@ -78,6 +78,12 @@
             </a>
           </li> 
           <li class="nav-item">
+            <a href="<?php echo site_url('admin/users') ?>" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>Akun Peserta</p>
+            </a>
+          </li> 
+          <li class="nav-item">
             <a href="<?php echo site_url('admin/login/logout') ?>" class="nav-link">
               <i class="fas fa-sign-out-alt"></i>
               <p>Logout</p>

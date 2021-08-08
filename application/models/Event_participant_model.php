@@ -24,12 +24,12 @@ class Event_participant_model extends CI_Model
         return [];
     }
 
-    public function countRow(){
+    public function countRow($status){
         $query = $this->db->query('
             SELECT * FROM pf_event_participants 
             join pf_users on pf_users.user_id = pf_event_participants.user_id 
             join pf_events on pf_events.event_id = pf_event_participants.event_id
-            where pf_event_participants.status = 1
+            where pf_event_participants.status = "'.$status.'"
         '); 
         return $query->num_rows();
     }
