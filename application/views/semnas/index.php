@@ -18,13 +18,13 @@
 <div class=container-sem>
     <div class="deskripsi-sem">
         <h2>Coming Soon!</h2>
-        <p>Acaranya masih dalam tahap perancangan, tapi apa salahnya kalau daftar sekarang
+        <!-- <p>Acaranya masih dalam tahap perancangan, tapi apa salahnya kalau daftar sekarang
             :))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))</p>
         <div class="daftar-sem button">
             <a href="<?php echo site_url('profile/index').'?tab=e_semnas'; ?>" class="btn daftar-block">
                 <span class="daftar-text">Daftar Sekarang</span>
             </a>
-        </div>
+        </div> -->
     </div>
 
     <div class="makan">
