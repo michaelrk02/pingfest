@@ -133,5 +133,26 @@ class Pingfest {
         $this->send_email($user['email'], 'Pembayaran Ditolak ('.$user_id.' @ '.$event['name'].')', $message);
     }
 
+    public function antispam_init($module, $cooldown) {
+        $var = 'antispam:'.$module;
+        if (!isset($_SESSION[$var])) {
+            $_SESSION[$var] = ['cooldown' => $cooldown, 'timestamp' => 0];
+        }
+    }
+
+    public function antispam_handle($module) {
+        $var = 'antispam:'.$module;
+        if (isset($_SESSION[$var])) {
+            $timeleft = $_SESSION[$var]['timestamp'] + $_SESSION[$var]['cooldown'] - time();
+            if ($timeleft <= 0) {
+                $_SESSION[$var]['timestamp'] = time();
+            } else {
+                die('Harap untuk menunggu selama '.$timeleft.' detik kemudian ulangi kembali tindakan anda');
+            }
+        } else {
+            die('Terjadi suatu kesalahan. Harap untuk kembali dan merefresh halaman lagi');
+        }
+    }
+
 }
 

@@ -17,7 +17,6 @@ class Auth extends CI_Controller
 
     public function index()
     {
-
         $data = [
             'title' => 'Halaman Login'
         ];
@@ -55,6 +54,8 @@ class Auth extends CI_Controller
         if( !empty($this->session->userdata('user_id')) ){
             redirect(site_url('profile/index'));
         } 
+
+        $this->pingfest->antispam_init('auth_registration', 60);
 
         $data = [
             'title' => 'Halaman Registrasi'
@@ -96,6 +97,7 @@ class Auth extends CI_Controller
             $this->load->view('auth/registration');
             $this->load->view('templates/footer');
         } else {
+            $this->pingfest->antispam_handle('auth_registration');
             $this->Auth_model->addUserData();
             $session_data = [
                 'auth_msg' => '<div class="alert alert-success" role="alert">Akun berhasil dibuat! Silahkan login</div>'
@@ -112,6 +114,8 @@ class Auth extends CI_Controller
         if( !empty($this->session->userdata('user_id')) ){
             redirect(site_url('profile/index'));
         } 
+
+        $this->pingfest->antispam_init('auth_forgot', 60);
 
         if( $this->session->userdata('forgot_flash') ){
             $this->session->unset_userdata('forgot_flash');
@@ -142,6 +146,7 @@ class Auth extends CI_Controller
             } else {
                 //user dah input email
                 if( $this->Auth_model->isExistingEmail() ){
+                    $this->pingfest->antispam_handle('auth_forgot');
                     $session_data = [
                         'forgot_flash' => TRUE
                     ];
