@@ -25,7 +25,7 @@
                         tulis seperti: hash kata sandi dan nomor telepon
                     </li>
                     <li>
-                        Jika anda tidak tidak setuju dengan pernyataan ini, maka anda tidak perlu mendaftarkan akun anda
+                        Jika anda tidak setuju dengan pernyataan ini, maka anda tidak perlu mendaftarkan akun anda
                         dalam website ini.
                         Namun jika sudah terlanjur mendaftar, maka dapat langsung menghubungi contact person untuk
                         meminta
