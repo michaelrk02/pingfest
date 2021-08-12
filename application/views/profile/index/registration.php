@@ -1,5 +1,12 @@
 <div class="container pb-4">
     <div class="row my-2">
+        <div class="col-12 py-2">
+            <div class="alert alert-warning">
+                <b>PERHATIAN.</b> Pengisian identitas dilakukan setelah pembayaran diterima. Harap cek masing-masing guidebook lomba
+                jika ingin mengetahui identitas apa saja yang dibutuhkan pada tiap lomba IT-Venture. Guidebook untuk
+                tiap lomba IT-Venture dapat diakses <a target="_blank" href="<?php echo site_url('itv'); ?>">di sini</a>.
+            </div>
+        </div>
         <?php foreach ($events as $event): ?>
             <div class="col-12 col-md-6 py-2">
                 <div id="invoice-<?php echo md5($event['event_id']); ?>" class="card bg-light border border-dark">
