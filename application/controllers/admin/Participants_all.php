@@ -10,6 +10,7 @@ class Participants_All extends CI_Controller {
         $this->load->model("Music_model");
         $this->load->model("Paper_model");
         $this->load->model("Semnas_model");
+        $this->load->model("User_model");
         $this->load->library('pingfest'); 
     }
 	/**
@@ -67,6 +68,7 @@ class Participants_All extends CI_Controller {
 			$music = $this->Music_model->getById($id); 
 			$paper = $this->Paper_model->getById($id); 
 			$semnas = $this->Semnas_model->getById($id); 
+			$users = $this->User_model->getById($id); 
 			$this->load->view('/Admin/templates/start');
 			$this->load->view('/Admin/templates/header');
 			$this->load->view('/Admin/templates/sidebar');
@@ -74,7 +76,8 @@ class Participants_All extends CI_Controller {
 				'bettle' => $bettle,
 				'music' => $music,
 				'paper' => $paper,
-				'semnas' => $semnas
+				'semnas' => $semnas,
+				'users' => $users
 			]);
 			$this->load->view('/Admin/templates/footer'); 
 			$this->load->view('/Admin/templates/end');

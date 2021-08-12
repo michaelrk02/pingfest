@@ -49,9 +49,9 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <label>Nomor Telepon</label>
+                                <label>Nomor WhatsApp Aktif</label>
                                 <input type="text" class="form-control form-control-user" id="phone" name="phone"
-                                    placeholder="Nomor Telepon" value="<?= set_value('phone'); ?>">
+                                    placeholder="Nomor WA" value="<?= set_value('phone'); ?>">
                                 <?= form_error('phone', '<small class="text-danger ">', '</small>'); ?>
                             </div>
                             <div class="custom-control custom-checkbox">
