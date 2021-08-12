@@ -41,7 +41,7 @@
                                     <div class="col-12 my-2">
                                         <ul class="list-group">
                                             <li class="list-group-item bg-secondary text-white"><h5>Pembayaran</h5></li>
-                                            <li class="list-group-item">Segera lakukan pembayaran ke rekening tujuan sesuai dengan informasi di bawah</li>
+                                            <li class="list-group-item">Segera lakukan pembayaran ke rekening tujuan sesuai dengan informasi di bawah. Setelah melakukan pembayaran, anda dapat langsung mengisi identitas anda untuk acara ini.</li>
                                             <li class="list-group-item">
                                                 <b>Status Tagihan:</b>
                                                 <?php if (time() < $registration[$event['event_id']]['expired']): ?>
