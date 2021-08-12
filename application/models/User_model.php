@@ -3,7 +3,7 @@
 
 class User_model extends CI_Model
 {
-    private $_table = "pf_user"; 
+    private $_table = "pf_users"; 
 
     public $user_id;
     public $password; 
@@ -22,6 +22,11 @@ class User_model extends CI_Model
             SELECT * FROM pf_users 
         '); 
         return $query->num_rows();
+    }
+
+    public function getById($id)
+    {
+        return $this->db->get_where($this->_table, ["user_id" => $id])->row();
     }
 
     public function getAll()

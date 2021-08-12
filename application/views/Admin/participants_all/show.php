@@ -27,7 +27,57 @@
           <div class="card">
             <div class="card-header"> 
             </div> 
-            <div class="card-body"> 
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="row">
+                     <div class="col-sm-2">
+                      <label>Username</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="<?php echo $users->user_id ?>" disabled>
+                    </div>
+                  </div> 
+                </div>
+                <div class="col-sm-6">
+                  <div class="row">
+                     <div class="col-sm-2">
+                      <label>Nama</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="<?php echo $users->name ?>" disabled>
+                    </div>
+                  </div> 
+                </div> 
+              </div> 
+              <div>
+                <br>
+              </div>
+              <div class="row"> 
+                <div class="col-sm-6">
+                 <div class="row">
+                     <div class="col-sm-2">
+                      <label>Email</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="<?php echo $users->email ?>" disabled>
+                    </div>
+                  </div> 
+                </div>
+                <div class="col-sm-6">
+                  <div class="row">
+                     <div class="col-sm-2">
+                      <label>Phone</label>
+                    </div>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" value="<?php echo $users->phone ?>" disabled>
+                    </div>
+                  </div> 
+                </div>                
+              </div>
+              <div>
+                <br>
+              </div>
               <ul class="nav nav-tabs" role="tablist"> 
                <?php if(isset($bettle)){ ?> 
                   <li class="nav-item">
