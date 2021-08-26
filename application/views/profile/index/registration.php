@@ -14,7 +14,7 @@
                         <div class="text-center"><h5><?php echo htmlspecialchars($event['name']); ?></h5></div>
                         <div class="row" style="margin-top: 2rem; margin-bottom: 2rem">
                             <?php if (empty($registration[$event['event_id']])): ?>
-                                <div class="col-auto ml-auto mr-auto"><a onclick="return confirm('Apakah anda yakin?')" class="btn btn-info btn-lg border border-dark <?php echo empty($event['available']) ? 'disabled' : ''; ?>" href="<?php echo site_url('profile/register').'?event='.urlencode($event['event_id']); ?>">DAFTARKAN SEKARANG</a></div>
+                                <div class="col-auto ml-auto mr-auto"><a onclick="return confirm('Apakah anda yakin? Jika iya, anda akan langsung menerima tagihan pembayaran. Untuk pengisian form identitas akan dilakukan setelah pembayaran terkonfirmasi. Pembayaran dapat dilakukan dalam jangka waktu normal 1x24 jam mulai dari sekarang')" class="btn btn-info btn-lg border border-dark <?php echo empty($event['available']) ? 'disabled' : ''; ?>" href="<?php echo site_url('profile/register').'?event='.urlencode($event['event_id']); ?>">DAFTARKAN SEKARANG</a></div>
                             <?php else: ?>
                                 <div class="col-12 my-2">
                                     <?php if ($registration[$event['event_id']]['status'] == 1): ?>
