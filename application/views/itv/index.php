@@ -49,13 +49,13 @@
                     </div>
                     <div class="deskripsi-text-line"> <i class="symbol fas fa-user-friends"></i><span>3 orang<span>
                     </div>
-                    <div class="deskripsi-text-line"> <i class="symbol fa fa-dollar-sign"></i><span>Rp 100.000<span>
+                    <div class="deskripsi-text-line"> <i class="symbol fa fa-dollar-sign"></i><span>Rp 50.000<span>
                     </div>
                     <h4>Hadiah</h4>
                     <hr>
-                    <div class="deskripsi-text-line"> <b class="symbol">#1</b><span>Rp 3.000.000<span> </div>
-                    <div class="deskripsi-text-line"> <b class="symbol">#2</b><span>Rp 2.000.000<span> </div>
-                    <div class="deskripsi-text-line"> <b class="symbol">#3</b><span>Rp 1.000.000<span> </div>
+                    <div class="deskripsi-text-line"> <b class="symbol">#1</b><span>Rp 2.000.000 + Doorprize<span> </div>
+                    <div class="deskripsi-text-line"> <b class="symbol">#2</b><span>Rp 1.500.000 + Doorprize<span> </div>
+                    <div class="deskripsi-text-line"> <b class="symbol">#3</b><span>Rp 1.000.000 + Doorprize<span> </div>
                     <h4>Timeline</h4>
                     <hr>
                     <div class="deskripsi-text-line timeline"> <b class="justify">Pendaftaran</b><span class="right">7
@@ -111,7 +111,7 @@
                     </div>
                     <div class="deskripsi-text-line"> <i class="symbol fas fa-user-friends"></i><span>1-7 orang<span>
                     </div>
-                    <div class="deskripsi-text-line"> <i class="symbol fa fa-dollar-sign"></i><span>Rp 75.000<span>
+                    <div class="deskripsi-text-line"> <i class="symbol fa fa-dollar-sign"></i><span>Rp 37.500<span>
                     </div>
                     <h4>Hadiah</h4>
                     <hr>
@@ -173,7 +173,7 @@
                     </div>
                     <div class="deskripsi-text-line"> <i class="symbol fas fa-user-friends"></i><span>1-3 orang<span>
                     </div>
-                    <div class="deskripsi-text-line"> <i class="symbol fa fa-dollar-sign"></i><span>Rp 100.000<span>
+                    <div class="deskripsi-text-line"> <i class="symbol fa fa-dollar-sign"></i><span>FREE!<span>
                     </div>
                     <h4>Hadiah</h4>
                     <hr>
