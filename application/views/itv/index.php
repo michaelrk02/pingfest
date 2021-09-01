@@ -61,8 +61,8 @@
                     <div class="deskripsi-text-line timeline"> <b class="justify">Pendaftaran</b><span class="right">7
                             Agustus 2021 <span> </div>
                     <div class="deskripsi-text-line timeline"> <b class="justify">Penyisihan</b></i><span
-                            class="right">25 September 2021<span> </div>
-                    <div class="deskripsi-text-line timeline"> <b class="justify">Final</b></i><span class="right">2
+                            class="right">2 Oktober 2021<span> </div>
+                    <div class="deskripsi-text-line timeline"> <b class="justify">Final</b></i><span class="right">9
                             Oktober 2021<span> </div>
                     <div class="button-bawah-wrapper">
                         <div class="guide-book-button">
@@ -123,7 +123,7 @@
                     <div class="deskripsi-text-line timeline"> <b class="justify">Pendaftaran</b><span class="right">7
                             Agustus 2021 <span> </div>
                     <div class="deskripsi-text-line timeline"> <b class="justify">Maksimal Pengumpulan</b></i><span
-                            class="right">7 September 2021<span> </div>
+                            class="right">24 September 2021<span> </div>
                     <div class="deskripsi-text-line timeline"> <b class="justify">Pengumuman Juara</b></i><span
                             class="right">24 Oktober 2021<span> </div>
                     <div class="button-bawah-wrapper">
@@ -185,8 +185,8 @@
                     <div class="deskripsi-text-line timeline"> <b class="justify">Pendaftaran</b><span class="right">7
                             Agustus 2021 <span> </div>
                     <div class="deskripsi-text-line timeline"> <b class="justify">Maksimal Pengumpulan</b></i><span
-                            class="right">7 September 2021<span> </div>
-                    <div class="deskripsi-text-line timeline"> <b class="justify">Final</b></i><span class="right">9
+                            class="right">24 September 2021<span> </div>
+                    <div class="deskripsi-text-line timeline"> <b class="justify">Final</b></i><span class="right">16
                             Oktober 2021<span> </div>
                     <div class="button-bawah-wrapper">
                         <div class="guide-book-button">
