@@ -208,7 +208,7 @@ class Profile extends CI_Controller {
                         if (!empty($event['price'])) {
                             $participant['status'] = 0;
                             $participant['invoice'] = $event['price'];
-                            $participant['unique'] = random_int(0, 999);
+                            $participant['unique'] = random_int(0, 499);
                             $participant['total'] = $participant['invoice'] + $participant['unique'];
                         } else {
                             $participant['status'] = 1;

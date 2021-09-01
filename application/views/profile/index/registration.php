@@ -14,7 +14,7 @@
                         <div class="text-center"><h5><?php echo htmlspecialchars($event['name']); ?></h5></div>
                         <div class="row" style="margin-top: 2rem; margin-bottom: 2rem">
                             <?php if (empty($registration[$event['event_id']])): ?>
-                                <div class="col-auto ml-auto mr-auto"><a onclick="return confirm('Apakah anda yakin? Jika iya, anda akan langsung menerima tagihan pembayaran. Untuk pengisian form identitas akan dilakukan setelah pembayaran terkonfirmasi. Pembayaran dapat dilakukan dalam jangka waktu normal 1x24 jam mulai dari sekarang')" class="btn btn-info btn-lg border border-dark <?php echo empty($event['available']) ? 'disabled' : ''; ?>" href="<?php echo site_url('profile/register').'?event='.urlencode($event['event_id']); ?>">DAFTARKAN SEKARANG</a></div>
+                                <div class="col-auto ml-auto mr-auto"><a onclick="return confirm('<?php echo $event['price'] == 0 ? 'Apakah anda yakin?' : 'Apakah anda yakin? Jika iya, anda akan langsung menerima tagihan pembayaran. Untuk pengisian form identitas akan dilakukan setelah pembayaran terkonfirmasi. Pembayaran dapat dilakukan dalam jangka waktu normal 1x24 jam mulai dari sekarang'; ?>')" class="btn btn-info btn-lg border border-dark <?php echo empty($event['available']) ? 'disabled' : ''; ?>" href="<?php echo site_url('profile/register').'?event='.urlencode($event['event_id']); ?>">DAFTARKAN SEKARANG</a></div>
                             <?php else: ?>
                                 <div class="col-12 my-2">
                                     <?php if ($registration[$event['event_id']]['status'] == 1): ?>
@@ -33,7 +33,7 @@
                                         <li class="list-group-item"><b>Kode Unik:</b> <?php echo $registration[$event['event_id']]['unique']; ?></li>
                                         <li class="list-group-item"><b>Tagihan Total:</b> <?php echo rupiah($registration[$event['event_id']]['total']); ?></li>
                                         <?php if ($registration[$event['event_id']]['status'] == 0): ?>
-                                            <li class="list-group-item">Perhatikan nominal pada tagihan total, anda <b>harus</b> membayar <b>lengkap hingga kode uniknya</b></li>
+                                            <li class="list-group-item">Perhatikan nominal pada tagihan total, anda harus membayar <b>lengkap hingga penambahan kode uniknya</b></li>
                                         <?php endif; ?>
                                     </ul>
                                 </div>
