@@ -1,0 +1,53 @@
+.sponsor {
+  grid-area: sponsor;
+  display: flex;
+  place-content: center;
+  flex-direction: column;
+  place-items: center;
+}
+
+.sponsor-container {
+  border-radius: 1rem;
+  width: min(80rem, 90vw);
+  background-color: rgb(245, 245, 245);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  place-items: center;
+}
+
+.sponsor-logo {
+  min-width: 12rem;
+  margin: 2.5rem;
+  width: 18%;
+}
+
+.sponsor-image {
+  width: 100%;
+  opacity: 1;
+  transition: opacity 200ms ease;
+}
+
+.sponsor p {
+  font-family: 'Bree Serif', serif;
+  text-align: center;
+  font-weight: 700;
+  font-size: clamp(3rem, 4vw, 4rem);
+}
+
+.sponsor .sponsor-button {
+  width: 30rem;
+  display: flex;
+  place-items: center;
+  place-content: center;
+}
+
+.sponsor .btn {
+  background-color: var(--light-color);
+  border-radius: 1rem;
+  border: 3px solid var(--dark-color);
+}
+
+.sponsor-logo:hover .sponsor-image {
+  opacity: 0.8;
+}

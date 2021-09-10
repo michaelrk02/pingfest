@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/home.min.css'); ?>" />
+<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/sponsorlogo.min.css'); ?>" />
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none">
     <path id="itv-jelly"
@@ -109,7 +110,10 @@
         </div>
     </div>
     <div class="item sponsor">
-        <p>Sponsor</p>
+        <p>Our Sponsors</p>
+        <div class="sponsor-container">
+            <a class="sponsor-logo" href="https://byu.id/" target="_blank"><img class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/ByU.png'); ?>" alt=""></a>
+        </div>
         <div class="sponsor-button">
             <a href="<?php echo site_url('sponsors/join'); ?>" class="btn btn-arrow">
                 <span>

@@ -64,6 +64,10 @@
   color: var(--light-color);
 }
 
+.footer-col .hubungi-wrapper a:hover {
+  opacity: 0.8;
+}
+
 .footer-col.peta {
   flex-shrink: 0;
   overflow: hidden;

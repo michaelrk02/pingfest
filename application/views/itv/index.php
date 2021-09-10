@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/itv.min.css'); ?>" />
+<link rel="stylesheet" href="<?php echo base_url('public/pingfest/css/sponsorlogo.min.css'); ?>" />
+
 
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
     style="display: none">
@@ -224,8 +226,11 @@
             </a>
         </div>
     </div>
-    <div class="sponsor">
-        <p>Sponsor</p>
+    <div class="item sponsor">
+        <p>Our Sponsors</p>
+        <div class="sponsor-container">
+            <a class="sponsor-logo" href="https://byu.id/" target="_blank"><img class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/ByU.png'); ?>" alt=""></a>
+        </div>
     </div>
 </div>
 
