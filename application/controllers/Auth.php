@@ -74,7 +74,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required|matches[password2]|min_length[8]|max_length[72]', [
             'required' => '{field} harus diisi', 
             'matches' => '{field} tidak sama',
-            'min_length' => '{field} terlalu pendek',
+            'min_length' => '{field} minimal 8 karakter',
             'max_length' => '{field} terlalu panjang'
         ]);
         $this->form_validation->set_rules('password2', 'Password', 'required|matches[password]', [
@@ -220,7 +220,7 @@ class Auth extends CI_Controller
                 $this->form_validation->set_rules('password', 'Password', 'required|matches[password2]|min_length[8]|max_length[72]', [
                     'required' => '{field} harus diisi', 
                     'matches' => '{field} tidak sama',
-                    'min_length' => '{field} terlalu pendek',
+                    'min_length' => '{field} minimal 8 karakter',
                     'max_length' => '{field} terlalu panjang'
                 ]);
                 $this->form_validation->set_rules('password2', 'Password', 'required|matches[password]', [
