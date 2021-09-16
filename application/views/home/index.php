@@ -112,7 +112,8 @@
     <div class="item sponsor">
         <p>Our Sponsors</p>
         <div class="sponsor-container">
-            <a class="sponsor-logo" href="https://byu.id/" target="_blank"><img class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/ByU.png'); ?>" alt=""></a>
+            <a class="sponsor-logo" href="https://byu.id" target="_blank"><img class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/byu.png'); ?>" alt=""></a>
+            <a class="sponsor-logo" href="https://dewaweb.com" target="_blank"><img class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/dewaweb.png'); ?>" alt=""></a>
         </div>
         <div class="sponsor-button">
             <a href="<?php echo site_url('sponsors/join'); ?>" class="btn btn-arrow">
