@@ -27,6 +27,7 @@ body {
 
   grid-template-areas:
     'headline headline'
+    'countdown countdown'
     'logo-itv text-itv'
     'text-semnas logo-semnas'
     'dokumentasi dokumentasi'
@@ -293,7 +294,109 @@ button {
   right: -2rem;
 }
 
+.countdown-container {
+  position: relative;
+  top: -10rem;
+  place-self: center;
+  min-height: 100vh;
+  grid-area: countdown;
+}
+
+.countdown-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+}
+
+.countdown-wrapper .countdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.countdown-wrapper .header {
+  color: var(--dark-color);
+  font-family: 'Bree Serif', serif;
+  text-align: center;
+  font-size: clamp(3rem, 3.5vw, 4.8rem);
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+}
+
+.countdown-wrapper h2.header {
+  font-size: clamp(2rem, 3vw, 4.5rem);
+  margin-bottom: 3rem;
+}
+
+.countdown-wrapper .count {
+  color: var(--dark-color);
+  display: flex;
+  justify-content: center;
+  gap: 3vw;
+}
+
+.countdown-wrapper .count .sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.countdown-wrapper .count .sec h2 {
+  color: var(--light-color);
+  font-size: min(11vw, 6rem);
+  background: var(--dark-color);
+  padding: min(2vw, 2rem) min(3vw, 3rem);
+  border-radius: 1rem;
+  margin-bottom: 1.5vh;
+}
+
+.countdown-wrapper .count .sec p {
+  font-size: clamp(0.9rem, 2vw, 3rem);
+  letter-spacing: 5px;
+}
+
+.home-daftar .btn {
+  border-radius: 1rem;
+  background-color: var(--dark-color) !important;
+}
+
+.home-daftar {
+  margin-top: 4rem;
+  width: min(80vw, 24rem);
+  height: 7rem;
+}
+
+.home-daftar a {
+  width: min(80vw, 24rem);
+  height: 7rem;
+}
+
+.home-daftar a::after {
+  content: '';
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  width: 98%;
+  height: 98%;
+  border-radius: 1rem;
+  border: 5px solid var(--light-color);
+}
+
+.home-daftar .daftar-text {
+  color: var(--light-color);
+  display: inline-block;
+  font-size: 1.9rem;
+  margin: 1rem 0;
+}
+
 @media screen and (min-width: 1280px) {
+  .countdown {
+    width: 90%;
+  }
   .itv-wrapper,
   .sem-wrapper {
     left: -80px !important;
@@ -330,15 +433,19 @@ button {
     min-width: 500px;
     margin: 0 !important;
   }
+  .countdown-wrapper .count .sec p {
+    letter-spacing: 1px;
+  }
 }
 
 @media screen and (max-width: 900px) {
   .grid-container {
     position: relative;
-    grid-template-rows: minmax(50rem, 100vh) auto 40rem auto 40rem;
+    grid-template-rows: minmax(50rem, 100vh) 40rem auto 40rem auto 40rem;
     row-gap: 10vh;
     grid-template-areas:
       'headline headline'
+      'countdown countdown'
       'logo-itv logo-itv'
       'text-itv text-itv'
       'logo-semnas logo-semnas'

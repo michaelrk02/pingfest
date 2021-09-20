@@ -8,7 +8,7 @@
 
 .sponsor-container {
   border-radius: 1rem;
-  width: min(80rem, 90vw);
+  width: min(80rem, 80vw);
   background-color: rgb(245, 245, 245);
   display: flex;
   flex-wrap: wrap;
@@ -36,7 +36,7 @@
 }
 
 .sponsor .sponsor-button {
-  width: 30rem;
+  width: min(100vw, 30rem);
   display: flex;
   place-items: center;
   place-content: center;

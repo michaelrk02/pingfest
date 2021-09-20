@@ -31,6 +31,40 @@
         <iframe max-width: 100%; height: auto; src="https://www.youtube.com/embed/kAzUq7Sr4yk?controls=0&rel=0"
             frameborder="0">
         </iframe>
+
+    </div>
+
+    <div class="item countdown countdown-container">
+        <div class="countdown-wrapper">
+            <div class="countdown">
+                <h1 class="header">Daftarkan Dirimu!</h1>
+                <h2 class="header">Pendaftaran ditutup dalam</h2>
+                <div class="count">
+                    <div class="days sec">
+                        <h2 id="days">00</h2>
+                        <p>Hari</p>
+                    </div>
+                    <div class="hours sec">
+                        <h2 id="hours">00</h2>
+                        <p>Jam</p>
+                    </div>
+                    <div class="minutes sec">
+                        <h2 id="minutes">00</h2>
+                        <p>Menit</p>
+                    </div>
+                    <div class="seconds sec">
+                        <h2 id="seconds">00</h2>
+                        <p>Detik</p>
+                    </div>
+                </div>
+                <div class="home-daftar button">
+                    <a href="<?php echo site_url('profile/index').'?tab=registration'; ?>" class="btn daftar-block">
+                        <span class="daftar-text">Daftar Sekarang</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <div class="item logo-itv green-start">
@@ -39,6 +73,8 @@
             Your browser does not support the video tag.
         </video>
     </div>
+
+
 
     <div class="item text-itv">
         <div class="itv-wrapper">
@@ -112,8 +148,10 @@
     <div class="item sponsor">
         <p>Our Sponsors</p>
         <div class="sponsor-container">
-            <a class="sponsor-logo" href="https://byu.id" target="_blank"><img class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/byu.png'); ?>" alt=""></a>
-            <a class="sponsor-logo" href="https://dewaweb.com" target="_blank"><img class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/dewaweb.png'); ?>" alt=""></a>
+            <a class="sponsor-logo" href="https://byu.id" target="_blank"><img class="sponsor-image"
+                    src="<?php echo base_url('public/pingfest/img/sponsor/byu.png'); ?>" alt=""></a>
+            <a class="sponsor-logo" href="https://dewaweb.com" target="_blank"><img class="sponsor-image"
+                    src="<?php echo base_url('public/pingfest/img/sponsor/dewaweb.png'); ?>" alt=""></a>
         </div>
         <div class="sponsor-button">
             <a href="<?php echo site_url('sponsors/join'); ?>" class="btn btn-arrow">
