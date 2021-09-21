@@ -63,8 +63,8 @@
                     <div class="deskripsi-text-line timeline"> <b class="justify">Pendaftaran</b><span class="right">7
                             Agustus 2021 <span> </div>
                     <div class="deskripsi-text-line timeline"> <b class="justify">Penyisihan</b></i><span
-                            class="right">2 Oktober 2021<span> </div>
-                    <div class="deskripsi-text-line timeline"> <b class="justify">Final</b></i><span class="right">9
+                            class="right">9 Oktober 2021<span> </div>
+                    <div class="deskripsi-text-line timeline"> <b class="justify">Final</b></i><span class="right">16
                             Oktober 2021<span> </div>
                     <div class="button-bawah-wrapper">
                         <div class="guide-book-button">
