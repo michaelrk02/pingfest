@@ -401,12 +401,16 @@ class Profile extends CI_Controller {
                 $this->form_validation->set_rules('member_2', 'Anggota #2', 'required|max_length[100]');
 
                 if ($this->form_validation->run()) {
-                    if ($this->events->battle_set($_SESSION['user_id'], $identity)) {
-                        $upload_status = $this->upload_battle_idcard();
+                    if ($this->events->battle_verify_team($_SESSION['user_id'], $identity['team_name'])) {
+                        if ($this->events->battle_set($_SESSION['user_id'], $identity)) {
+                            $upload_status = $this->upload_battle_idcard();
 
-                        $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas'.(!$upload_status ? ' namun gagal mengunggah file kartu tanda pelajar' : '');
+                            $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas'.(!$upload_status ? ' namun gagal mengunggah file kartu tanda pelajar' : '');
+                        } else {
+                            $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
+                        }
                     } else {
-                        $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
+                        $_SESSION['profile_status'] = 'ERROR: Tidak dapat menggunakan nama tim tersebut';
                     }
                 } else {
                     $_SESSION['profile_status'] = 'ERROR: '.implode(' ', $this->form_validation->error_array());
