@@ -643,7 +643,7 @@ class Profile extends CI_Controller {
     }
 
     private function upload_battle_idcard() {
-        return $this->upload_form_file('idcard/battle/'.$_SESSION['user_id'], 'idcard', 'application/pdf', 1578640);
+        return $this->upload_form_file('idcard/battle/'.$_SESSION['user_id'], 'idcard', 'application/pdf', 15728640);
     }
 
     private function upload_paper_idcard() {
