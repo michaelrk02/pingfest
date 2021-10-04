@@ -462,8 +462,8 @@ class Profile extends CI_Controller {
                 $this->form_validation->set_rules('institution', 'Asal Institusi', 'required|max_length[100]');
                 $this->form_validation->set_rules('leader', 'Nama Ketua', 'required|max_length[100]');
                 $this->form_validation->set_rules('phone', 'No. Telp. Ketua', 'required|max_length[20]');
-                $this->form_validation->set_rules('title', 'Judul Karya Tulis', 'max_length[100]');
-                $this->form_validation->set_rules('abstract', 'Abstrak', 'max_length[1000]');
+                $this->form_validation->set_rules('title', 'Judul Karya Tulis', 'max_length[250]');
+                $this->form_validation->set_rules('abstract', 'Abstrak', 'max_length[2500]');
 
                 if ($this->form_validation->run()) {
                     if ($this->events->paper_set($_SESSION['user_id'], $identity)) {
