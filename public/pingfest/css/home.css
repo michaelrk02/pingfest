@@ -423,6 +423,9 @@ button {
 }
 
 @media screen and (max-width: 1280px) {
+  .headline {
+    margin-top: -20vh;
+  }
   .grid-container {
     margin: auto;
     width: 100vw;
