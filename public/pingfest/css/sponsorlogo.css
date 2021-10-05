@@ -11,15 +11,18 @@
   width: min(80rem, 80vw);
   background-color: rgb(245, 245, 245);
   display: flex;
+  flex-direction: column;
+}
+
+.size-section {
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   place-items: center;
 }
 
 .sponsor-logo {
-  min-width: 12rem;
   margin: 2.5rem;
-  width: 18%;
 }
 
 .sponsor-image {
@@ -42,6 +45,21 @@
   place-content: center;
 }
 
+.sponsor-big {
+  width: 40%;
+  min-width: 14rem;
+}
+
+.sponsor-small {
+  width: 14%;
+  min-width: 5rem;
+}
+
+.sponsor-tiny {
+  width: 9%;
+  min-width: 3rem;
+}
+
 .sponsor .btn {
   background-color: var(--light-color);
   border-radius: 1rem;
@@ -50,4 +68,10 @@
 
 .sponsor-logo:hover .sponsor-image {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 1280px) {
+  .sponsor-logo {
+    margin: 1rem;
+  }
 }

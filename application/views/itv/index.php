@@ -55,9 +55,12 @@
                     </div>
                     <h4>Hadiah</h4>
                     <hr>
-                    <div class="deskripsi-text-line"> <b class="symbol">#1</b><span>Rp 2.000.000 + Doorprize<span> </div>
-                    <div class="deskripsi-text-line"> <b class="symbol">#2</b><span>Rp 1.500.000 + Doorprize<span> </div>
-                    <div class="deskripsi-text-line"> <b class="symbol">#3</b><span>Rp 1.000.000 + Doorprize<span> </div>
+                    <div class="deskripsi-text-line"> <b class="symbol">#1</b><span>Rp 2.000.000 + Doorprize<span>
+                    </div>
+                    <div class="deskripsi-text-line"> <b class="symbol">#2</b><span>Rp 1.500.000 + Doorprize<span>
+                    </div>
+                    <div class="deskripsi-text-line"> <b class="symbol">#3</b><span>Rp 1.000.000 + Doorprize<span>
+                    </div>
                     <h4>Timeline</h4>
                     <hr>
                     <div class="deskripsi-text-line timeline"> <b class="justify">Pendaftaran</b><span class="right">7
@@ -229,8 +232,21 @@
     <div class="item sponsor">
         <p>Our Sponsors</p>
         <div class="sponsor-container">
-            <a class="sponsor-logo" href="https://byu.id/" target="_blank"><img class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/byu.png'); ?>" alt=""></a>
-            <a class="sponsor-logo" href="https://dewaweb.com" target="_blank"><img class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/dewaweb.png'); ?>" alt=""></a>
+            <div class="section-big">
+                <a class="sponsor-logo sponsor-big" href="https://byu.id/" target="_blank"><img class="sponsor-image"
+                        src="<?php echo base_url('public/pingfest/img/sponsor/bit.png'); ?>" alt=""></a>
+                <a class="sponsor-logo sponsor-big" href=" https://dewaweb.com" target="_blank"><img
+                        class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/upscale.png'); ?>"
+                        alt=""></a>
+            </div>
+            <div class="section-small">
+                <a class="sponsor-logo sponsor-small" href="https://byu.id/" target="_blank"><img class="sponsor-image"
+                        src="<?php echo base_url('public/pingfest/img/sponsor/byu.png'); ?>" alt=""></a>
+                <a class="sponsor-logo sponsor-small" href=" https://dewaweb.com" target="_blank"><img
+                        class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/dewaweb.png'); ?>"
+                        alt=""></a>
+            </div>
+
         </div>
     </div>
 </div>

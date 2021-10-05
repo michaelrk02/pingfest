@@ -27,7 +27,7 @@ body {
 
   grid-template-areas:
     'headline headline'
-    'countdown countdown'
+    /* 'countdown countdown' */
     'logo-itv text-itv'
     'text-semnas logo-semnas'
     'dokumentasi dokumentasi'
@@ -441,11 +441,13 @@ button {
 @media screen and (max-width: 900px) {
   .grid-container {
     position: relative;
-    grid-template-rows: minmax(50rem, 100vh) 40rem auto 40rem auto 40rem;
+    grid-template-rows: minmax(50rem, 100vh) auto 40rem auto 40rem;
+    /* coundown */
+    /* grid-template-rows: minmax(50rem, 100vh) 40rem auto 40rem auto 40rem; */
     row-gap: 10vh;
     grid-template-areas:
       'headline headline'
-      'countdown countdown'
+      /* 'countdown countdown' */
       'logo-itv logo-itv'
       'text-itv text-itv'
       'logo-semnas logo-semnas'
