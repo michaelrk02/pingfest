@@ -123,13 +123,6 @@ $(document).on('mouseenter', '.idea', function () {
   idea = document.querySelector('.idea');
 });
 
-$(function () {
-  skrollr.init({
-    mobileCheck: function () {
-      return false;
-    },
-  });
-});
 
 var daftarText = document.querySelector('.daftar-text');
 var daftarBlock = document.querySelector('.daftar-block');

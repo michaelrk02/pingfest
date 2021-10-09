@@ -16,6 +16,7 @@
     </symbol>
 </svg>
 
+
 <div class="grid-container">
     <div class="item headline ">
         <h1>Ayo ikuti pekan teknologi</h1>

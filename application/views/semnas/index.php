@@ -4,8 +4,8 @@
 
 <div class="headline">
     <div class="item-headline">
-        <h1>Webinar Nasional</h1>
-        <div class="auto-scroll idea-container">
+        <h1 class="auto-scroll">Webinar Nasional</h1>
+        <div class="idea-container">
             <div class="hay-text">Find</div>
             &#160;
             <div class="hay-text">Your</div>
@@ -29,17 +29,37 @@
                 </a>
             </div>
         </div>
-        <div class="deskripsi-text"></div>
-        <div class="daftar-sem button">
-
-        </div>
     </div>
     <div class="logo-sem">
         <img src="<?php echo base_url('public/pingfest/img/logosemnas.svg'); ?>" />
 
     </div>
-    <div class="informasi-sem"></div>
-    <div class="pembicara-sem"></div>
+    <div class="informasi-sem">
+        <h1 class="title">Rincian Acara</h1>
+        <div class="box-wrapper">
+            <div class="box-section">
+                <div class="box-semnas">
+
+                </div>
+                <div class="box-semnas">b</div>
+            </div>
+            <div class="box-section">
+                <div class="box-semnas">a</div>
+                <div class="box-semnas">
+                    <i class="fa fa-phone-alt regular"></i>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="pembicara-sem">
+        <h1 class="title">Pembicara</h1>
+        <div class="pembicara-wrapper">
+            <img src="<?php echo base_url('public/pingfest/img/sandhika.png'); ?>" alt="sandhika">
+            <img src="<?php echo base_url('public/pingfest/img/kevin.png'); ?>" alt="kevin">
+        </div>
+    </div>
     <div class="sponsor">
     </div>
 
