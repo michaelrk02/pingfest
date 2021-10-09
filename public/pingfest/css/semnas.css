@@ -132,7 +132,7 @@ body {
 
 .informasi-sem {
   grid-area: informasi;
-  margin-top: 10vh;
+  margin-top: 16vh;
 }
 
 h1.title {
@@ -170,17 +170,41 @@ h1.title {
 }
 
 .pembicara-sem {
-  margin-top: 10vh;
+  margin-top: 16vh;
   grid-area: pembicara;
 }
 
 .pembicara-wrapper {
+  align-items: center;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin-top: 4rem;
+  row-gap: 10vh;
 }
 
 .pembicara-wrapper img {
-  width: 40rem;
+  width: 100%;
+  max-width: 32rem;
+  min-width: 20rem;
+}
+
+.pembicara h2 {
+  font-family: 'Bree Serif', serif;
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+}
+
+.pembicara p {
+  margin: 0;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  text-align: center;
+}
+
+.sponsor {
+  grid-area: sponsor;
+  margin: 16vh 0;
 }
 
 @media screen and (max-width: 1280px) {
@@ -196,6 +220,13 @@ h1.title {
     row-gap: 5vh;
   }
 
+  .daftar-sem.button {
+    place-content: center;
+  }
+
+  .pembicara-wrapper {
+    flex-direction: column;
+  }
   .deskripsi-sem {
     width: 90%;
   }
