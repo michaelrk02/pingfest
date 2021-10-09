@@ -102,7 +102,7 @@
         <h1 class="title">Pembicara</h1>
         <div class="pembicara-wrapper">
             <div class="pembicara">
-                <a href="http://https://www.youtube.com/c/WebProgrammingUNPAS" target="_blank">
+                <a href="https://www.youtube.com/c/WebProgrammingUNPAS" target="_blank">
                     <img src="<?php echo base_url('public/pingfest/img/sandhika.png'); ?>" alt="sandhika">
                 </a>
                 <h2>Sandhika Galih</h2>
