@@ -7,7 +7,7 @@ body {
   line-height: 1.56;
   letter-spacing: 0.9px;
   overflow-x: hidden;
-  height: 19000px;
+  height: 100vh;
 }
 
 .site-header {
@@ -40,12 +40,13 @@ body {
   font-size: clamp(2rem, 5vw, 4.5rem);
 }
 
-.item-headline h1:nth-child(2) {
-  font-size: clamp(2.3rem, 6vw, 4.8rem);
+.item-headline h1:nth-child(3) {
+  font-size: clamp(1.5rem, 3vw, 3rem);
 }
 
 .idea-container {
-  height: 100%;
+  margin-top: -5%;
+  height: 50%;
   width: 100%;
   justify-content: center;
   align-items: flex-start;
@@ -62,57 +63,55 @@ body {
 }
 
 .container-sem {
+  display: grid;
+  grid-template-areas:
+    'deskripsi logo'
+    'informasi informasi'
+    'pembicara pembicara'
+    'sponsor sponsor';
+  grid-template-columns: 1fr 1fr;
+
   z-index: 0;
-  top: 75px;
-  width: 100vw;
+  top: 150px;
+  width: 1280px;
+  margin: auto;
   position: relative;
 }
 
 .deskripsi-sem {
-  position: relative;
-  z-index: 10;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  place-items: center;
-  justify-content: center;
+  margin: auto;
+  grid-area: deskripsi;
 }
 
 .deskripsi-sem h2 {
   font-family: 'Bree Serif', serif;
-  font-weight: 1000;
-  font-size: clamp(2.3rem, 6vw, 4.8rem);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
 }
 
 .deskripsi-sem p {
-  width: 90%;
-  flex-shrink: 0;
-  text-align: center;
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+  text-align: justify;
 }
 
 .daftar-sem.button {
-  margin: 2rem 2rem 1rem 2rem;
-  width: 19rem;
+  margin-top: 5rem;
+  display: flex;
+  place-content: flex-end;
 }
 
 .daftar-sem .btn {
-  padding: 1.2rem 0;
-  border: 0.2rem solid var(--dark-color);
-}
-
-.btn,
-button {
   position: relative;
   pointer-events: auto;
   cursor: pointer;
   stroke: var(--dark-color);
   stroke-width: 4;
-  border: 2px solid var(--dark-color);
+  padding: 0.5rem 0;
+  border: 0.2rem solid var(--dark-color);
   font-family: 'Bree Serif', serif;
   font-size: 0.8rem;
-  width: 100%;
+  width: 19rem;
+  height: 4.2rem;
 }
 
 .daftar-sem .btn span {
@@ -124,38 +123,40 @@ button {
   transition-duration: 100ms;
 }
 
-.container-fixed .container-sem {
-  position: fixed;
+.logo-sem {
+  grid-area: logo;
+  margin: auto;
+  max-width: 30rem;
+  width: 70%;
 }
 
-.container-fixed .footer {
-  margin-top: 100vh;
+.informasi-sem {
+  grid-area: informasi;
+  height: 20rem;
 }
 
-.footer {
-  top: 17000px;
+.pembicara-sem {
+  grid-area: pembicara;
 }
 
-.makan div {
-  position: fixed;
-  width: 100%;
-  min-height: 100%;
-  text-align: center;
-  top: 50%;
-  opacity: 0;
-  font-size: 30px;
-}
+@media screen and (max-width: 1280px) {
+  .container-sem {
+    width: 90vw;
+    display: grid;
+    grid-template-areas:
+      'logo logo'
+      'deskripsi deskripsi'
+      'informasi informasi'
+      'pembicara pembicara'
+      'sponsor sponsor';
+    row-gap: 5vh;
+  }
 
-.makan .flex {
-  display: flex;
-}
-
-.makan span {
-  position: fixed;
-  width: 100%;
-  min-height: 100%;
-  text-align: center;
-  top: 50%;
-  opacity: 0;
-  font-size: 30px;
+  .deskripsi-sem {
+    width: 90%;
+  }
+  .deskripsi-sem h2,
+  .deskripsi-sem p {
+    text-align: center;
+  }
 }
