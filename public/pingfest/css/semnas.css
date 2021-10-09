@@ -160,13 +160,42 @@ h1.title {
   margin: 2rem 1rem 0 1rem;
   border-radius: 1rem;
   width: 15rem;
-  height: 10rem;
   background-color: #e9e5d8;
   opacity: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  align-items: center;
 }
 
-.box-semnas:hover {
-  opacity: 100%;
+.box-semnas h4 {
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+.box-semnas .text-box-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 8rem;
+}
+
+.box-semnas a {
+  text-decoration: none;
+  color: var(--dark-color);
+}
+
+.box-semnas a:hover {
+  text-decoration: underline;
+}
+
+.box-semnas p {
+  text-align: center;
+  margin: 0;
+}
+
+.box-semnas path {
+  fill: var(--dark-color);
 }
 
 .pembicara-sem {
@@ -187,6 +216,11 @@ h1.title {
   width: 100%;
   max-width: 32rem;
   min-width: 20rem;
+  transition: opacity 200ms ease;
+}
+
+.pembicara-wrapper img:hover {
+  opacity: 80%;
 }
 
 .pembicara h2 {
