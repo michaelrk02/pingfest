@@ -14,11 +14,26 @@
   flex-direction: column;
 }
 
-.size-section {
+.big-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   place-items: center;
+}
+
+.small-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  place-items: center;
+}
+
+.small-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  place-items: center;
+  max-width: 50%;
 }
 
 .sponsor-logo {
@@ -51,7 +66,7 @@
 }
 
 .sponsor-small {
-  width: 14%;
+  width: 28%;
   min-width: 5rem;
 }
 

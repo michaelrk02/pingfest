@@ -44,7 +44,7 @@
                         <path
                             d="M128 4C59.5 4 4 59.5 4 128S59.5 252 128 252 252 196.5 252 128 196.5 4 128 4ZM236 128C236 187.35 187.95 236 128 236 68.65 236 20 187.95 20 128 20 68.65 68.05 20 128 20 187.35 20 236 68.05 236 128ZM161.55 172.15 120.95 142.65C119.4 141.5 118.5 139.7 118.5 137.8V58C118.5 54.7 121.2 52 124.5 52H131.5C134.8 52 137.5 54.7 137.5 58V131.15L172.75 156.8C175.45 158.75 176 162.5 174.05 165.2L169.95 170.85C168 173.5 164.25 174.1 161.55 172.15Z" />
                     </svg>
-                    <h4>Tempat</h4>
+                    <h4>Waktu</h4>
                     <div class="text-box-wrapper">
                         <p>23 - 24 Oktober 2021</p>
                         <p>18.00 WIB - Selesai</p>
@@ -122,7 +122,7 @@
     <div class="item sponsor">
         <p>Our Sponsors</p>
         <div class="sponsor-container">
-            <div class="size-section">
+            <div class="big-wrapper">
                 <a class="sponsor-logo sponsor-big" href="https://barito.tech/" target="_blank"><img
                         class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/bit.png'); ?>"
                         alt=""></a>
@@ -130,18 +130,24 @@
                         class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/upscale.png'); ?>"
                         alt=""></a>
             </div>
-            <div class="size-section">
-                <a class="sponsor-logo sponsor-small" href="https://byu.id/" target="_blank"><img class="sponsor-image"
-                        src="<?php echo base_url('public/pingfest/img/sponsor/byu.png'); ?>" alt=""></a>
-                <a class="sponsor-logo sponsor-small" href=" https://dewaweb.com" target="_blank"><img
-                        class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/dewaweb.png'); ?>"
-                        alt=""></a>
-                <a class="sponsor-logo sponsor-small" href="https://pahamify.com/" target="_blank"><img
-                        class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/pahamify.png'); ?>"
-                        alt=""></a>
-                <a class="sponsor-logo sponsor-small" href="https://www.instagram.com/whoknowswhat.id/"
-                    target="_blank"><img class="sponsor-image"
-                        src="<?php echo base_url('public/pingfest/img/sponsor/wkw.png'); ?>" alt=""></a>
+            <div class="small-wrapper">
+                <div class="small-section">
+                    <a class="sponsor-logo sponsor-small" href="https://byu.id/" target="_blank"><img
+                            class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/byu.png'); ?>"
+                            alt=""></a>
+                    <a class="sponsor-logo sponsor-small" href=" https://dewaweb.com" target="_blank"><img
+                            class="sponsor-image"
+                            src="<?php echo base_url('public/pingfest/img/sponsor/dewaweb.png'); ?>" alt=""></a>
+                </div>
+                <div class="small-section">
+
+                    <a class="sponsor-logo sponsor-small" href="https://pahamify.com/" target="_blank"><img
+                            class="sponsor-image"
+                            src="<?php echo base_url('public/pingfest/img/sponsor/pahamify.png'); ?>" alt=""></a>
+                    <a class="sponsor-logo sponsor-small" href="https://www.instagram.com/whoknowswhat.id/"
+                        target="_blank"><img class="sponsor-image"
+                            src="<?php echo base_url('public/pingfest/img/sponsor/wkw.png'); ?>" alt=""></a>
+                </div>
 
             </div>
 

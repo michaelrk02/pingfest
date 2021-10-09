@@ -149,7 +149,7 @@
     <div class="item sponsor">
         <p>Our Sponsors</p>
         <div class="sponsor-container">
-            <div class="size-section">
+            <div class="big-wrapper">
                 <a class="sponsor-logo sponsor-big" href="https://barito.tech/" target="_blank"><img
                         class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/bit.png'); ?>"
                         alt=""></a>
@@ -157,21 +157,26 @@
                         class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/upscale.png'); ?>"
                         alt=""></a>
             </div>
-            <div class="size-section">
-                <a class="sponsor-logo sponsor-small" href="https://byu.id/" target="_blank"><img class="sponsor-image"
-                        src="<?php echo base_url('public/pingfest/img/sponsor/byu.png'); ?>" alt=""></a>
-                <a class="sponsor-logo sponsor-small" href=" https://dewaweb.com" target="_blank"><img
-                        class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/dewaweb.png'); ?>"
-                        alt=""></a>
-                <a class="sponsor-logo sponsor-small" href="https://pahamify.com/" target="_blank"><img
-                        class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/pahamify.png'); ?>"
-                        alt=""></a>
-                <a class="sponsor-logo sponsor-small" href="https://www.instagram.com/whoknowswhat.id/"
-                    target="_blank"><img class="sponsor-image"
-                        src="<?php echo base_url('public/pingfest/img/sponsor/wkw.png'); ?>" alt=""></a>
+            <div class="small-wrapper">
+                <div class="small-section">
+                    <a class="sponsor-logo sponsor-small" href="https://byu.id/" target="_blank"><img
+                            class="sponsor-image" src="<?php echo base_url('public/pingfest/img/sponsor/byu.png'); ?>"
+                            alt=""></a>
+                    <a class="sponsor-logo sponsor-small" href=" https://dewaweb.com" target="_blank"><img
+                            class="sponsor-image"
+                            src="<?php echo base_url('public/pingfest/img/sponsor/dewaweb.png'); ?>" alt=""></a>
+                </div>
+                <div class="small-section">
+
+                    <a class="sponsor-logo sponsor-small" href="https://pahamify.com/" target="_blank"><img
+                            class="sponsor-image"
+                            src="<?php echo base_url('public/pingfest/img/sponsor/pahamify.png'); ?>" alt=""></a>
+                    <a class="sponsor-logo sponsor-small" href="https://www.instagram.com/whoknowswhat.id/"
+                        target="_blank"><img class="sponsor-image"
+                            src="<?php echo base_url('public/pingfest/img/sponsor/wkw.png'); ?>" alt=""></a>
+                </div>
 
             </div>
-
         </div>
         <div class="sponsor-button">
             <a href="<?php echo site_url('sponsors/join'); ?>" class="btn btn-arrow">
