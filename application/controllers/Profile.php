@@ -201,6 +201,7 @@ class Profile extends CI_Controller {
             if (isset($event)) {
                 if ($this->events->participant_get($_SESSION['user_id'], $event_id, 'user_id') === NULL) {
                     if (!empty($event['available'])) {
+                        $autosetup = FALSE;
                         $participant = [];
                         $participant['user_id'] = $_SESSION['user_id'];
                         $participant['event_id'] = $event_id;
@@ -211,15 +212,19 @@ class Profile extends CI_Controller {
                             $participant['unique'] = random_int(0, 499);
                             $participant['total'] = $participant['invoice'] + $participant['unique'];
                         } else {
+                            $autosetup = TRUE;
                             $participant['status'] = 1;
                             $participant['invoice'] = 0;
                             $participant['unique'] = 0;
                             $participant['total'] = 0;
                         }
                         if ($this->events->participant_add($participant)) {
-                            $_SESSION['profile_status'] = 'SUCCESS: Berhasil membuat invoice. Silakan untuk membayar ke rekening yang tertera sesuai jumlah invoice total';
-                            redirect(site_url('profile/index').'?tab=registration#invoice-'.md5($event_id));
-                            return;
+                            if (!$autosetup) {
+                                $_SESSION['profile_status'] = 'SUCCESS: Berhasil membuat invoice. Silakan untuk membayar ke rekening yang tertera sesuai jumlah invoice total';
+                                redirect(site_url('profile/index').'?tab=registration#invoice-'.md5($event_id));
+                            } else {
+                                redirect(site_url('profile/setup').'?event='.urlencode($event_id));
+                            }
                         } else {
                             $_SESSION['profile_status'] = 'ERROR: Gagal membuat invoice. Silakan coba lagi. Jika masalah masih berlanjut, segera hubungi CP';
                         }
@@ -405,7 +410,7 @@ class Profile extends CI_Controller {
                         if ($this->events->battle_set($_SESSION['user_id'], $identity)) {
                             $upload_status = $this->upload_battle_idcard();
 
-                            $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas'.(!$upload_status ? ' namun gagal mengunggah file kartu tanda pelajar' : '');
+                            $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas'.(!$upload_status ? ' namun gagal mengunggah file kartu tanda pelajar' : '').'. Terima kasih telah mendaftar pada event kami';
                         } else {
                             $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
                         }
@@ -469,7 +474,7 @@ class Profile extends CI_Controller {
                     if ($this->events->paper_set($_SESSION['user_id'], $identity)) {
                         $upload_status = $this->upload_paper_idcard() && $this->upload_paper_submission();
 
-                        $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas'.(!$upload_status ? ' namun gagal mengunggah file kartu tanda mahasiswa atau file submisi' : '');
+                        $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas'.(!$upload_status ? ' namun gagal mengunggah file kartu tanda mahasiswa atau file submisi' : '').'. Terima kasih telah mendaftar pada event kami';
                     } else {
                         $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
                     }
@@ -535,7 +540,7 @@ class Profile extends CI_Controller {
                     $identity['link_igtv'] = !empty($identity['link_igtv']) ? prep_url($identity['link_igtv']) : '';
 
                     if ($this->events->music_set($_SESSION['user_id'], $identity)) {
-                        $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas';
+                        $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas. Terima kasih telah mendaftar pada event kami';
                     } else {
                         $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
                     }
@@ -572,7 +577,7 @@ class Profile extends CI_Controller {
                 $identity['institution'] = $this->input->post('institution');
 
                 if ($this->events->semnas_set($_SESSION['user_id'], $identity)) {
-                    $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas';
+                    $_SESSION['profile_status'] = 'SUCCESS: Berhasil memperbarui identitas. Terima kasih telah mendaftar pada event kami';
                 } else {
                     $_SESSION['profile_status'] = 'ERROR: Gagal memperbarui identitas. Silakan coba lagi. Kontak CP apabila masalah masih berlanjut';
                 }

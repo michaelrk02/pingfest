@@ -33,11 +33,11 @@
                 </div>
                 <div class="text-wrapper">
                     <p class="list">-</p>
-                    <p> Meingkatkan motivasi kamu</p>
+                    <p> Meningkatkan motivasi kamu</p>
                 </div>
                 <div class="text-wrapper">
                     <p class="list">-</p>
-                    <p> E-Sertifikat (jika kamu mendaftarkan akun di website ini)</p>
+                    <p> E-Sertifikat (jika memiliki akun dan mendaftar seminar pada website ini)</p>
                 </div>
                 <div class="daftar-sem button">
                     <a href="<?php echo site_url('profile/index').'?tab=e_semnas'; ?>" class="btn daftar-block">

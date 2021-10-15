@@ -12,6 +12,10 @@
             <div class="col-12">
                 <div class="alert alert-danger"><span class="fa fa-exclamation-circle"></span> Pengisian data sudah ditutup</div>
             </div>
+        <?php else: ?>
+            <div class="col-12">
+                <div class="alert alert-success"><span class="fa fa-exclamation-circle"></span> Pengisian data masih dibuka</div>
+            </div>
         <?php endif; ?>
         <div class="col-12" style="padding-bottom: 3rem">
             <form action="<?php echo site_url('profile/setup_semnas'); ?>" method="post" onsubmit="return confirm('Apakah anda yakin?')">
