@@ -62,7 +62,14 @@ body {
   color: var(--green-color);
 }
 
+.container-wrapper {
+  width: 100%;
+  top: 150px;
+  position: relative;
+}
+
 .container-sem {
+  position: relative;
   display: grid;
   grid-template-areas:
     'deskripsi logo'
@@ -72,10 +79,17 @@ body {
   grid-template-columns: 1fr 1fr;
 
   z-index: 0;
-  top: 150px;
   width: 1280px;
   margin: auto;
   position: relative;
+}
+
+.container-fixed .container-wrapper {
+  position: fixed;
+}
+
+.container-fixed .footer {
+  margin-top: 100vh;
 }
 
 .deskripsi-sem {
@@ -85,19 +99,25 @@ body {
 
 .deskripsi-sem h2 {
   font-family: 'Bree Serif', serif;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2rem, 6vw, 4rem);
   font-weight: 700;
+  margin: 2rem 0;
+}
+
+.deskripsi-sem .text-wrapper {
+  display: flex;
 }
 
 .deskripsi-sem p {
-  font-size: clamp(1.1rem, 1.5vw, 1.5rem);
   text-align: justify;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  margin: 0.5rem 0;
 }
 
 .daftar-sem.button {
   margin-top: 3rem;
   display: flex;
-  place-content: flex-end;
+  place-content: center;
 }
 
 .daftar-sem .btn {
@@ -125,7 +145,7 @@ body {
 
 .logo-sem {
   grid-area: logo;
-  margin: auto;
+  margin: 10% auto;
   max-width: 30rem;
   width: 70%;
 }
@@ -252,6 +272,15 @@ h1.title {
       'pembicara pembicara'
       'sponsor sponsor';
     row-gap: 5vh;
+  }
+
+  .deskripsi-sem .text-wrapper {
+    place-items: center;
+    place-content: center;
+  }
+
+  .deskripsi-sem p.list {
+    display: none;
   }
 
   .daftar-sem.button {
