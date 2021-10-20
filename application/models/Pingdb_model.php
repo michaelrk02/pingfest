@@ -23,5 +23,9 @@ class Pingdb_model extends CI_Model {
         return $this->db->select($columns)->from('battle_data')->where('user_id', $user_id)->get()->row_array(0);
     }
 
+    public function get_semnas_data($user_id, $columns = '*') {
+        return $this->db->select($columns)->from('semnas_data')->where('user_id', $user_id)->get()->row_array(0);
+    }
+
 }
 

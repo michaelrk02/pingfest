@@ -58,7 +58,7 @@ class Pingfest {
                         $sso['url_param'] = '?sso='.urlencode($request);
 
                         if (isset($_SESSION['user_id'])) {
-                            $user = $this->ci->pingdb->get_user($_SESSION['user_id'], 'user_id, name, email');
+                            $user = $this->ci->pingdb->get_user($_SESSION['user_id'], 'user_id, name, email, phone');
                             if (isset($user)) {
                                 $response_data = [];
                                 $response_data['expired'] = time() + 5;
@@ -71,6 +71,15 @@ class Pingfest {
                                         $response_data['name'] = $battle_data['team_name'].' (@'.$user['user_id'].')';
                                     } else {
                                         $response_data['disallow'] = TRUE;
+                                    }
+                                }
+                                if ($app_id === 'semnas') {
+                                    $semnas_data = $this->ci->pingdb->get_semnas_data($user['user_id'], 'user_id, institution');
+                                    if (!isset($semnas_data)) {
+                                        $response_data['disallow'] = TRUE;
+                                    } else {
+                                        $response_data['phone'] = $user['phone'];
+                                        $response_data['institution'] = $semnas_data['institution'];
                                     }
                                 }
 
