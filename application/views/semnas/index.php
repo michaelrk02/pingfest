@@ -74,10 +74,10 @@
                         <div class="text-box-wrapper">
 
                             <a href="https://www.youtube.com/channel/UCLUJ6DRel_x7jglM6iZB0lQ" target="_blank">
-                                <p>Youtube</p>
+                                <p>Youtube <b>HIMASTER UNS</b></p>
                             </a>
                             <a href="https://www.instagram.com/pingfest/" target="_blank">
-                                <p>Instagram</p>
+                                <p>Instagram <b>@pingfest</b></p>
                             </a>
                         </div>
                     </div>
